@@ -4,23 +4,30 @@ using UnityEngine;
 
 public class EnemyAnims : MonoBehaviour
 {
-    public void AnimAtaque(Animator anim, bool ActivaODesactiva)
+    public void AnimAtaque(Animator anim)
     {
-        anim.SetBool("Ataque", ActivaODesactiva);
+        anim.SetBool("Ataque", true);
     }
 
-    public void AnimBloqueo(Animator anim, bool ActivaODesactiva)
+    public void AnimBloqueo(Animator anim)
     {
-        anim.SetBool("Bloqueo", ActivaODesactiva);
+        anim.SetBool("Bloqueo", true);
     }
 
-    public void AnimEstatico(Animator anim, bool ActivaODesactiva)
+    private float VelocidadAnimCaminata;
+    public void AnimCaminata(Animator anim, float distanciaPlayer, float DistanciaEntradaGuardia)
     {
-        anim.SetBool("Estatico", ActivaODesactiva);
+        if (distanciaPlayer < DistanciaEntradaGuardia) VelocidadAnimCaminata = 1f;
+        else VelocidadAnimCaminata = 2f;
 
+        anim.speed = VelocidadAnimCaminata;
+        anim.SetBool("Caminata", true);
+    }
+
+    public void AnimEstatico(Animator anim)
+    {
+        anim.SetBool("Caminata", false);
         anim.SetBool("Ataque", false);
         anim.SetBool("Bloqueo", false);
     }
-
-
 }

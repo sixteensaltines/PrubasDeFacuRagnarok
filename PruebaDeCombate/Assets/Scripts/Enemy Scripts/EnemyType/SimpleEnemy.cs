@@ -25,21 +25,15 @@ public class SimpleEnemy : Enemy
         rbEnemigo = GetComponent<Rigidbody2D>();
 
         anim = GetComponent<Animator>();
-
-      
     }
 
     void Update()
     {
         RotacionSkinEnemigo(player.transform.position);
-        ControladorSeguimientoPlayer(player.transform.position, MultiplicadorDeVelocidadDefault);
-
+        ControladorSeguimientoPlayer(player.transform.position, MultiplicadorDeVelocidadDefault, anim);
         ModoCombate(anim, MinTiempoEntreAcciones, MedidorDistancia(player.transform.position, transform.position));
     }
-    private void FixedUpdate()
-    {
-        Salto(player.transform.position,rbEnemigo);
-    }
+    private void FixedUpdate() => Salto(player.transform.position, rbEnemigo);
 
     //Dibujo de distancias basicas del enemigo
     private void OnDrawGizmosSelected()

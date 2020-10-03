@@ -25,14 +25,8 @@ public class Enemy : EnemyAnims
 
     public void RotacionSkinEnemigo(Vector3 PlayerPosition)
     {
-        if (transform.position.x < PlayerPosition.x)
-        {
-            transform.eulerAngles = new Vector3(0, 0, 0);
-        }
-        else
-        {
-            transform.eulerAngles = new Vector3(0, 180, 0);
-        }
+        if (transform.position.x < PlayerPosition.x) transform.eulerAngles = new Vector3(0, 0, 0);
+        else transform.eulerAngles = new Vector3(0, 180, 0);
     }
 
     #region Variables DetectorSuelo
@@ -52,31 +46,22 @@ public class Enemy : EnemyAnims
             esperarSuCaida = false;
             estaSaltando = false;
         }
-        if (!estaSuelo && estaSaltando)
-        {
-            esperarSuCaida = true;
-        }
+        if (!estaSuelo && estaSaltando) esperarSuCaida = true;
     }
 
     #region Variable Seguimiento Player
     private float multiplicadorDeVelocidad;
     #endregion
-    public void ControladorSeguimientoPlayer(Vector3 PlayerPosition, float MultiplicadorDeVelocidad)
+    public void ControladorSeguimientoPlayer(Vector3 PlayerPosition, float MultiplicadorDeVelocidad, Animator anim)
     {
         v_PosicionPlayer = PlayerPosition;
 
         //Control del mutiplicador, busca que sea 1 o mayor que 1
-        if (MultiplicadorDeVelocidad > 0)
-        {
-            multiplicadorDeVelocidad = MultiplicadorDeVelocidad;
-        }
-        else
-        {
-            multiplicadorDeVelocidad = 1f;
-        }
+        if (MultiplicadorDeVelocidad > 0) multiplicadorDeVelocidad = MultiplicadorDeVelocidad;
+        else multiplicadorDeVelocidad = 1f;
 
-            ControlDeVelocidades(multiplicadorDeVelocidad, MedidorDistancia(PlayerPosition, transform.position));
-            EjecutaMovimiento(v_PosicionPlayer, MedidorDistancia(PlayerPosition, transform.position));
+        ControlDeVelocidades(multiplicadorDeVelocidad, MedidorDistancia(PlayerPosition, transform.position));
+        EjecutaMovimiento(v_PosicionPlayer, MedidorDistancia(PlayerPosition, transform.position),anim);
     }
 
     #region Variables de Movimiento hacia player
@@ -90,30 +75,26 @@ public class Enemy : EnemyAnims
         {
             haceFaltaIgualarVelocidades = false;
             velocidadMovimientoDefault = velocidadMovimiento * MultiplicadorDeVel;
-
         }
 
         if (!estaSaltando)
         {
             if (distTotalAPlayer < DISTANCIA_ENTRADA_MODOGUARDIA)
             {
-
                 if (velocidadMovimiento > velocidadMovimientoDefault * 0.9)
                 {
                     velocidadMovimiento = velocidadMovimiento - 0.01f * velocidadMovimientoDefault;
                 }
             }
-            else
-            {
-                velocidadMovimiento = velocidadMovimientoDefault;
-            }
+            else velocidadMovimiento = velocidadMovimientoDefault;
         }
     }
 
-    public void EjecutaMovimiento(Vector3 PlayerPosition, float distTotalAPlayer)
+    public void EjecutaMovimiento(Vector3 PlayerPosition, float distTotalAPlayer, Animator anim)
     {
         if (distTotalAPlayer <= RangoVision && distTotalAPlayer >= RANGOATAQUE)
         {
+            AnimCaminata(anim, distTotalAPlayer, DISTANCIA_ENTRADA_MODOGUARDIA);
             RangoVision = 20f;
             transform.position = Vector3.MoveTowards(transform.position, PlayerPosition, velocidadMovimiento * Time.deltaTime);
         }
@@ -137,8 +118,7 @@ public class Enemy : EnemyAnims
     #endregion
     public void LecturaDeEntornoConRayo_Frente(Vector3 PlayerPosition)
     {
-        if (transform.position.x < PlayerPosition.x)
-            DistanciaRayo = -2.3f;
+        if (transform.position.x < PlayerPosition.x) DistanciaRayo = -2.3f;
         else DistanciaRayo = 2.3f;
 
         Vector2 FinalRayo = transform.position + Vector3.left * DistanciaRayo;
@@ -163,12 +143,9 @@ public class Enemy : EnemyAnims
         }
 
         //SaltoAlVacio
-        if (obstaculoFrontal.collider == null && deteccionPlayer_Frente.collider == null)
+        if (obstaculoFrontal.collider == null && deteccionPlayer_Frente.collider == null && distTotalAPlayer <= RANGOATAQUE)
         {
-            if (distTotalAPlayer <= RANGOATAQUE)
-            {
-                transform.position = Vector3.MoveTowards(transform.position, PlayerPosition, velocidadMovimiento*2f * Time.deltaTime);
-            }
+            transform.position = Vector3.MoveTowards(transform.position, PlayerPosition, velocidadMovimiento*2f * Time.deltaTime);
         }
     }
 
@@ -184,7 +161,6 @@ public class Enemy : EnemyAnims
     }//TODO: Falta agregar el stun en algun lado 
 
     //TODO: FALTA UN CONTROLADOR DE VIDA! seguramente en la configuracion del enemigo vaya un public int con las vidas. 
-
     
     public int QueAccion; //TODO:PASAR A PRIVATE 
 
@@ -212,59 +188,50 @@ public class Enemy : EnemyAnims
     /// <param name="MinTiempoEntreAcciones_Default"></param>
     public void ModoCombate(Animator anim, float MinTiempoEntreAcciones, float distTotalAPlayer)
     {
-        if (Flag1)
-        {
-            Flag1 = !Flag1;
-            ContadorEntreAcciones = MinTiempoEntreAcciones;
-        }
-
-
-        if (!animacionEstatica) //Se activa desde las animaciones. 
-        {
-            if (BuscaObjetoEntre_Dos_Puntos(RANGOATAQUE + 0.3f, RANGOATAQUE - 0.2f, distTotalAPlayer))
+            if (Flag1)
             {
-                if (ContadorEntreAcciones >= 0)
-                {
-                    ContadorEntreAcciones -= Time.deltaTime;
-                }
-                else
-                {
-                    nuevaAccion = SeleccionaAccionAleatoria();
+                Flag1 = !Flag1;
+                ContadorEntreAcciones = MinTiempoEntreAcciones;
+            }
 
-                    if (buscarNuevaAccion && nuevaAccion != viejaAccion) Restaurar_ValoresDeteccionDeRepeticiones();
-
-                    if (nuevaAccion == viejaAccion)
+            if (!animacionEstatica) //Se activa desde las animaciones. 
+            {
+                if (BuscaObjetoEntre_Dos_Puntos(RANGOATAQUE + 0.3f, RANGOATAQUE - 0.2f, distTotalAPlayer))
+                {
+                    if (ContadorEntreAcciones >= 0) ContadorEntreAcciones -= Time.deltaTime;
+                    else
                     {
-                        CantidadDeRepeticionPosible();
+                        nuevaAccion = SeleccionaAccionAleatoria();
 
-                        if (!buscarNuevaAccion)
+                        if (buscarNuevaAccion && nuevaAccion != viejaAccion) Restaurar_ValoresDeteccionDeRepeticiones();
+
+                        if (nuevaAccion == viejaAccion)
                         {
-                            DesativarAnimacion("Estatico", anim);
+                            CantidadDeRepeticionPosible();
+
+                            if (!buscarNuevaAccion)
+                            {
+                                ActivarAnimacion(nuevaAccion, anim);
+                                ContadorEntreAcciones = MinTiempoEntreAcciones;
+                            }
+                            //else vuelve a tirar nueva accion, lo hara de forma automatica
+                        }
+                        else
+                        {
+                            viejaAccion = nuevaAccion; //Obtiene nuevo valor para la proxima vuelta
+
                             ActivarAnimacion(nuevaAccion, anim);
                             ContadorEntreAcciones = MinTiempoEntreAcciones;
                         }
-                        //else vuelve a tirar nueva accion, lo hara de forma automatica
-                    }
-                    else
-                    {
-                        viejaAccion = nuevaAccion; //Obtiene nuevo valor para la proxima vuelta
-
-                        DesativarAnimacion("Estatico", anim);
-                        ActivarAnimacion(nuevaAccion, anim);
-                        ContadorEntreAcciones = MinTiempoEntreAcciones;
                     }
                 }
             }
-        }
-        else
-        {
-            DesativarAnimacion(anim);
-            animacionEstatica = false;
-        }
+            else
+            {
+                ActivarAnimacion("Estatico", anim);
+                animacionEstatica = false;
+            }
     }
-
-   
-
 
     /// <summary>
     /// Selecciona dos rangos, max y min, busca la posicion del objeto entre esos rangos, devuelve un booleano
@@ -278,6 +245,7 @@ public class Enemy : EnemyAnims
         if (RangoMax > PosicionObjetoAEstudiar && PosicionObjetoAEstudiar > RangoMin) return true;
         else return false;
     }
+
     /// <summary>
     /// Devuelve una accion por medio de un numero random. El valor sera devuelto segun el porcentaje de posibilidades que uno designe dentro del inspector. LA SUMA SIEMPRE DEBE DAR 100% 
     /// </summary>
@@ -371,24 +339,8 @@ public class Enemy : EnemyAnims
 
     void ActivarAnimacion(string Accion, Animator anim)
     {
-        if (Accion == "Bloqueo") AnimBloqueo(anim,true);
-        else if (Accion == "Ataque") AnimAtaque(anim,true);
-        else if (Accion == "Estatico") AnimEstatico(anim,true);
-    }
-    void DesativarAnimacion(string Accion, Animator anim)
-    {
-        if (Accion == "Bloqueo") AnimBloqueo(anim, false);
-        else if (Accion == "Ataque") AnimAtaque(anim, false);
-        else if (Accion == "Estatico") AnimEstatico(anim, false);
-    }
-    /// <summary>
-    /// Desactiva Todas las animaciones y deja por defecto encendido la animacion de estatico
-    /// </summary>
-    /// <param name="anim"></param>
-    void DesativarAnimacion(Animator anim)
-    {
-        AnimBloqueo(anim, false);
-        AnimAtaque(anim, false);
-        AnimEstatico(anim, true);
+        if (Accion == "Bloqueo") AnimBloqueo(anim);
+        else if (Accion == "Ataque") AnimAtaque(anim);
+        else if (Accion == "Estatico") AnimEstatico(anim);
     }
 }
