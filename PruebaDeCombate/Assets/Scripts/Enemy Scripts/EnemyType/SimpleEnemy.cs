@@ -30,7 +30,7 @@ public class SimpleEnemy : Enemy
     void Update()
     {
         RotacionSkinEnemigo(player.transform.position);
-        ControladorSeguimientoPlayer(player.transform.position, MultiplicadorDeVelocidadDefault, anim);
+        SeguimientoPlayer_Caminata(player.transform.position, MultiplicadorDeVelocidadDefault, anim);
         //ModoCombate(anim, MinTiempoEntreAcciones, MedidorDistancia(player.transform.position, transform.position));
     }
     private void FixedUpdate() => Salto(player.transform.position, rbEnemigo);

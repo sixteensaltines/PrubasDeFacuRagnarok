@@ -13,7 +13,6 @@ public class Enemy : EnemyAnims
     public const float DISTANCIA_ENTRADA_MODOGUARDIA = 5f;
 
     private Vector3 v_PosicionPlayer;
-    private Rigidbody2D RigidBodyEnemigo;
     #endregion
 
     #region Variables De Distancia
@@ -29,28 +28,11 @@ public class Enemy : EnemyAnims
         else transform.eulerAngles = new Vector3(0, 180, 0);
     }
 
-    #region Variables DetectorSuelo
-    private float radio = 0.34f;
-    private bool estaSuelo;
-    private bool esperarSuCaida;
-    #endregion
-    public void DetectorSuelo()
-    {
-        estaSuelo = Physics2D.OverlapCircle(transform.GetChild(1).GetChild(2).position, radio, LayerMask.GetMask("Piso"));
-
-        //ReactivarSalto_ParaUnaProximaVez
-        if (esperarSuCaida && estaSuelo)
-        {
-            esperarSuCaida = false;
-            estaSaltando = false;
-        }
-        if (!estaSuelo && estaSaltando) esperarSuCaida = true;
-    }
 
     #region Variable Seguimiento Player
     private float multiplicadorDeVelocidad;
     #endregion
-    public void ControladorSeguimientoPlayer(Vector3 PlayerPosition, float MultiplicadorDeVelocidad, Animator anim)
+    public void SeguimientoPlayer_Caminata(Vector3 PlayerPosition, float MultiplicadorDeVelocidad, Animator anim)
     {
         v_PosicionPlayer = PlayerPosition;
 
@@ -133,9 +115,9 @@ public class Enemy : EnemyAnims
     #endregion
     public void EjecutaSalto(Vector3 PlayerPosition, Rigidbody2D rbEnemigo,float distTotalAPlayer)
     {   //Salto hacia adelante
-        if (DeteccionPared_Frente(PlayerPosition) && !DeteccionPlayer_Frente(PlayerPosition) && estaSuelo)
+        if (DeteccionPared_Frente(PlayerPosition) && !DeteccionPlayer_Frente(PlayerPosition) && DetectorSuelo())
         {
-            estaSaltando = true; //El DetectorDeSuelo() va a volver a detectar cuando cae
+            //estaSaltando = true; //El DetectorDeSuelo() va a volver a detectar cuando cae
             transform.position = Vector3.MoveTowards(transform.position, PlayerPosition, 7f * Time.deltaTime);
             rbEnemigo.velocity = Vector3.up * fuerzaSalto;   
         }
@@ -145,6 +127,14 @@ public class Enemy : EnemyAnims
         {
             transform.position = Vector3.MoveTowards(transform.position, PlayerPosition, velocidadMovimiento*2f * Time.deltaTime);
         }
+    }
+
+    #region Variables DetectorSuelo
+    private float radio = 0.34f;
+    #endregion
+    public bool DetectorSuelo()
+    {
+        return Physics2D.OverlapCircle(transform.GetChild(1).GetChild(2).position, radio, LayerMask.GetMask("Piso"));
     }
 
     public void Stun(float distTotalAPlayer)
