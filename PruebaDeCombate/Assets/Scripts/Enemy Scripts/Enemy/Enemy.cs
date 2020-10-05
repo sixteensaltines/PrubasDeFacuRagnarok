@@ -208,7 +208,8 @@ public class Enemy : EnemyAnims
                         if (nuevaAccion == viejaAccion)
                         {
                             CantidadDeRepeticionPosible();
-
+                            ConfigurarAccion(nuevaAccion);
+                       
                             if (!buscarNuevaAccion)
                             {
                                 ActivarAnimacion(nuevaAccion, anim);
@@ -337,10 +338,28 @@ public class Enemy : EnemyAnims
 
     void ActivarAnimacionEstatico() => animacionEstatica = true; //Se activa desde animaciones 
 
+    void ConfigurarAccion(string Accion)
+    {
+        if (Accion == "Bloqueo")
+        {
+
+        }
+        else if (Accion == "Ataque")
+        {
+
+        }
+        else if (Accion == "Esquive")
+        {
+            
+        }
+    }
+
     void ActivarAnimacion(string Accion, Animator anim)
     {
         if (Accion == "Bloqueo") AnimBloqueo(anim);
         else if (Accion == "Ataque") AnimAtaque(anim);
+        else if (Accion == "Esquive") AnimEsquive(anim);
         else if (Accion == "Estatico") AnimEstatico(anim);
+        //FALTA AGREGAR EL RESTO DE ANIMACIONES
     }
 }

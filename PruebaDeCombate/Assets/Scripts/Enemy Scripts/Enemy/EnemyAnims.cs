@@ -24,6 +24,11 @@ public class EnemyAnims : MonoBehaviour
         anim.SetBool("Caminata", true);
     }
 
+    public void AnimEsquive(Animator anim)
+    {
+
+    }
+
     public void AnimEstatico(Animator anim)
     {
         anim.SetBool("Caminata", false);
