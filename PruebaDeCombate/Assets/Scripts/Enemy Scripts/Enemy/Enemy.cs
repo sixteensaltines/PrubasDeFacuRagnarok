@@ -31,14 +31,12 @@ public class Enemy : EnemyAnims
 
     #region Variables DetectorSuelo
     private float radio = 0.34f;
-    private LayerMask layerPiso;
     private bool estaSuelo;
     private bool esperarSuCaida;
     #endregion
     public void DetectorSuelo()
     {
-        layerPiso = LayerMask.GetMask("Piso");
-        estaSuelo = Physics2D.OverlapCircle(transform.GetChild(1).GetChild(2).position, radio, layerPiso);
+        estaSuelo = Physics2D.OverlapCircle(transform.GetChild(1).GetChild(2).position, radio, LayerMask.GetMask("Piso"));
 
         //ReactivarSalto_ParaUnaProximaVez
         if (esperarSuCaida && estaSuelo)
@@ -94,7 +92,6 @@ public class Enemy : EnemyAnims
     {
         if (distTotalAPlayer <= RangoVision && distTotalAPlayer >= RANGOATAQUE)
         {
-            AnimCaminata(anim, distTotalAPlayer, DISTANCIA_ENTRADA_MODOGUARDIA);
             RangoVision = 20f;
             transform.position = Vector3.MoveTowards(transform.position, PlayerPosition, velocidadMovimiento * Time.deltaTime);
         }
@@ -102,11 +99,7 @@ public class Enemy : EnemyAnims
 
     public void Salto(Vector3 PlayerPosition, Rigidbody2D rbEnemigo)
     {
-        v_PosicionPlayer = PlayerPosition;
-        RigidBodyEnemigo = rbEnemigo;
-
-        LecturaDeEntornoConRayo_Frente(v_PosicionPlayer);
-        EjecutaSalto(v_PosicionPlayer, RigidBodyEnemigo, MedidorDistancia(PlayerPosition, transform.position));
+        EjecutaSalto(PlayerPosition, rbEnemigo, MedidorDistancia(PlayerPosition, transform.position));
         DetectorSuelo();
     }
 
@@ -116,17 +109,22 @@ public class Enemy : EnemyAnims
     private RaycastHit2D obstaculoFrontal;
     private RaycastHit2D deteccionPlayer_Frente;
     #endregion
-    public void LecturaDeEntornoConRayo_Frente(Vector3 PlayerPosition)
+    public bool DeteccionPared_Frente(Vector3 PlayerPosition)
+    {
+        if (transform.position.x < PlayerPosition.x) DistanciaRayo = -2.3f;
+        else DistanciaRayo = 2.3f;
+        Vector2 FinalRayo = transform.position + Vector3.left * DistanciaRayo;
+
+        return Physics2D.Linecast(transform.position, FinalRayo, 1 << LayerMask.NameToLayer("Piso"));
+    }
+
+    public bool DeteccionPlayer_Frente(Vector3 PlayerPosition)
     {
         if (transform.position.x < PlayerPosition.x) DistanciaRayo = -2.3f;
         else DistanciaRayo = 2.3f;
 
-        Vector2 FinalRayo = transform.position + Vector3.left * DistanciaRayo;
-
-        obstaculoFrontal = Physics2D.Linecast(transform.position, FinalRayo, 1 << LayerMask.NameToLayer("Piso"));
-
-        deteccionPlayer_Frente = Physics2D.Linecast(new Vector3(transform.position.x, transform.position.y+ 1f,transform.position.z),
-            T_RayoFrontal.position, 1 << LayerMask.NameToLayer("Player"));
+         return Physics2D.Linecast(new Vector3(transform.position.x, transform.position.y + 1f, transform.position.z),
+         T_RayoFrontal.position, 1 << LayerMask.NameToLayer("Player"));
     }
 
     #region Variables EjecutaSalto
@@ -135,7 +133,7 @@ public class Enemy : EnemyAnims
     #endregion
     public void EjecutaSalto(Vector3 PlayerPosition, Rigidbody2D rbEnemigo,float distTotalAPlayer)
     {   //Salto hacia adelante
-        if (obstaculoFrontal.collider != null && deteccionPlayer_Frente.collider == null && estaSuelo)
+        if (DeteccionPared_Frente(PlayerPosition) && !DeteccionPlayer_Frente(PlayerPosition) && estaSuelo)
         {
             estaSaltando = true; //El DetectorDeSuelo() va a volver a detectar cuando cae
             transform.position = Vector3.MoveTowards(transform.position, PlayerPosition, 7f * Time.deltaTime);
@@ -143,7 +141,7 @@ public class Enemy : EnemyAnims
         }
 
         //SaltoAlVacio
-        if (obstaculoFrontal.collider == null && deteccionPlayer_Frente.collider == null && distTotalAPlayer <= RANGOATAQUE)
+        if (!DeteccionPared_Frente(PlayerPosition) && !DeteccionPlayer_Frente(PlayerPosition) && distTotalAPlayer <= RANGOATAQUE)
         {
             transform.position = Vector3.MoveTowards(transform.position, PlayerPosition, velocidadMovimiento*2f * Time.deltaTime);
         }
@@ -158,11 +156,13 @@ public class Enemy : EnemyAnims
                 //En_Movimiento.Stuneado = true;   //TODO: Acordarse del movimiento y el stun.   
             }
         }
-    }//TODO: Falta agregar el stun en algun lado 
+    }//TODO: Falta agregar el stun en algun lado
+
+
 
     //TODO: FALTA UN CONTROLADOR DE VIDA! seguramente en la configuracion del enemigo vaya un public int con las vidas. 
     
-    public int QueAccion; //TODO:PASAR A PRIVATE 
+    /*public int QueAccion; //TODO:PASAR A PRIVATE 
 
     public int ProbabilidadAtaque;
     public int ProbabilidadBloqueo;
@@ -358,8 +358,8 @@ public class Enemy : EnemyAnims
     {
         if (Accion == "Bloqueo") AnimBloqueo(anim);
         else if (Accion == "Ataque") AnimAtaque(anim);
-        else if (Accion == "Esquive") AnimEsquive(anim);
+        //else if (Accion == "Esquive") AnimEsquive(anim);
         else if (Accion == "Estatico") AnimEstatico(anim);
         //FALTA AGREGAR EL RESTO DE ANIMACIONES
-    }
+    }*/
 }

@@ -4,15 +4,9 @@ using UnityEngine;
 
 public class EnemyAnims : MonoBehaviour
 {
-    public void AnimAtaque(Animator anim)
-    {
-        anim.SetBool("Ataque", true);
-    }
+    public void AnimAtaque(Animator anim) => anim.SetBool("Ataque", true);
 
-    public void AnimBloqueo(Animator anim)
-    {
-        anim.SetBool("Bloqueo", true);
-    }
+    public void AnimBloqueo(Animator anim) => anim.SetBool("Bloqueo", true);
 
     private float VelocidadAnimCaminata;
     public void AnimCaminata(Animator anim, float distanciaPlayer, float DistanciaEntradaGuardia)
@@ -23,11 +17,7 @@ public class EnemyAnims : MonoBehaviour
         anim.speed = VelocidadAnimCaminata;
         anim.SetBool("Caminata", true);
     }
-
-    public void AnimEsquive(Animator anim)
-    {
-
-    }
+    
 
     public void AnimEstatico(Animator anim)
     {

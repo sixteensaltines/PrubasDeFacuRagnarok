@@ -581,6 +581,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SimpleEnemy
       objectReference: {fileID: 0}
+    - target: {fileID: 1692067298529277630, guid: 611abca1305fe494bb3ba29ccfc2dc0e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1692067298697196254, guid: 611abca1305fe494bb3ba29ccfc2dc0e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3845,7 +3850,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2079844164}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 31a900d1afeef29449a94b2af9ab39c4, type: 2}
   m_CullingMode: 0
