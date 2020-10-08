@@ -11,7 +11,8 @@ public class SimpleEnemy : Enemy
     private Animator anim;
 
     #region Tooltip
-    [Tooltip("La velocidad default esta establecida, aun asi es posible multiplicar esta, los numeros permitidos son los mayores a, en caso de que la velocidad se aumente sera a modo de prueba, puesto que la animacion no cambiara con el aumento de velocidad")]
+    [Tooltip("La velocidad default esta establecida, aun asi es posible multiplicar esta, los numeros permitidos son los mayores a," +
+        " en caso de que la velocidad se aumente sera a modo de prueba, puesto que la animacion no cambiara con el aumento de velocidad")]
     #endregion
     public float MultiplicadorDeVelocidadDefault;
     #region Tooltip
@@ -33,7 +34,7 @@ public class SimpleEnemy : Enemy
         SeguimientoPlayer_Caminata(player.transform.position, MultiplicadorDeVelocidadDefault, anim);
         //ModoCombate(anim, MinTiempoEntreAcciones, MedidorDistancia(player.transform.position, transform.position));
     }
-    private void FixedUpdate() => Salto(player.transform.position, rbEnemigo);
+    private void FixedUpdate() => SaltoDePlataformas(player.transform.position, rbEnemigo,anim);
 
     //Dibujo de distancias basicas del enemigo
     private void OnDrawGizmosSelected()

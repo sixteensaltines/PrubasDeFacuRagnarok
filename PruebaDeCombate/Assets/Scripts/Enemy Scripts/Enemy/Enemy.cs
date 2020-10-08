@@ -11,12 +11,8 @@ public class Enemy : EnemyAnims
     public float RangoVision = 11.5f;
     [HideInInspector]
     public const float DISTANCIA_ENTRADA_MODOGUARDIA = 5f;
-
-    private Vector3 v_PosicionPlayer;
     #endregion
 
-    #region Variables De Distancia
-    #endregion
     public float MedidorDistancia(Vector3 ObjetoA, Vector3 ObjetoB)
     {
         return Vector3.Distance(ObjetoA, ObjetoB);
@@ -28,26 +24,19 @@ public class Enemy : EnemyAnims
         else transform.eulerAngles = new Vector3(0, 180, 0);
     }
 
-
-    #region Variable Seguimiento Player
-    private float multiplicadorDeVelocidad;
-    #endregion
     public void SeguimientoPlayer_Caminata(Vector3 PlayerPosition, float MultiplicadorDeVelocidad, Animator anim)
     {
-        v_PosicionPlayer = PlayerPosition;
-
         //Control del mutiplicador, busca que sea 1 o mayor que 1
-        if (MultiplicadorDeVelocidad > 0) multiplicadorDeVelocidad = MultiplicadorDeVelocidad;
-        else multiplicadorDeVelocidad = 1f;
+        if (MultiplicadorDeVelocidad < 0) MultiplicadorDeVelocidad = 1f;
 
-        ControlDeVelocidades(multiplicadorDeVelocidad, MedidorDistancia(PlayerPosition, transform.position));
-        EjecutaMovimiento(v_PosicionPlayer, MedidorDistancia(PlayerPosition, transform.position),anim);
+        ControlDeVelocidades(MultiplicadorDeVelocidad, MedidorDistancia(PlayerPosition, transform.position));
+        EjecutaMovimiento(PlayerPosition, MedidorDistancia(PlayerPosition, transform.position),anim);
     }
 
     #region Variables de Movimiento hacia player
     private float velocidadMovimiento = 1f;
     private float velocidadMovimientoDefault;
-    private bool haceFaltaIgualarVelocidades = true;
+    private bool haceFaltaIgualarVelocidades = true; //flag
     #endregion
     public void ControlDeVelocidades(float MultiplicadorDeVel,float distTotalAPlayer)
     {
@@ -57,17 +46,14 @@ public class Enemy : EnemyAnims
             velocidadMovimientoDefault = velocidadMovimiento * MultiplicadorDeVel;
         }
 
-        if (!estaSaltando)
+        if (distTotalAPlayer < DISTANCIA_ENTRADA_MODOGUARDIA)
         {
-            if (distTotalAPlayer < DISTANCIA_ENTRADA_MODOGUARDIA)
+            if (velocidadMovimiento > velocidadMovimientoDefault * 0.9)
             {
-                if (velocidadMovimiento > velocidadMovimientoDefault * 0.9)
-                {
-                    velocidadMovimiento = velocidadMovimiento - 0.01f * velocidadMovimientoDefault;
-                }
+                velocidadMovimiento = velocidadMovimiento - 0.01f * velocidadMovimientoDefault;
             }
-            else velocidadMovimiento = velocidadMovimientoDefault;
         }
+            else velocidadMovimiento = velocidadMovimientoDefault;
     }
 
     public void EjecutaMovimiento(Vector3 PlayerPosition, float distTotalAPlayer, Animator anim)
@@ -75,26 +61,31 @@ public class Enemy : EnemyAnims
         if (distTotalAPlayer <= RangoVision && distTotalAPlayer >= RANGOATAQUE)
         {
             RangoVision = 20f;
+            AnimCaminata(anim); //Se cancela desde AnimEstatico()
             transform.position = Vector3.MoveTowards(transform.position, PlayerPosition, velocidadMovimiento * Time.deltaTime);
         }
     }
 
-    public void Salto(Vector3 PlayerPosition, Rigidbody2D rbEnemigo)
+    public bool Grounded;
+
+    public void SaltoDePlataformas(Vector3 PlayerPosition, Rigidbody2D rbEnemigo, Animator anim)
     {
         EjecutaSalto(PlayerPosition, rbEnemigo, MedidorDistancia(PlayerPosition, transform.position));
+        AnimacionSalto(anim);
         DetectorSuelo();
+        if (DetectorSuelo()) Grounded = true;
+        else Grounded = false;
     }
 
     #region Variables de lectura de rayo frontal
     public Transform T_RayoFrontal;
     private float DistanciaRayo;
-    private RaycastHit2D obstaculoFrontal;
-    private RaycastHit2D deteccionPlayer_Frente;
     #endregion
     public bool DeteccionPared_Frente(Vector3 PlayerPosition)
     {
         if (transform.position.x < PlayerPosition.x) DistanciaRayo = -2.3f;
         else DistanciaRayo = 2.3f;
+
         Vector2 FinalRayo = transform.position + Vector3.left * DistanciaRayo;
 
         return Physics2D.Linecast(transform.position, FinalRayo, 1 << LayerMask.NameToLayer("Piso"));
@@ -110,14 +101,12 @@ public class Enemy : EnemyAnims
     }
 
     #region Variables EjecutaSalto
-    private bool estaSaltando;
     private float fuerzaSalto = 5f;
     #endregion
     public void EjecutaSalto(Vector3 PlayerPosition, Rigidbody2D rbEnemigo,float distTotalAPlayer)
     {   //Salto hacia adelante
         if (DeteccionPared_Frente(PlayerPosition) && !DeteccionPlayer_Frente(PlayerPosition) && DetectorSuelo())
         {
-            //estaSaltando = true; //El DetectorDeSuelo() va a volver a detectar cuando cae
             transform.position = Vector3.MoveTowards(transform.position, PlayerPosition, 7f * Time.deltaTime);
             rbEnemigo.velocity = Vector3.up * fuerzaSalto;   
         }
@@ -130,22 +119,37 @@ public class Enemy : EnemyAnims
     }
 
     #region Variables DetectorSuelo
-    private float radio = 0.34f;
+    private float radio = 1f;
     #endregion
-    public bool DetectorSuelo()
+    bool DetectorSuelo()
     {
         return Physics2D.OverlapCircle(transform.GetChild(1).GetChild(2).position, radio, LayerMask.GetMask("Piso"));
     }
 
+    private float PosicionAnteriorY = -1000f;
+    void AnimacionSalto(Animator anim)
+    {
+        if (DetectorSuelo())
+        { 
+            AnimSalto(anim,false);
+            AnimCaida(anim,false);
+        }
+        else if (!DetectorSuelo() && PosicionAnteriorY < transform.position.y)
+        {
+            AnimCaida(anim, true);
+            PosicionAnteriorY = transform.position.y;
+        }
+        else if (!DetectorSuelo() && PosicionAnteriorY > transform.position.y)
+        {
+
+            AnimSalto(anim, true);
+            PosicionAnteriorY = transform.position.y;
+        }
+
+    }
+
     public void Stun(float distTotalAPlayer)
     {
-        if (deteccionPlayer_Frente.collider != null)
-        {
-            if (distTotalAPlayer < 1.5f)
-            {
-                //En_Movimiento.Stuneado = true;   //TODO: Acordarse del movimiento y el stun.   
-            }
-        }
     }//TODO: Falta agregar el stun en algun lado
 
 
