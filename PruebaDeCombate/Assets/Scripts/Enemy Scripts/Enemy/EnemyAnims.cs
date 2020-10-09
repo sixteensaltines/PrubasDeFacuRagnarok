@@ -8,10 +8,7 @@ public class EnemyAnims : MonoBehaviour
 
     public void AnimBloqueo(Animator anim) => anim.SetBool("Bloqueo", true);
 
-    public void AnimCaminata(Animator anim)
-    {
-        anim.SetBool("Caminata", true);
-    }
+    public void AnimCaminata(Animator anim) => anim.SetBool("Caminata", true);
 
     public void AnimSalto(Animator anim, bool ActivarODesactivar) => anim.SetBool("Salto", ActivarODesactivar);
 
@@ -23,6 +20,7 @@ public class EnemyAnims : MonoBehaviour
         anim.SetBool("Caminata", true);
     }
 
+    public void AnimFarStun(Animator anim, bool ActivarODesactivar) => anim.SetBool("FarStun", ActivarODesactivar);
 
     public void AnimEstatico(Animator anim)
     {

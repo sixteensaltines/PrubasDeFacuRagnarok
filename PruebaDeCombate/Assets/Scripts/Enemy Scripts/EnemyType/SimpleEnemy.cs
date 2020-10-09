@@ -8,6 +8,7 @@ public class SimpleEnemy : Enemy
 {
     private GameObject player;
     private Rigidbody2D rbEnemigo;
+    private CircleCollider2D circleCollider;
     private Animator anim;
 
     #region Tooltip
@@ -19,8 +20,6 @@ public class SimpleEnemy : Enemy
     [Tooltip("Define cuanto tiempo se espera para realizar una u otra accion, como esquivar, bloquear o golpear")]
     #endregion
     public float MinTiempoEntreAcciones;
-
-    public GameObject ExplosionSite;
     void Start()
     {
         player = GameObject.FindWithTag("Player");
@@ -28,6 +27,8 @@ public class SimpleEnemy : Enemy
         rbEnemigo = GetComponent<Rigidbody2D>();
 
         anim = GetComponent<Animator>();
+
+        circleCollider = GetComponent<CircleCollider2D>();
     }
 
     public bool paredFrente;
@@ -35,7 +36,7 @@ public class SimpleEnemy : Enemy
     {
         RotacionSkinEnemigo(player.transform.position);
         SeguimientoPlayer_Caminata(player.transform.position, MultiplicadorDeVelocidadDefault, anim);
-        Stun(rbEnemigo, player.transform.position);
+        Stun(circleCollider, player.transform.position, anim);
         //ModoCombate(anim, MinTiempoEntreAcciones, MedidorDistancia(player.transform.position, transform.position));
     }
     private void FixedUpdate() => SaltoDePlataformas(player.transform.position, rbEnemigo,anim);

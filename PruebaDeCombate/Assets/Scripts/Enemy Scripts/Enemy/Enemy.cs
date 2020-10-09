@@ -125,11 +125,13 @@ public class Enemy : EnemyAnims
     }
 
     #region Variables DetectorSuelo
-    private float radioLecturaMask = 0.3f;
+    private float largoDelRayo = 0.9f;
     #endregion
     bool DetectorSuelo()
     {
-        return Physics2D.OverlapCircle(transform.GetChild(1).GetChild(2).position, radioLecturaMask, LayerMask.GetMask("Piso"));
+        Debug.DrawRay(transform.position, Vector2.down * largoDelRayo, Color.blue);
+        RaycastHit2D ray;
+        return ray = Physics2D.Raycast(transform.position, Vector2.down, largoDelRayo, LayerMask.GetMask("Piso"));
     }
 
     private float PosicionAnteriorY;
@@ -152,13 +154,23 @@ public class Enemy : EnemyAnims
             AnimSalto(anim, true);
             PosicionAnteriorY = transform.position.y;
         }
-
     }
 
-    public void Stun(Rigidbody2D rbEnemigo,Vector3 distTotalAPlayer)
+    public void Stun(CircleCollider2D circleCollider,Vector3 PlayerPosition, Animator anim)
     {
-
-    }//TODO: Falta agregar el stun en algun lado
+        if (DeteccionPared_Frente(PlayerPosition) && DeteccionPlayer_Frente(PlayerPosition))
+        {
+            circleCollider.radius = 2.5f;
+            AnimFarStun(anim, true);
+        }
+        else
+        {
+            circleCollider.radius = 1.2f;
+            AnimFarStun(anim, false);
+        }
+    }
+    
+    //TODO: Falta agregar el stun en algun lado
 
 
 
