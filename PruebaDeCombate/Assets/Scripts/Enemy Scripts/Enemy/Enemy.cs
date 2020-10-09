@@ -156,18 +156,26 @@ public class Enemy : EnemyAnims
         }
     }
 
+    private float radioStunGrande = 2.5f;
+    private float radioStunChicho = 1.2f;
     public void Stun(CircleCollider2D circleCollider,Vector3 PlayerPosition, Animator anim)
     {
         if (DeteccionPared_Frente(PlayerPosition) && DeteccionPlayer_Frente(PlayerPosition))
         {
-            circleCollider.radius = 2.5f;
+            circleCollider.radius = radioStunGrande;
             AnimFarStun(anim, true);
         }
         else
         {
-            circleCollider.radius = 1.2f;
+            circleCollider.radius = radioStunChicho;
             AnimFarStun(anim, false);
         }
+
+        if (MedidorDistancia(transform.position, PlayerPosition) -0.7f <= radioStunChicho)
+        {
+            AnimCloseStun(anim, true);
+        }
+        else AnimCloseStun(anim, false);
     }
     
     //TODO: Falta agregar el stun en algun lado

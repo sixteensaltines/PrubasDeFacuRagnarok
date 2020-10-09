@@ -4,8 +4,6 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - enemigo1
-  - enemigo2
   - Enemigo
   layers:
   - Default
