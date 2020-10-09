@@ -4,9 +4,13 @@ using UnityEngine;
 
 public class Enemy : EnemyAnims
 {
+
+
     #region Constantes del enemigo
     [HideInInspector]
     public const float RANGOATAQUE = 2.1f;
+    [HideInInspector]
+    public const float RANGOSTUN = 1.2f;
     [HideInInspector]
     public float RangoVision = 11.5f;
     [HideInInspector]
@@ -72,12 +76,14 @@ public class Enemy : EnemyAnims
     {
         EjecutaSalto(PlayerPosition, rbEnemigo, MedidorDistancia(PlayerPosition, transform.position));
         AnimacionSalto(anim);
-        DetectorSuelo();
         if (DetectorSuelo()) Grounded = true;
         else Grounded = false;
     }
 
     #region Variables de lectura de rayo frontal
+    #region Tooltip
+    [Tooltip("El rayo frontal detectara las paredes que el player debe saltar, aun que no lo use el enemigo en concreto, es necesario ponerlo")]
+    #endregion
     public Transform T_RayoFrontal;
     private float DistanciaRayo;
     #endregion
@@ -119,27 +125,28 @@ public class Enemy : EnemyAnims
     }
 
     #region Variables DetectorSuelo
-    private float radio = 1f;
+    private float radioLecturaMask = 0.3f;
     #endregion
     bool DetectorSuelo()
     {
-        return Physics2D.OverlapCircle(transform.GetChild(1).GetChild(2).position, radio, LayerMask.GetMask("Piso"));
+        return Physics2D.OverlapCircle(transform.GetChild(1).GetChild(2).position, radioLecturaMask, LayerMask.GetMask("Piso"));
     }
 
-    private float PosicionAnteriorY = -1000f;
+    private float PosicionAnteriorY;
     void AnimacionSalto(Animator anim)
     {
         if (DetectorSuelo())
-        { 
+        {
+            PosicionAnteriorY = transform.position.y;
             AnimSalto(anim,false);
             AnimCaida(anim,false);
         }
-        else if (!DetectorSuelo() && PosicionAnteriorY < transform.position.y)
+        else if (!DetectorSuelo() && PosicionAnteriorY > transform.position.y)
         {
             AnimCaida(anim, true);
             PosicionAnteriorY = transform.position.y;
         }
-        else if (!DetectorSuelo() && PosicionAnteriorY > transform.position.y)
+        else if (!DetectorSuelo() && PosicionAnteriorY < transform.position.y)
         {
 
             AnimSalto(anim, true);
@@ -148,8 +155,9 @@ public class Enemy : EnemyAnims
 
     }
 
-    public void Stun(float distTotalAPlayer)
+    public void Stun(Rigidbody2D rbEnemigo,Vector3 distTotalAPlayer)
     {
+
     }//TODO: Falta agregar el stun en algun lado
 
 

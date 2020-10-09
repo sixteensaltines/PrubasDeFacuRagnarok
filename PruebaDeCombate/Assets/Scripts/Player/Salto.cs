@@ -42,14 +42,8 @@ public class Salto : MonoBehaviour
     {
         EstaSuelo = Physics2D.OverlapCircle(T_Pies.position, radio, LayerPiso);
 
-        if (EstaSuelo)
-        {
-            En_Inputs.BlockButtons = false;
-        }
-        else
-        {
-            En_Inputs.BlockButtons = true;
-        }
+        if (EstaSuelo) En_Inputs.BlockButtons = false;
+        else En_Inputs.BlockButtons = true;
     }
     void ComienzaSalto()
     {
@@ -69,14 +63,8 @@ public class Salto : MonoBehaviour
     }
     void CambiaGravedad()
     {
-        if (rb.velocity.y <= -0.1f)
-        {
-            rb.gravityScale = 4f;
-        }
-        else
-        {
-            rb.gravityScale = 3f;
-        }
+        if (rb.velocity.y <= -0.1f) rb.gravityScale = 4f;
+        else rb.gravityScale = 3f;
     }
 
     //FIXED UPDATE

@@ -19,6 +19,8 @@ public class SimpleEnemy : Enemy
     [Tooltip("Define cuanto tiempo se espera para realizar una u otra accion, como esquivar, bloquear o golpear")]
     #endregion
     public float MinTiempoEntreAcciones;
+
+    public GameObject ExplosionSite;
     void Start()
     {
         player = GameObject.FindWithTag("Player");
@@ -28,10 +30,12 @@ public class SimpleEnemy : Enemy
         anim = GetComponent<Animator>();
     }
 
+    public bool paredFrente;
     void Update()
     {
         RotacionSkinEnemigo(player.transform.position);
         SeguimientoPlayer_Caminata(player.transform.position, MultiplicadorDeVelocidadDefault, anim);
+        Stun(rbEnemigo, player.transform.position);
         //ModoCombate(anim, MinTiempoEntreAcciones, MedidorDistancia(player.transform.position, transform.position));
     }
     private void FixedUpdate() => SaltoDePlataformas(player.transform.position, rbEnemigo,anim);
@@ -49,7 +53,7 @@ public class SimpleEnemy : Enemy
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, RANGOATAQUE);
         //MIN Empuje-Ataque
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.position, RANGOATAQUE+0.3f);
+        Gizmos.color = Color.cyan;
+        Gizmos.DrawWireSphere(transform.position, RANGOSTUN);
     }
 }
