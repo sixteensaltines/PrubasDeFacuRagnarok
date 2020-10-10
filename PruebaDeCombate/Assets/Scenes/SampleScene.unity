@@ -658,6 +658,16 @@ PrefabInstance:
       propertyPath: MultiplicadorDeVelocidadDefault
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1692067298529277617, guid: 611abca1305fe494bb3ba29ccfc2dc0e,
+        type: 3}
+      propertyPath: anim
+      value: 
+      objectReference: {fileID: 2079844168}
+    - target: {fileID: 1692067298529277617, guid: 611abca1305fe494bb3ba29ccfc2dc0e,
+        type: 3}
+      propertyPath: ProbabilidadBloqueoOcasional
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 1692067298529277619, guid: 611abca1305fe494bb3ba29ccfc2dc0e,
         type: 3}
       propertyPath: m_Constraints
@@ -4342,7 +4352,7 @@ PrefabInstance:
     - target: {fileID: 6689265249156030560, guid: 1605bcc88c641cb489472fbaf1faf87c,
         type: 3}
       propertyPath: EstaEnModoGuardia
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6689265249156030563, guid: 1605bcc88c641cb489472fbaf1faf87c,
         type: 3}

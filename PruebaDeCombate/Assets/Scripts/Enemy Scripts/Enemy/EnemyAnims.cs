@@ -4,27 +4,32 @@ using UnityEngine;
 
 public class EnemyAnims : MonoBehaviour
 {
-    public void AnimAtaque(Animator anim) => anim.SetBool("Ataque", true);
+    public Animator anim;
 
-    public void AnimBloqueo(Animator anim) => anim.SetBool("Bloqueo", true);
+    public void AnimAtaque() => anim.SetBool("Ataque", true);
 
-    public void AnimCaminata(Animator anim) => anim.SetBool("Caminata", true);
+    public void AnimBloqueo(bool ActivarODesactivar) => anim.SetBool("Bloqueo", ActivarODesactivar);
 
-    public void AnimSalto(Animator anim, bool ActivarODesactivar) => anim.SetBool("Salto", ActivarODesactivar);
+    public void AnimCaminata(bool ActivarODesactivar)
+    {
+        anim.SetBool("Caminata", ActivarODesactivar);
+    }
 
-    public void AnimCaida(Animator anim, bool ActivarODesactivar) => anim.SetBool("Caida", ActivarODesactivar);
+    public void AnimSalto(bool ActivarODesactivar) => anim.SetBool("Salto", ActivarODesactivar);
 
-    public void AnimCaminata(Animator anim, float SpeedAnim)
+    public void AnimCaida(bool ActivarODesactivar) => anim.SetBool("Caida", ActivarODesactivar);
+
+    public void AnimCaminata(float SpeedAnim)
     {
         anim.speed = SpeedAnim;
         anim.SetBool("Caminata", true);
     }
 
-    public void AnimFarStun(Animator anim, bool ActivarODesactivar) => anim.SetBool("FarStun", ActivarODesactivar);
+    public void AnimFarStun(bool ActivarODesactivar) => anim.SetBool("FarStun", ActivarODesactivar);
 
-    public void AnimCloseStun(Animator anim, bool ActivarODesactivar) => anim.SetBool("CloseStun", ActivarODesactivar);
+    public void AnimCloseStun(bool ActivarODesactivar) => anim.SetBool("CloseStun", ActivarODesactivar);
 
-    public void AnimEstatico(Animator anim)
+    public void AnimEstatico()
     {
         anim.SetBool("Caminata", false);
         anim.SetBool("Ataque", false);

@@ -62,12 +62,13 @@ public class Enemy : EnemyAnims
 
     public void EjecutaMovimiento(Vector3 PlayerPosition, float distTotalAPlayer, Animator anim)
     {
-        if (distTotalAPlayer <= RangoVision && distTotalAPlayer >= RANGOATAQUE)
+        if (distTotalAPlayer <= RangoVision && distTotalAPlayer > RANGOATAQUE)
         {
             RangoVision = 20f;
-            AnimCaminata(anim); //Se cancela desde AnimEstatico()
+            AnimCaminata(true); //Se cancela desde AnimEstatico()
             transform.position = Vector3.MoveTowards(transform.position, PlayerPosition, velocidadMovimiento * Time.deltaTime);
         }
+        if (distTotalAPlayer < RANGOATAQUE) AnimCaminata(false);
     }
 
     public bool Grounded;
@@ -140,18 +141,18 @@ public class Enemy : EnemyAnims
         if (DetectorSuelo())
         {
             PosicionAnteriorY = transform.position.y;
-            AnimSalto(anim,false);
-            AnimCaida(anim,false);
+            AnimSalto(false);
+            AnimCaida(false);
         }
         else if (!DetectorSuelo() && PosicionAnteriorY > transform.position.y)
         {
-            AnimCaida(anim, true);
+            AnimCaida(true);
             PosicionAnteriorY = transform.position.y;
         }
         else if (!DetectorSuelo() && PosicionAnteriorY < transform.position.y)
         {
 
-            AnimSalto(anim, true);
+            AnimSalto(true);
             PosicionAnteriorY = transform.position.y;
         }
     }
@@ -163,27 +164,53 @@ public class Enemy : EnemyAnims
         if (DeteccionPared_Frente(PlayerPosition) && DeteccionPlayer_Frente(PlayerPosition))
         {
             circleCollider.radius = radioStunGrande;
-            AnimFarStun(anim, true);
+            AnimFarStun(true);
         }
         else
         {
             circleCollider.radius = radioStunChicho;
-            AnimFarStun(anim, false);
+            AnimFarStun(false);
         }
 
-        if (MedidorDistancia(transform.position, PlayerPosition) -0.7f <= radioStunChicho)
+        if (MedidorDistancia(transform.position, PlayerPosition) -0.45f <= radioStunChicho)
         {
-            AnimCloseStun(anim, true);
+            AnimCloseStun(true);
         }
-        else AnimCloseStun(anim, false);
+        else AnimCloseStun(false);
     }
-    
+
+    #region Tooltip
+    [Tooltip("La probabilidad de bloqueo medira, cuando el player ataque, dependiendo del % insertado, el enemigo tomara medidas o no, el % no debe superar el 100 %")]
+    #endregion
+    public int ProbabilidadBloqueoOcasional;
+    private bool esPosibleBloquear= true;
+    public void BloqueoOcasional(bool PlayerAtaca, Animator anim, Vector3 playerDistancia)
+    {
+        if (PlayerAtaca && esPosibleBloquear && MedidorDistancia(playerDistancia, transform.position) < RANGOATAQUE)
+        {
+            if (ProbabilidadBloqueoOcasional >= Random.Range(1, 100)) BloqueaAtaque(anim);
+        }
+    }
+   void BloqueaAtaque(Animator anim)
+    {
+        esPosibleBloquear = false;
+        AnimBloqueo(true);
+        Invoke("In_CancelarBloqueoOcasional", Random.Range(0.9f, 2f));
+    }
+
+    void In_CancelarBloqueoOcasional()
+    {
+        esPosibleBloquear = true;
+        AnimBloqueo(false);
+    }
+
+
     //TODO: Falta agregar el stun en algun lado
 
 
 
     //TODO: FALTA UN CONTROLADOR DE VIDA! seguramente en la configuracion del enemigo vaya un public int con las vidas. 
-    
+
     /*public int QueAccion; //TODO:PASAR A PRIVATE 
 
     public int ProbabilidadAtaque;

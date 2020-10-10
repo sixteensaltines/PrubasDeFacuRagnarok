@@ -9,7 +9,6 @@ public class SimpleEnemy : Enemy
     private GameObject player;
     private Rigidbody2D rbEnemigo;
     private CircleCollider2D circleCollider;
-    private Animator anim;
 
     #region Tooltip
     [Tooltip("La velocidad default esta establecida, aun asi es posible multiplicar esta, los numeros permitidos son los mayores a," +
@@ -36,6 +35,7 @@ public class SimpleEnemy : Enemy
     {
         RotacionSkinEnemigo(player.transform.position);
         SeguimientoPlayer_Caminata(player.transform.position, MultiplicadorDeVelocidadDefault, anim);
+        BloqueoOcasional(player.GetComponent<AtaqueV2>().ActiveCombo, anim, player.transform.position);
         Stun(circleCollider, player.transform.position, anim);
         //ModoCombate(anim, MinTiempoEntreAcciones, MedidorDistancia(player.transform.position, transform.position));
     }
