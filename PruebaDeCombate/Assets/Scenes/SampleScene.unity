@@ -568,15 +568,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -15.58
       objectReference: {fileID: 0}
+    - target: {fileID: 1692067297943036376, guid: 611abca1305fe494bb3ba29ccfc2dc0e,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.23
+      objectReference: {fileID: 0}
+    - target: {fileID: 1692067297943036376, guid: 611abca1305fe494bb3ba29ccfc2dc0e,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.34
+      objectReference: {fileID: 0}
     - target: {fileID: 1692067298529277616, guid: 611abca1305fe494bb3ba29ccfc2dc0e,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.57
+      value: 6.98
       objectReference: {fileID: 0}
     - target: {fileID: 1692067298529277616, guid: 611abca1305fe494bb3ba29ccfc2dc0e,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.72
+      value: -2.13
       objectReference: {fileID: 0}
     - target: {fileID: 1692067298529277616, guid: 611abca1305fe494bb3ba29ccfc2dc0e,
         type: 3}
@@ -626,12 +636,12 @@ PrefabInstance:
     - target: {fileID: 1692067298529277617, guid: 611abca1305fe494bb3ba29ccfc2dc0e,
         type: 3}
       propertyPath: ProbabilidadAtaque
-      value: 30
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1692067298529277617, guid: 611abca1305fe494bb3ba29ccfc2dc0e,
         type: 3}
       propertyPath: ProbabilidadBloqueo
-      value: 40
+      value: 85
       objectReference: {fileID: 0}
     - target: {fileID: 1692067298529277617, guid: 611abca1305fe494bb3ba29ccfc2dc0e,
         type: 3}
@@ -646,12 +656,12 @@ PrefabInstance:
     - target: {fileID: 1692067298529277617, guid: 611abca1305fe494bb3ba29ccfc2dc0e,
         type: 3}
       propertyPath: ProbabilidadEsquive
-      value: 0
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 1692067298529277617, guid: 611abca1305fe494bb3ba29ccfc2dc0e,
         type: 3}
       propertyPath: ProbabilidadDeEnemEstatico
-      value: 30
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1692067298529277617, guid: 611abca1305fe494bb3ba29ccfc2dc0e,
         type: 3}
@@ -667,6 +677,21 @@ PrefabInstance:
         type: 3}
       propertyPath: ProbabilidadBloqueoOcasional
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1692067298529277617, guid: 611abca1305fe494bb3ba29ccfc2dc0e,
+        type: 3}
+      propertyPath: T_Rayo_Espalda
+      value: 
+      objectReference: {fileID: 440654932}
+    - target: {fileID: 1692067298529277617, guid: 611abca1305fe494bb3ba29ccfc2dc0e,
+        type: 3}
+      propertyPath: HastaDondeCamina
+      value: 
+      objectReference: {fileID: 555053655}
+    - target: {fileID: 1692067298529277617, guid: 611abca1305fe494bb3ba29ccfc2dc0e,
+        type: 3}
+      propertyPath: ContadorEntreAcciones
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1692067298529277619, guid: 611abca1305fe494bb3ba29ccfc2dc0e,
         type: 3}
@@ -1500,6 +1525,12 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!4 &440654932 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1692067299288588604, guid: 611abca1305fe494bb3ba29ccfc2dc0e,
+    type: 3}
+  m_PrefabInstance: {fileID: 208292027}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &462078782
 GameObject:
   m_ObjectHideFlags: 0
@@ -1706,6 +1737,12 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!4 &555053655 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1692067297943036376, guid: 611abca1305fe494bb3ba29ccfc2dc0e,
+    type: 3}
+  m_PrefabInstance: {fileID: 208292027}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &607297557
 GameObject:
   m_ObjectHideFlags: 0
@@ -3005,7 +3042,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1216961542}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.56140184, y: -1.379287, z: -6.3466797}
+  m_LocalPosition: {x: 0.56140184, y: -1.379287, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1591413706}

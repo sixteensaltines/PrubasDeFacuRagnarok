@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Enemy : EnemyAnims
 {
-
+    //TODO: FALTA UN CONTROLADOR DE VIDA! seguramente en la configuracion del enemigo vaya un public int con las vidas. 
 
     #region Constantes del enemigo
     [HideInInspector]
@@ -17,6 +17,8 @@ public class Enemy : EnemyAnims
     public const float DISTANCIA_ENTRADA_MODOGUARDIA = 5f;
     #endregion
 
+    private bool esquiveActivado = false;
+
     public float MedidorDistancia(Vector3 ObjetoA, Vector3 ObjetoB)
     {
         return Vector3.Distance(ObjetoA, ObjetoB);
@@ -25,16 +27,20 @@ public class Enemy : EnemyAnims
     public void RotacionSkinEnemigo(Vector3 PlayerPosition)
     {
         if (transform.position.x < PlayerPosition.x) transform.eulerAngles = new Vector3(0, 0, 0);
-        else transform.eulerAngles = new Vector3(0, 180, 0);
+        else transform.eulerAngles = new Vector3(0, 180, 0);   
     }
 
-    public void SeguimientoPlayer_Caminata(Vector3 PlayerPosition, float MultiplicadorDeVelocidad, Animator anim)
+    public void Caminata(Vector3 PlayerPosition, float MultiplicadorDeVelocidad, Animator anim)
     {
         //Control del mutiplicador, busca que sea 1 o mayor que 1
         if (MultiplicadorDeVelocidad < 0) MultiplicadorDeVelocidad = 1f;
 
-        ControlDeVelocidades(MultiplicadorDeVelocidad, MedidorDistancia(PlayerPosition, transform.position));
-        EjecutaMovimiento(PlayerPosition, MedidorDistancia(PlayerPosition, transform.position),anim);
+        if (!esquiveActivado)
+        {
+            ControlDeVelocidades(MultiplicadorDeVelocidad, MedidorDistancia(PlayerPosition, transform.position));
+            EjecutaMovimiento(PlayerPosition, MedidorDistancia(PlayerPosition, transform.position), anim);
+        }
+        else transform.position = Vector3.MoveTowards(transform.position, HastaDondeCamina.position, velocidadMovimiento * Time.deltaTime); //Esquiva
     }
 
     #region Variables de Movimiento hacia player
@@ -77,8 +83,6 @@ public class Enemy : EnemyAnims
     {
         EjecutaSalto(PlayerPosition, rbEnemigo, MedidorDistancia(PlayerPosition, transform.position));
         AnimacionSalto(anim);
-        if (DetectorSuelo()) Grounded = true;
-        else Grounded = false;
     }
 
     #region Variables de lectura de rayo frontal
@@ -100,9 +104,6 @@ public class Enemy : EnemyAnims
 
     public bool DeteccionPlayer_Frente(Vector3 PlayerPosition)
     {
-        if (transform.position.x < PlayerPosition.x) DistanciaRayo = -2.3f;
-        else DistanciaRayo = 2.3f;
-
          return Physics2D.Linecast(new Vector3(transform.position.x, transform.position.y + 1f, transform.position.z),
          T_RayoFrontal.position, 1 << LayerMask.NameToLayer("Player"));
     }
@@ -180,7 +181,7 @@ public class Enemy : EnemyAnims
     }
 
     #region Tooltip
-    [Tooltip("La probabilidad de bloqueo medira, cuando el player ataque, dependiendo del % insertado, el enemigo tomara medidas o no, el % no debe superar el 100 %")]
+    [Tooltip("La probabilidad de bloqueo medira cuando el player ataque, dependiendo del % insertado, el enemigo tomara medidas o no, el % no debe superar el 100 %")]
     #endregion
     public int ProbabilidadBloqueoOcasional;
     private bool esPosibleBloquear= true;
@@ -194,24 +195,19 @@ public class Enemy : EnemyAnims
    void BloqueaAtaque(Animator anim)
     {
         esPosibleBloquear = false;
-        AnimBloqueo(true);
+        AnimBloqueo_Ocasional(true);
         Invoke("In_CancelarBloqueoOcasional", Random.Range(0.9f, 2f));
     }
 
     void In_CancelarBloqueoOcasional()
     {
         esPosibleBloquear = true;
-        AnimBloqueo(false);
+        AnimBloqueo_Ocasional(false);
     }
 
+    ///////////////////////////////////////////////////////////////////////////
 
-    //TODO: Falta agregar el stun en algun lado
-
-
-
-    //TODO: FALTA UN CONTROLADOR DE VIDA! seguramente en la configuracion del enemigo vaya un public int con las vidas. 
-
-    /*public int QueAccion; //TODO:PASAR A PRIVATE 
+    public int QueAccion; //TODO:PASAR A PRIVATE 
 
     public int ProbabilidadAtaque;
     public int ProbabilidadBloqueo;
@@ -226,6 +222,7 @@ public class Enemy : EnemyAnims
     private string viejaAccion;
 
     public float ContadorEntreAcciones;
+    private bool bloquearBuscador_Acciones;
 
     private bool Flag1;
 
@@ -247,39 +244,46 @@ public class Enemy : EnemyAnims
             {
                 if (BuscaObjetoEntre_Dos_Puntos(RANGOATAQUE + 0.3f, RANGOATAQUE - 0.2f, distTotalAPlayer))
                 {
-                    if (ContadorEntreAcciones >= 0) ContadorEntreAcciones -= Time.deltaTime;
-                    else
-                    {
-                        nuevaAccion = SeleccionaAccionAleatoria();
-
-                        if (buscarNuevaAccion && nuevaAccion != viejaAccion) Restaurar_ValoresDeteccionDeRepeticiones();
-
-                        if (nuevaAccion == viejaAccion)
-                        {
-                            CantidadDeRepeticionPosible();
-                            ConfigurarAccion(nuevaAccion);
-                       
-                            if (!buscarNuevaAccion)
+                     if (!bloquearBuscador_Acciones)
+                     {
+                            if (ContadorEntreAcciones >= 0) ContadorEntreAcciones -= Time.deltaTime;
+                            else
                             {
-                                ActivarAnimacion(nuevaAccion, anim);
-                                ContadorEntreAcciones = MinTiempoEntreAcciones;
-                            }
-                            //else vuelve a tirar nueva accion, lo hara de forma automatica
-                        }
-                        else
-                        {
-                            viejaAccion = nuevaAccion; //Obtiene nuevo valor para la proxima vuelta
+                                nuevaAccion = SeleccionaAccionAleatoria();
 
-                            ActivarAnimacion(nuevaAccion, anim);
-                            ContadorEntreAcciones = MinTiempoEntreAcciones;
-                        }
-                    }
+                                //buscarNuevaAccion por defecto es false
+                                   if (buscarNuevaAccion && nuevaAccion != viejaAccion) Restaurar_ValoresDeteccionDeRepeticiones();
+
+                                  if (nuevaAccion == viejaAccion)
+                                  {
+                                       CantidadDeRepeticionPosible();
+        
+                                       if (!buscarNuevaAccion)
+                                       {
+                                            bloquearBuscador_Acciones = true;
+                                            ActivarAnimacion(nuevaAccion, anim);
+                                            ContadorEntreAcciones = MinTiempoEntreAcciones;
+                                       }
+                                             //else vuelve a tirar nueva accion, lo hara de forma automatica
+                                  }
+                                  else
+                                  {
+                                        viejaAccion = nuevaAccion; //Obtiene nuevo valor para la proxima vuelta
+
+                                        bloquearBuscador_Acciones = true;   
+                                        ActivarAnimacion(nuevaAccion, anim);
+                                        ContadorEntreAcciones = MinTiempoEntreAcciones;
+                                  }
+                            }
+                }
+
                 }
             }
             else
             {
                 ActivarAnimacion("Estatico", anim);
                 animacionEstatica = false;
+                bloquearBuscador_Acciones = false;
             }
     }
 
@@ -322,6 +326,7 @@ public class Enemy : EnemyAnims
         else if (QueAccion <= ProbabilidadAtaque + ProbabilidadEsquive + ProbabilidadBloqueo + ProbabilidadDeEnemEstatico + ProbabilidadLanzarFlecha + ProbabilidadDashear)
 
         { return "Dashear"; }
+
         else
         {
             Debug.Log("VALOR IMPOSIBLE, AJUSTE LOS VALORES PARA QUE JUNTOS SUMEN  100% DE PROBABILIDADES");
@@ -369,10 +374,12 @@ public class Enemy : EnemyAnims
                 }
                 else buscarNuevaAccion = true;
                 break;
+            case "Esquive":
+                buscarNuevaAccion = true;
+                break;
 
                 //CASES
                 //else if (TipoDeAcccion == "Flechazo");
-                //else if (TipoDeAcccion == "Esquive");
                 //else if (TipoDeAcccion == "Dashear");
         }
     }
@@ -383,32 +390,52 @@ public class Enemy : EnemyAnims
     }
 
     //ANIMACIONES
-    public void MantieneBloqueo() => Invoke("ActivarAnimacionEstatico", Random.Range(1f, 2f));   //Se activa desde las animaciones 
-
-    void ActivarAnimacionEstatico() => animacionEstatica = true; //Se activa desde animaciones 
-
-    void ConfigurarAccion(string Accion)
-    {
-        if (Accion == "Bloqueo")
-        {
-
-        }
-        else if (Accion == "Ataque")
-        {
-
-        }
-        else if (Accion == "Esquive")
-        {
-            
-        }
-    }
 
     void ActivarAnimacion(string Accion, Animator anim)
     {
-        if (Accion == "Bloqueo") AnimBloqueo(anim);
-        else if (Accion == "Ataque") AnimAtaque(anim);
-        //else if (Accion == "Esquive") AnimEsquive(anim);
-        else if (Accion == "Estatico") AnimEstatico(anim);
+        if (Accion == "Bloqueo")
+        {
+            AnimBloqueo_Random(true);
+        }
+        else if (Accion == "Ataque")
+        {
+            AnimAtaque(Random.Range(1, 2), Random.Range(1, 3));
+        }
+        else if (Accion == "Esquive")
+        {
+            AnimEsquive(EsPosibleEsquivar());//TODO: TERMINAR ANIM
+            if (EsPosibleEsquivar()) ActivarCaminata();
+        }
+        else if (Accion == "Estatico") AnimEstatico();
         //FALTA AGREGAR EL RESTO DE ANIMACIONES
-    }*/
+    }
+
+    public Transform T_Rayo_Espalda;
+    bool EsPosibleEsquivar()
+    {   
+        return Physics2D.Linecast(new Vector3(transform.position.x, transform.position.y + 1f, transform.position.z),
+        T_Rayo_Espalda.position, 1 << LayerMask.NameToLayer("Piso"));
+    }
+
+    #region
+    [Tooltip("Hasta donde camina cuando vaya hacia atras, para esquivar ataques del player")]
+    #endregion
+    public Transform HastaDondeCamina;
+    void ActivarCaminata()
+    {
+        esquiveActivado = true; //No permite leer otras acciones.
+
+        AnimCaminata(false);
+        AnimEsquive(true);
+    }
+
+    public void CancelarCaminata_Atras()
+    {
+        animacionEstatica = true;
+        esquiveActivado = false;
+    }//cuando termina la animacion deja de caminar activando este metodo
+
+    public void MantieneBloqueo() => Invoke("ActivarAnimacionEstatico", Random.Range(1f, 2f));   //Se activa desde las animaciones 
+
+    void ActivarAnimacionEstatico() => animacionEstatica = true; //Se activa desde animaciones 
 }

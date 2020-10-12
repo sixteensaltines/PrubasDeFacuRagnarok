@@ -19,6 +19,7 @@ public class SimpleEnemy : Enemy
     [Tooltip("Define cuanto tiempo se espera para realizar una u otra accion, como esquivar, bloquear o golpear")]
     #endregion
     public float MinTiempoEntreAcciones;
+
     void Start()
     {
         player = GameObject.FindWithTag("Player");
@@ -30,16 +31,19 @@ public class SimpleEnemy : Enemy
         circleCollider = GetComponent<CircleCollider2D>();
     }
 
-    public bool paredFrente;
     void Update()
     {
-        RotacionSkinEnemigo(player.transform.position);
-        SeguimientoPlayer_Caminata(player.transform.position, MultiplicadorDeVelocidadDefault, anim);
-        BloqueoOcasional(player.GetComponent<AtaqueV2>().ActiveCombo, anim, player.transform.position);
-        Stun(circleCollider, player.transform.position, anim);
-        //ModoCombate(anim, MinTiempoEntreAcciones, MedidorDistancia(player.transform.position, transform.position));
+            RotacionSkinEnemigo(player.transform.position);
+            Caminata(player.transform.position, MultiplicadorDeVelocidadDefault, anim);
+            BloqueoOcasional(player.GetComponent<AtaqueV2>().ActiveCombo, anim, player.transform.position);
+            Stun(circleCollider, player.transform.position, anim);
+            ModoCombate(anim, MinTiempoEntreAcciones, MedidorDistancia(player.transform.position, transform.position));
+
     }
-    private void FixedUpdate() => SaltoDePlataformas(player.transform.position, rbEnemigo,anim);
+    private void FixedUpdate()
+    {
+        SaltoDePlataformas(player.transform.position, rbEnemigo, anim);
+    }
 
     //Dibujo de distancias basicas del enemigo
     private void OnDrawGizmosSelected()

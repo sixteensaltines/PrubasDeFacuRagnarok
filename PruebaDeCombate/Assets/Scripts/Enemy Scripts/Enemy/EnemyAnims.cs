@@ -6,14 +6,16 @@ public class EnemyAnims : MonoBehaviour
 {
     public Animator anim;
 
-    public void AnimAtaque() => anim.SetBool("Ataque", true);
-
-    public void AnimBloqueo(bool ActivarODesactivar) => anim.SetBool("Bloqueo", ActivarODesactivar);
-
-    public void AnimCaminata(bool ActivarODesactivar)
+    public void AnimAtaque(int QueCombo, int CuantosGolpes) //TODO: FALTA TERMINAR
     {
-        anim.SetBool("Caminata", ActivarODesactivar);
+        anim.SetBool("Ataque", true);
     }
+
+    public void AnimBloqueo_Ocasional(bool ActivarODesactivar) => anim.SetBool("BloqueoOcasional", ActivarODesactivar);
+
+    public void AnimBloqueo_Random(bool ActivarODesactivar) => anim.SetBool("BloqueoRandom", ActivarODesactivar);
+
+    public void AnimCaminata(bool ActivarODesactivar) => anim.SetBool("Caminata", ActivarODesactivar);
 
     public void AnimSalto(bool ActivarODesactivar) => anim.SetBool("Salto", ActivarODesactivar);
 
@@ -25,14 +27,17 @@ public class EnemyAnims : MonoBehaviour
         anim.SetBool("Caminata", true);
     }
 
+    public void AnimEsquive(bool ActivarODesactivar) => anim.SetBool("Esquive", ActivarODesactivar);
+
     public void AnimFarStun(bool ActivarODesactivar) => anim.SetBool("FarStun", ActivarODesactivar);
 
     public void AnimCloseStun(bool ActivarODesactivar) => anim.SetBool("CloseStun", ActivarODesactivar);
-
+    
     public void AnimEstatico()
     {
         anim.SetBool("Caminata", false);
         anim.SetBool("Ataque", false);
-        anim.SetBool("Bloqueo", false);
+        anim.SetBool("BloqueoRandom", false);
+        anim.SetBool("Esquive", false);
     }
 }
