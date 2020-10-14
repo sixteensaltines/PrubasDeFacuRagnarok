@@ -254,7 +254,7 @@ public class Enemy : EnemyAnims
 
             if (!animacionEstatica) //Se activa desde las animaciones. 
             {
-                if (BuscaObjetoEntre_Dos_Puntos(RANGOATAQUE + 0.3f, RANGOATAQUE - 0.2f, distTotalAPlayer))
+                if (distTotalAPlayer <= RANGOATAQUE)
                 {
                      if (!bloquearBuscador_Acciones)
                      {
@@ -411,7 +411,8 @@ public class Enemy : EnemyAnims
         }
         else if (Accion == "Ataque")
         {
-            AnimAtaque(Random.Range(1, 2), Random.Range(1, 3));
+            AnimAtaque(1, Random.Range(1, 3));
+            
         }
         else if (Accion == "Esquive")
         {

@@ -8,7 +8,16 @@ public class EnemyAnims : MonoBehaviour
 
     public void AnimAtaque(int QueCombo, int CuantosGolpes) //TODO: FALTA TERMINAR
     {
-        anim.SetBool("Ataque", true);
+        if (QueCombo == 1)
+        {
+            anim.SetBool("Ataque", true);
+            anim.SetInteger("CantidadAtaques", CuantosGolpes);
+            anim.SetInteger("QueCombo", QueCombo);
+        }
+        else if (QueCombo == 2)
+        {
+            //EN CASO DE AGREGAR UN SEGUNDO COMBO
+        }
     }
 
     public void AnimBloqueo_Ocasional(bool ActivarODesactivar) => anim.SetBool("BloqueoOcasional", ActivarODesactivar);

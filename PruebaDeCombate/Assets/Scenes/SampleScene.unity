@@ -636,12 +636,12 @@ PrefabInstance:
     - target: {fileID: 1692067298529277617, guid: 611abca1305fe494bb3ba29ccfc2dc0e,
         type: 3}
       propertyPath: ProbabilidadAtaque
-      value: 0
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 1692067298529277617, guid: 611abca1305fe494bb3ba29ccfc2dc0e,
         type: 3}
       propertyPath: ProbabilidadBloqueo
-      value: 30
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 1692067298529277617, guid: 611abca1305fe494bb3ba29ccfc2dc0e,
         type: 3}
@@ -656,12 +656,12 @@ PrefabInstance:
     - target: {fileID: 1692067298529277617, guid: 611abca1305fe494bb3ba29ccfc2dc0e,
         type: 3}
       propertyPath: ProbabilidadEsquive
-      value: 0
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 1692067298529277617, guid: 611abca1305fe494bb3ba29ccfc2dc0e,
         type: 3}
       propertyPath: ProbabilidadDeEnemEstatico
-      value: 70
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1692067298529277617, guid: 611abca1305fe494bb3ba29ccfc2dc0e,
         type: 3}
