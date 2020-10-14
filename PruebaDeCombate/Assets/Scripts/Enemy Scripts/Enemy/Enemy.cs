@@ -30,6 +30,12 @@ public class Enemy : EnemyAnims
         else transform.eulerAngles = new Vector3(0, 180, 0);   
     }
 
+
+    #region ToolTip
+    [Tooltip("Hasta donde camina cuando vaya hacia atras, para esquivar ataques del player")]
+    #endregion
+    public Transform HastaDondeCamina;//Hacia atras
+
     public void Caminata(Vector3 PlayerPosition, float MultiplicadorDeVelocidad, Animator anim)
     {
         //Control del mutiplicador, busca que sea 1 o mayor que 1
@@ -99,12 +105,18 @@ public class Enemy : EnemyAnims
 
         Vector2 FinalRayo = transform.position + Vector3.left * DistanciaRayo;
 
+        Debug.DrawLine(transform.position, FinalRayo, Color.green);
+
         return Physics2D.Linecast(transform.position, FinalRayo, 1 << LayerMask.NameToLayer("Piso"));
+
     }
 
-    public bool DeteccionPlayer_Frente(Vector3 PlayerPosition)
+    public bool DeteccionPlayer_Frente()
     {
-         return Physics2D.Linecast(new Vector3(transform.position.x, transform.position.y + 1f, transform.position.z),
+        Debug.DrawLine(new Vector3(transform.position.x, transform.position.y + 1f, transform.position.z),
+         T_RayoFrontal.position, Color.blue);
+
+        return Physics2D.Linecast(new Vector3(transform.position.x, transform.position.y + 1f, transform.position.z),
          T_RayoFrontal.position, 1 << LayerMask.NameToLayer("Player"));
     }
 
@@ -113,14 +125,14 @@ public class Enemy : EnemyAnims
     #endregion
     public void EjecutaSalto(Vector3 PlayerPosition, Rigidbody2D rbEnemigo,float distTotalAPlayer)
     {   //Salto hacia adelante
-        if (DeteccionPared_Frente(PlayerPosition) && !DeteccionPlayer_Frente(PlayerPosition) && DetectorSuelo())
+        if (DeteccionPared_Frente(PlayerPosition) && !DeteccionPlayer_Frente() && DetectorSuelo())
         {
             transform.position = Vector3.MoveTowards(transform.position, PlayerPosition, 7f * Time.deltaTime);
             rbEnemigo.velocity = Vector3.up * fuerzaSalto;   
         }
 
         //SaltoAlVacio
-        if (!DeteccionPared_Frente(PlayerPosition) && !DeteccionPlayer_Frente(PlayerPosition) && distTotalAPlayer <= RANGOATAQUE)
+        if (!DeteccionPared_Frente(PlayerPosition) && !DeteccionPlayer_Frente() && distTotalAPlayer <= RANGOATAQUE)
         {
             transform.position = Vector3.MoveTowards(transform.position, PlayerPosition, velocidadMovimiento*2f * Time.deltaTime);
         }
@@ -162,7 +174,7 @@ public class Enemy : EnemyAnims
     private float radioStunChicho = 1.2f;
     public void Stun(CircleCollider2D circleCollider,Vector3 PlayerPosition, Animator anim)
     {
-        if (DeteccionPared_Frente(PlayerPosition) && DeteccionPlayer_Frente(PlayerPosition))
+        if (DeteccionPared_Frente(PlayerPosition) && DeteccionPlayer_Frente())
         {
             circleCollider.radius = radioStunGrande;
             AnimFarStun(true);
@@ -264,7 +276,7 @@ public class Enemy : EnemyAnims
                                             ActivarAnimacion(nuevaAccion, anim);
                                             ContadorEntreAcciones = MinTiempoEntreAcciones;
                                        }
-                                             //else vuelve a tirar nueva accion, lo hara de forma automatica
+                                       //else vuelve a tirar nueva accion, lo hara de forma automatica
                                   }
                                   else
                                   {
@@ -403,10 +415,19 @@ public class Enemy : EnemyAnims
         }
         else if (Accion == "Esquive")
         {
-            AnimEsquive(EsPosibleEsquivar());//TODO: TERMINAR ANIM
-            if (EsPosibleEsquivar()) ActivarCaminata();
+            AnimEsquive(EsPosibleEsquivar());
+            if (EsPosibleEsquivar())
+            {
+                esquiveActivado = true; //No permite leer otras acciones.
+                AnimCaminata(false);
+                AnimEsquive(true);
+            }
         }
-        else if (Accion == "Estatico") AnimEstatico();
+        else if (Accion == "Estatico")
+        {
+            AnimEstatico();
+            animacionEstatica = true;
+        }
         //FALTA AGREGAR EL RESTO DE ANIMACIONES
     }
 
@@ -417,17 +438,6 @@ public class Enemy : EnemyAnims
         T_Rayo_Espalda.position, 1 << LayerMask.NameToLayer("Piso"));
     }
 
-    #region
-    [Tooltip("Hasta donde camina cuando vaya hacia atras, para esquivar ataques del player")]
-    #endregion
-    public Transform HastaDondeCamina;
-    void ActivarCaminata()
-    {
-        esquiveActivado = true; //No permite leer otras acciones.
-
-        AnimCaminata(false);
-        AnimEsquive(true);
-    }
 
     public void CancelarCaminata_Atras()
     {
