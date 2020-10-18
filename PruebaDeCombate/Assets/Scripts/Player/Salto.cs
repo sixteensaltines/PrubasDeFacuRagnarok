@@ -64,7 +64,7 @@ public class Salto : MonoBehaviour
     void CambiaGravedad()
     {
         if (rb.velocity.y <= -0.1f) rb.gravityScale = 4f;
-        else rb.gravityScale = 3f;
+        else rb.gravityScale = 2f;
     }
 
     //FIXED UPDATE

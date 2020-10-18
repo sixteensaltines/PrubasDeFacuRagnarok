@@ -76,7 +76,6 @@ public class Desplazamiento : MonoBehaviour
         {
             En_Inputs.BlockButtons = true;
             puedeDesplazarse = false;
-            //puedeDesplazarse = false; //NO TENGO PUTA IDEA PORQUE SIGUE ANDANDO SIN ESTO, PERO FUNCIONA :D
 
             ContadorDesplazamiento -= Time.deltaTime;
             if (Izquierda)
