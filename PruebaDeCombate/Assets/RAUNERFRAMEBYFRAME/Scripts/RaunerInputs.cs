@@ -35,7 +35,6 @@ public class RaunerInputs : MonoBehaviour
         {
             if (!BlockWalk) Axis();
 
-
             Dash();
 
             if (!BlockJump) Jump();

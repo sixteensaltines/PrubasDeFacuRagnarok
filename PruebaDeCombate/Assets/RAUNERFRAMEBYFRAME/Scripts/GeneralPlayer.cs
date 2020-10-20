@@ -4,24 +4,12 @@ using UnityEngine;
 
 public class GeneralPlayer : PlayerEffects
 {
-    public RaunerInputs raunerInputs;
     public void CambiaLadoSkin(bool BHRight, bool BHLeft)
     {
-        if (BHRight && !BHLeft)
-        {
-            transform.eulerAngles = new Vector3(0, 0, 0);
-        }
-        if (BHLeft && !BHRight)
-        {
-            transform.eulerAngles = new Vector3(0, 180, 0);
-        }
-    }
-    public void Bloquea_DesbloqueaMovimiento(bool Bloqueado)
-    {
-        raunerInputs.BlockWalk = Bloqueado;
-        raunerInputs.QuitForces = Bloqueado;
-    }
+        if (BHRight && !BHLeft) transform.eulerAngles = new Vector3(0, 0, 0);
 
+        if (BHLeft && !BHRight) transform.eulerAngles = new Vector3(0, 180, 0);
+    }
 
     private float largoDelRayo = 2.2f;
     public bool DetectaSuelo()

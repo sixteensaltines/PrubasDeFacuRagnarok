@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class RaunerMovimiento : GeneralPlayer
 {
+    private RaunerInputs raunerInputs;
     private Rigidbody2D rb;
     public Animator anim;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        raunerInputs = GetComponent<RaunerInputs>();
     }
 
     void Update()
