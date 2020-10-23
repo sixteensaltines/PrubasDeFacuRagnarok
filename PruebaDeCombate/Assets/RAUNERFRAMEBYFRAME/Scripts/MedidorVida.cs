@@ -4,18 +4,17 @@ using UnityEngine;
 
 public class MedidorVida : RaunerCombate
 {
-    [HideInInspector]
     public bool LlegaDanio;
     public int VidaRauner;
 
     private bool cancelaDanio_UnInstante;
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Enemigo")) LlegaDanio = true;
     }
 
-    private void OnCollisionExit2D(Collision2D collision)
+    private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Enemigo")) LlegaDanio = false;
     }

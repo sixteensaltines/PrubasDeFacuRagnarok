@@ -6,10 +6,11 @@ public class RaunerMovimiento : GeneralPlayer
 {
     private RaunerInputs raunerInputs;
     private Rigidbody2D rb;
-    public Animator anim;
+    private Animator anim;
 
     void Start()
     {
+        anim = GetComponentInChildren<Animator>();
         rb = GetComponent<Rigidbody2D>();
         raunerInputs = GetComponent<RaunerInputs>();
     }

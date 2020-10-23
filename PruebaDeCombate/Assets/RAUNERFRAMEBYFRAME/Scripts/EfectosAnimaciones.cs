@@ -9,9 +9,13 @@ public class EfectosAnimaciones : MonoBehaviour
 
     private Animator anim;
 
+    private RaunerCombate raunerCombate;
+
     private void Start()
     {
         anim = GetComponent<Animator>();
+
+        raunerCombate = GetComponentInParent<RaunerCombate>();
     }
     public void PosibleParry()
     {
@@ -19,6 +23,11 @@ public class EfectosAnimaciones : MonoBehaviour
         else EsPosibleParry = true;
     }
 
-    public void Cancelar_AnimacionParry() => anim.SetBool("Parry", false);
+    public void Cancelar_AnimacionParry()
+    {
+        anim.SetBool("Parry", false);
+        raunerCombate.ActiveParry = false;
+        EsPosibleParry = false;
+    }
 
 }

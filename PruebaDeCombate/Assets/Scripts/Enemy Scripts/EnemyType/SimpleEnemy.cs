@@ -23,11 +23,8 @@ public class SimpleEnemy : Enemy
     void Start()
     {
         player = GameObject.FindWithTag("Player");
-
         rbEnemigo = GetComponent<Rigidbody2D>();
-
         anim = GetComponent<Animator>();
-
         circleCollider = GetComponent<CircleCollider2D>();
     }
 

@@ -4,16 +4,18 @@ using UnityEngine;
 
 public class RaunerCombate : GeneralPlayer
 {
-    public Animator anim;
-    public RaunerInputs raunerInputs;
+    private Animator anim;
+    private RaunerInputs raunerInputs;
 
     private MedidorVida medidorVida;
-    public EfectosAnimaciones efectosAnimaciones;
-
+    private EfectosAnimaciones efectosAnimaciones;
     void Start()
     {
+        anim = GetComponentInChildren<Animator>();
         raunerInputs = GetComponent<RaunerInputs>();
         medidorVida = GetComponent<MedidorVida>();
+        efectosAnimaciones = GetComponentInChildren<EfectosAnimaciones>();
+
     }
 
     void Update()
@@ -29,7 +31,7 @@ public class RaunerCombate : GeneralPlayer
             anim.SetBool("Block", true);
 
             raunerInputs.QuitForces = true;
-
+            
             raunerInputs.BlockJump = true;
             raunerInputs.BlockWalk = true;
         }
@@ -52,19 +54,26 @@ public class RaunerCombate : GeneralPlayer
 
     [HideInInspector]
     public CircleCollider2D colliderEffector;
-
+    [HideInInspector]
+    public bool ActiveParry; //Devuelve proyectiles
     void Parry()
     {
         if (medidorVida.LlegaDanio)
         {
             anim.SetBool("Parry", true);
 
+            ActiveParry = true; //Se apaga desde los efectos de animaciones
+
             colliderEffector = GetComponent<CircleCollider2D>();
             colliderEffector.radius = 3f; //ActivoEmpuje
-            colliderEffector.radius = 0.1f; //DesactivoEmpuje;
-
+            Invoke("In_RadioOriginal", 0.1f);
+            
             //TODO: POSIBLE EFECTO 
         }
+    }
+    void In_RadioOriginal()
+    {
+        colliderEffector.radius = 0.1f; //DesactivoEmpuje;
     }
 
 
