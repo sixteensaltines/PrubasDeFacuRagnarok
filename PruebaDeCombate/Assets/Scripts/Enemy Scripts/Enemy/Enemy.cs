@@ -69,21 +69,19 @@ public class Enemy : EnemyAnims
                 velocidadMovimiento = velocidadMovimiento - 0.01f * velocidadMovimientoDefault;
             }
         }
-            else velocidadMovimiento = velocidadMovimientoDefault;
+        else velocidadMovimiento = velocidadMovimientoDefault;
     }
 
     public void EjecutaMovimiento(Vector3 PlayerPosition, float distTotalAPlayer, Animator anim)
     {
         if (distTotalAPlayer <= RangoVision && distTotalAPlayer > RANGOATAQUE)
         {
-            RangoVision = 20f;
+            RangoVision = 50f;
             AnimCaminata(true); //Se cancela desde AnimEstatico()
             transform.position = Vector3.MoveTowards(transform.position, PlayerPosition, velocidadMovimiento * Time.deltaTime);
         }
         if (distTotalAPlayer < RANGOATAQUE) AnimCaminata(false);
     }
-
-    public bool Grounded;
 
     public void SaltoDePlataformas(Vector3 PlayerPosition, Rigidbody2D rbEnemigo, Animator anim)
     {
@@ -125,7 +123,7 @@ public class Enemy : EnemyAnims
     #endregion
     public void EjecutaSalto(Vector3 PlayerPosition, Rigidbody2D rbEnemigo,float distTotalAPlayer)
     {   //Salto hacia adelante
-        if (DeteccionPared_Frente(PlayerPosition) && !DeteccionPlayer_Frente() && DetectorSuelo())
+        if (DeteccionPared_Frente(PlayerPosition) && !DeteccionPlayer_Frente() && (DetectorSuelo() || DetectorSuelo_ConPlayer()))
         {
             transform.position = Vector3.MoveTowards(transform.position, PlayerPosition, 7f * Time.deltaTime);
             rbEnemigo.velocity = Vector3.up * fuerzaSalto;   
@@ -141,28 +139,34 @@ public class Enemy : EnemyAnims
     #region Variables DetectorSuelo
     private float largoDelRayo = 0.9f;
     #endregion
-    bool DetectorSuelo()
+    public bool DetectorSuelo()
     {
         Debug.DrawRay(transform.position, Vector2.down * largoDelRayo, Color.blue);
         RaycastHit2D ray;
         return ray = Physics2D.Raycast(transform.position, Vector2.down, largoDelRayo, LayerMask.GetMask("Piso"));
     }
 
+    public bool DetectorSuelo_ConPlayer()
+    {
+        RaycastHit2D ray;
+        return ray = Physics2D.Raycast(transform.position, Vector2.down, largoDelRayo, LayerMask.GetMask("PisoConPlayer"));
+    }
+
     private float PosicionAnteriorY;
     void AnimacionSalto(Animator anim)
     {
-        if (DetectorSuelo())
+        if ((DetectorSuelo() || DetectorSuelo_ConPlayer()))
         {
             PosicionAnteriorY = transform.position.y;
             AnimSalto(false);
             AnimCaida(false);
         }
-        else if (!DetectorSuelo() && PosicionAnteriorY > transform.position.y)
+        else if (!DetectorSuelo() && !DetectorSuelo_ConPlayer() && PosicionAnteriorY > transform.position.y)
         {
             AnimCaida(true);
             PosicionAnteriorY = transform.position.y;
         }
-        else if (!DetectorSuelo() && PosicionAnteriorY < transform.position.y)
+        else if (!DetectorSuelo()  && !DetectorSuelo_ConPlayer() && PosicionAnteriorY < transform.position.y)
         {
 
             AnimSalto(true);

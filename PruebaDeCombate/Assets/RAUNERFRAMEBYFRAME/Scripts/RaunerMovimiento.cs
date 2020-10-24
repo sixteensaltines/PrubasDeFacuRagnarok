@@ -17,12 +17,14 @@ public class RaunerMovimiento : GeneralPlayer
 
     void Update()
     {
+        CambioLayerDelSuelo();
         Caminata(); //Con sus animaciones respectivas
         CambiaLadoSkin(raunerInputs.BH_Right, raunerInputs.BH_Left);
         Salto(); //Con sus animaciones respectivas
         CambioDeGravedad(rb);
         Dash(); //Con sus animaciones respectivas
     }
+
 
     //Caminata
     public float VelocidadCaminata;

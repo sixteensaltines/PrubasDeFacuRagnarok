@@ -32,7 +32,7 @@ public class SimpleEnemy : Enemy
     {
             RotacionSkinEnemigo(player.transform.position);
             Caminata(player.transform.position, MultiplicadorDeVelocidadDefault, anim);
-            BloqueoOcasional(player.GetComponent<AtaqueV2>().ActiveCombo, anim, player.transform.position);
+            //BloqueoOcasional(player.GetComponent<AtaqueV2>().ActiveCombo, anim, player.transform.position);
             Stun(circleCollider, player.transform.position, anim);
             ModoCombate(anim, MinTiempoEntreAcciones, MedidorDistancia(player.transform.position, transform.position));
 

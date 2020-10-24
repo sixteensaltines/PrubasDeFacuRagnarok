@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Enemigo
+  - PisoConPlayer_Nuevo
   layers:
   - Default
   - TransparentFX
@@ -15,11 +16,11 @@ TagManager:
   - 
   - 
   - Piso
+  - PisoConPlayer
+  - 
   - Accion
   - Player
   - Enemigo
-  - 
-  - 
   - 
   - 
   - 
