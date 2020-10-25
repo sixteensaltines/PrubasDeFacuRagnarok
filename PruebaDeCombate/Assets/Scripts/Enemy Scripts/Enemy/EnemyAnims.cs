@@ -37,10 +37,6 @@ public class EnemyAnims : MonoBehaviour
     }
 
     public void AnimEsquive(bool ActivarODesactivar) => anim.SetBool("Esquive", ActivarODesactivar);
-
-    public void AnimFarStun(bool ActivarODesactivar) => anim.SetBool("FarStun", ActivarODesactivar);
-
-    public void AnimCloseStun(bool ActivarODesactivar) => anim.SetBool("CloseStun", ActivarODesactivar);
     
     public void AnimEstatico()
     {

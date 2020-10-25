@@ -28,14 +28,16 @@ public class SimpleEnemy : Enemy
         circleCollider = GetComponent<CircleCollider2D>();
     }
 
+    public float DistanciaAPlayer;
     void Update()
     {
-            RotacionSkinEnemigo(player.transform.position);
-            Caminata(player.transform.position, MultiplicadorDeVelocidadDefault, anim);
-            //BloqueoOcasional(player.GetComponent<AtaqueV2>().ActiveCombo, anim, player.transform.position);
-            Stun(circleCollider, player.transform.position, anim);
-            ModoCombate(anim, MinTiempoEntreAcciones, MedidorDistancia(player.transform.position, transform.position));
+        DistanciaAPlayer = MedidorDistancia(transform.position, player.transform.position);
 
+        RotacionSkinEnemigo(player.transform.position);
+        Caminata(player.transform.position, MultiplicadorDeVelocidadDefault, anim);
+        //BloqueoOcasional(player.GetComponent<AtaqueV2>().ActiveCombo, anim, player.transform.position);
+        Stun();
+        ModoCombate(anim, MinTiempoEntreAcciones, MedidorDistancia(player.transform.position, transform.position));
     }
     private void FixedUpdate()
     {
@@ -55,7 +57,5 @@ public class SimpleEnemy : Enemy
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, RANGOATAQUE);
         //MIN Empuje-Ataque
-        Gizmos.color = Color.cyan;
-        Gizmos.DrawWireSphere(transform.position, RANGOSTUN);
     }
 }

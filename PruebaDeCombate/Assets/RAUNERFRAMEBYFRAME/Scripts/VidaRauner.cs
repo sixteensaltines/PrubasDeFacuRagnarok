@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Danio : MonoBehaviour
-{/*
-
+public class VidaRauner : MonoBehaviour
+{
+    /*
     public Transform PosicionDisparaFlecha; 
     public GameObject FlechaPrefab;
 

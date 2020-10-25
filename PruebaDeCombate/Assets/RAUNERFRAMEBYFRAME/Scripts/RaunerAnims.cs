@@ -23,4 +23,12 @@ public class RaunerAnims : MonoBehaviour
     }
 
     public void DashAnim(Animator anim, bool Encendido_Apagado) => anim.SetBool("Dash", Encendido_Apagado);
+
+    public void AnimBloqueo(Animator anim, bool Encendido_Apagado) => anim.SetBool("Block", Encendido_Apagado);
+
+    public void GolpeAnim(Animator anim, int QueGolpe, bool Encendido_Apagado)
+    {
+        anim.SetBool("Ataque", Encendido_Apagado);
+        anim.SetInteger("QueAtaque", QueGolpe);
+    }
 }

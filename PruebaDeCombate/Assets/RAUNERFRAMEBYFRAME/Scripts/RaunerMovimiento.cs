@@ -35,7 +35,6 @@ public class RaunerMovimiento : GeneralPlayer
             transform.position = Vector2.MoveTowards(transform.position, new Vector2(transform.position.x + 0.8f, transform.position.y), VelocidadCaminata * Time.deltaTime);
             if (DetectaSuelo()) CaminataAnim(anim, true);
             else CaminataAnim(anim, false);
-
         }
         else if (raunerInputs.BH_Left)
         {
@@ -63,7 +62,7 @@ public class RaunerMovimiento : GeneralPlayer
         else
         {
             raunerInputs.BlockShield = true;
-            raunerInputs.BlockAttack = true;
+            if(GetComponent<RaunerCombate>().CadenciaAtaquesCD)raunerInputs.BlockAttack = true;
             SaltoAnim(anim, rb);
         }
     }

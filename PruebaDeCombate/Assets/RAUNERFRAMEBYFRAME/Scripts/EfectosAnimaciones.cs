@@ -4,30 +4,42 @@ using UnityEngine;
 
 public class EfectosAnimaciones : MonoBehaviour
 {
-    [HideInInspector]
-    public bool EsPosibleParry;
-
+    private RaunerInputs raunerInputs;
+    private RaunerCombate raunerCombate;
     private Animator anim;
 
-    private RaunerCombate raunerCombate;
+    public bool PosibleGolpe;
 
-    private void Start()
+    void Start()
     {
-        anim = GetComponent<Animator>();
-
+        raunerInputs = GetComponentInParent<RaunerInputs>();
         raunerCombate = GetComponentInParent<RaunerCombate>();
-    }
-    public void PosibleParry()
-    {
-        if (EsPosibleParry) EsPosibleParry = false;
-        else EsPosibleParry = true;
+        anim = GetComponent<Animator>();
     }
 
-    public void Cancelar_AnimacionParry()
+    public void ComboOn() => PosibleGolpe = true;
+
+    public void ComboOff() => PosibleGolpe = false;
+
+    public bool EstadoDelCombo()
     {
-        anim.SetBool("Parry", false);
-        raunerCombate.ActiveParry = false;
-        EsPosibleParry = false;
+        return PosibleGolpe;
+    }
+
+    public void EndCombo()
+    {
+        raunerInputs.BlockAttack = true;
+        PosibleGolpe = false;
+        raunerCombate.NumeroDeAtaque = 0;
+        raunerCombate.CadenciaAtaquesCD = true;
+        anim.SetBool("Ataque", false);
+        anim.SetInteger("QueAtaque", raunerCombate.NumeroDeAtaque);
+        Invoke("In_DesbloqueaAtaque", raunerCombate.CadenciaCombo);
+    }
+    public void In_DesbloqueaAtaque()
+    {
+        raunerCombate.CadenciaAtaquesCD = false;
+        raunerInputs.BlockAttack = false;
     }
 
 }

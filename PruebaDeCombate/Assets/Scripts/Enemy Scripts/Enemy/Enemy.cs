@@ -8,7 +8,7 @@ public class Enemy : EnemyAnims
 
     #region Constantes del enemigo
     [HideInInspector]
-    public const float RANGOATAQUE = 2.1f;
+    public const float RANGOATAQUE = 2f;
     [HideInInspector]
     public const float RANGOSTUN = 1.2f;
     [HideInInspector]
@@ -74,7 +74,7 @@ public class Enemy : EnemyAnims
 
     public void EjecutaMovimiento(Vector3 PlayerPosition, float distTotalAPlayer, Animator anim)
     {
-        if (distTotalAPlayer <= RangoVision && distTotalAPlayer > RANGOATAQUE)
+        if (distTotalAPlayer <= RangoVision && distTotalAPlayer > RANGOATAQUE && DetectorSuelo_ConPlayer())
         {
             RangoVision = 50f;
             AnimCaminata(true); //Se cancela desde AnimEstatico()
@@ -174,26 +174,9 @@ public class Enemy : EnemyAnims
         }
     }
 
-    private float radioStunGrande = 2.5f;
-    private float radioStunChicho = 1.2f;
-    public void Stun(CircleCollider2D circleCollider,Vector3 PlayerPosition, Animator anim)
+    public void Stun()
     {
-        if (DeteccionPared_Frente(PlayerPosition) && DeteccionPlayer_Frente())
-        {
-            circleCollider.radius = radioStunGrande;
-            AnimFarStun(true);
-        }
-        else
-        {
-            circleCollider.radius = radioStunChicho;
-            AnimFarStun(false);
-        }
 
-        if (MedidorDistancia(transform.position, PlayerPosition) -0.45f <= radioStunChicho)
-        {
-            AnimCloseStun(true);
-        }
-        else AnimCloseStun(false);
     }
 
     #region Tooltip

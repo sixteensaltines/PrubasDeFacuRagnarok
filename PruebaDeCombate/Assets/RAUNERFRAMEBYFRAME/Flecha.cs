@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Flecha : MonoBehaviour
-{
+{/*
     public Vector3 OriginalPosition;
     private Vector3 playerLastPosition;
     public float VelocidadFlecha;
@@ -46,6 +46,6 @@ public class Flecha : MonoBehaviour
         }
 
         if(transform.position == new Vector3(playerLastPosition.x, playerLastPosition.y + 2f, playerLastPosition.z)) Destroy(gameObject);
-
-    }
+        
+    }*/
 }

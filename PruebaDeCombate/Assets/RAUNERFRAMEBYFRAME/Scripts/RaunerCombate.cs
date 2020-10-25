@@ -7,13 +7,11 @@ public class RaunerCombate : GeneralPlayer
     private Animator anim;
     private RaunerInputs raunerInputs;
 
-    private MedidorVida medidorVida;
     private EfectosAnimaciones efectosAnimaciones;
     void Start()
     {
         anim = GetComponentInChildren<Animator>();
         raunerInputs = GetComponent<RaunerInputs>();
-        medidorVida = GetComponent<MedidorVida>();
         efectosAnimaciones = GetComponentInChildren<EfectosAnimaciones>();
 
     }
@@ -21,23 +19,25 @@ public class RaunerCombate : GeneralPlayer
     void Update()
     {
         Block();
-        if(efectosAnimaciones.EsPosibleParry)Parry(); //ActivadoDesdeAnimaciones
+        //if(efectosAnimaciones.EsPosibleParry)Parry(); //ActivadoDesdeAnimaciones
     }
+
+    void FixedUpdate() => Combo();
 
     void Block()
     {
         if (raunerInputs.BH_Block)
         {
-            anim.SetBool("Block", true);
+            AnimBloqueo(anim, true);
 
             raunerInputs.QuitForces = true;
-            
+
             raunerInputs.BlockJump = true;
             raunerInputs.BlockWalk = true;
         }
         else
         {
-            anim.SetBool("Block", false);
+            AnimBloqueo(anim, false);
 
             raunerInputs.QuitForces = false;
 
@@ -53,6 +53,56 @@ public class RaunerCombate : GeneralPlayer
     }
 
     [HideInInspector]
+    public int NumeroDeAtaque;
+
+    public float CadenciaCombo;
+
+    [HideInInspector]
+    public bool CadenciaAtaquesCD; //En movimiento hay algo que la desbloquea x otra accion, con este flag evito eso! 
+    void Combo()
+    {
+        if (raunerInputs.BD_Attack && NumeroDeAtaque == 0)
+        {
+            NumeroDeAtaque++;
+            EnviaDanio();
+            GolpeAnim(anim, NumeroDeAtaque, true);
+        }
+        else if (raunerInputs.BD_Attack && NumeroDeAtaque == 1 && efectosAnimaciones.EstadoDelCombo())
+        {
+            NumeroDeAtaque++;
+            EnviaDanio();
+            efectosAnimaciones.ComboOff();
+            GolpeAnim(anim, NumeroDeAtaque, true);
+        }
+        else if (raunerInputs.BD_Attack && NumeroDeAtaque == 2 && efectosAnimaciones.EstadoDelCombo())
+        {
+            NumeroDeAtaque++;
+            EnviaDanio();
+            efectosAnimaciones.ComboOff();
+            GolpeAnim(anim, NumeroDeAtaque, true);
+        }
+
+    }
+
+    public Transform LugarDeAtaque;
+    public LayerMask LayerDelEnemigo;
+    private int DanioPorAtaque = 1; //Por defecto "1" 
+    public float RangoDeAtaque;
+    void EnviaDanio()
+    {
+        Collider2D[] DanioAEnemigo = Physics2D.OverlapCircleAll(LugarDeAtaque.position, RangoDeAtaque, LayerDelEnemigo);
+
+        foreach (Collider2D collider in DanioAEnemigo)
+        {
+            collider.GetComponent<EnemigoProvisional>().LlegaDanio(DanioPorAtaque);
+        }
+    }
+
+    void OnDrawGizmosSelected()
+    {
+        Gizmos.DrawWireSphere(LugarDeAtaque.position, RangoDeAtaque);
+    }
+    /*[HideInInspector]
     public CircleCollider2D colliderEffector;
     [HideInInspector]
     public bool ActiveParry; //Devuelve proyectiles
@@ -74,7 +124,7 @@ public class RaunerCombate : GeneralPlayer
     void In_RadioOriginal()
     {
         colliderEffector.radius = 0.1f; //DesactivoEmpuje;
-    }
+    }*/
 
 
 }
