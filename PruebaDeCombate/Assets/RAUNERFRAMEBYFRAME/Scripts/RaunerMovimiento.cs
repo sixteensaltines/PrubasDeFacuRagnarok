@@ -56,14 +56,21 @@ public class RaunerMovimiento : GeneralPlayer
         if (DetectaSuelo())
         {
             raunerInputs.BlockShield = false;
-            raunerInputs.BlockAttack = false;
+
+            if (!GetComponent<RaunerCombate>().BloqueoPorAnimacion) raunerInputs.BlockAttack = false; 
+            else raunerInputs.BlockAttack = true;
+
             Caida_Salto_Off(anim);
         }
         else
         {
             raunerInputs.BlockShield = true;
-            if(GetComponent<RaunerCombate>().CadenciaAtaquesCD)raunerInputs.BlockAttack = true;
+
+            raunerInputs.BlockAttack = true;
+
+
             SaltoAnim(anim, rb);
+
         }
     }
 

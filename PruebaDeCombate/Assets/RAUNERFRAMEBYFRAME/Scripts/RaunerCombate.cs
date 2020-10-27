@@ -58,7 +58,7 @@ public class RaunerCombate : GeneralPlayer
     public float CadenciaCombo;
 
     [HideInInspector]
-    public bool CadenciaAtaquesCD; //En movimiento hay algo que la desbloquea x otra accion, con este flag evito eso! 
+    public bool BloqueoPorAnimacion; //En movimiento hay algo que la desbloquea x otra accion, con este flag evito eso! 
     void Combo()
     {
         if (raunerInputs.BD_Attack && NumeroDeAtaque == 0)

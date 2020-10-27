@@ -1139,7 +1139,7 @@ PrefabInstance:
     - target: {fileID: 1692067298529277630, guid: 611abca1305fe494bb3ba29ccfc2dc0e,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1692067298529277630, guid: 611abca1305fe494bb3ba29ccfc2dc0e,
         type: 3}
@@ -2246,7 +2246,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NumeroDeAtaque: 0
   CadenciaCombo: 1.5
-  CadenciaAtaquesCD: 0
+  BloqueoPorAnimacion: 0
   LugarDeAtaque: {fileID: 779953367}
   LayerDelEnemigo:
     serializedVersion: 2
