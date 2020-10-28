@@ -26,20 +26,18 @@ public class RaunerCombate : GeneralPlayer
 
     void Block()
     {
-        if (raunerInputs.BH_Block)
+        if (raunerInputs.BH_Block && DetectaSuelo())
         {
             AnimBloqueo(anim, true);
 
-            raunerInputs.QuitForces = true;
+            raunerInputs.QuitForces();
 
             raunerInputs.BlockJump = true;
             raunerInputs.BlockWalk = true;
         }
-        else
+        if(raunerInputs.BU_Block)
         {
             AnimBloqueo(anim, false);
-
-            raunerInputs.QuitForces = false;
 
             raunerInputs.BlockJump = false;
             raunerInputs.BlockWalk = false;
@@ -48,40 +46,38 @@ public class RaunerCombate : GeneralPlayer
 
     public bool CancelaDanio() //Cuando se mide el daño desde el "Medidor de vida", pregunta por este metodo
     {
-        if (raunerInputs.BH_Block) return true;
+        if (raunerInputs.BH_Block && DetectaSuelo()) return true;
         else return false;
     }
 
     [HideInInspector]
     public int NumeroDeAtaque;
-
     public float CadenciaCombo;
 
-    [HideInInspector]
-    public bool BloqueoPorAnimacion; //En movimiento hay algo que la desbloquea x otra accion, con este flag evito eso! 
+
     void Combo()
     {
-        if (raunerInputs.BD_Attack && NumeroDeAtaque == 0)
+        if (raunerInputs.BD_Attack && NumeroDeAtaque == 0 && DetectaSuelo())
         {
-            NumeroDeAtaque++;
-            EnviaDanio();
-            GolpeAnim(anim, NumeroDeAtaque, true);
-        }
-        else if (raunerInputs.BD_Attack && NumeroDeAtaque == 1 && efectosAnimaciones.EstadoDelCombo())
-        {
-            NumeroDeAtaque++;
-            EnviaDanio();
-            efectosAnimaciones.ComboOff();
-            GolpeAnim(anim, NumeroDeAtaque, true);
-        }
-        else if (raunerInputs.BD_Attack && NumeroDeAtaque == 2 && efectosAnimaciones.EstadoDelCombo())
-        {
-            NumeroDeAtaque++;
-            EnviaDanio();
-            efectosAnimaciones.ComboOff();
-            GolpeAnim(anim, NumeroDeAtaque, true);
-        }
 
+            NumeroDeAtaque++;
+            EnviaDanio();
+            GolpeAnim(anim, NumeroDeAtaque, true);
+        }
+        else if (raunerInputs.BD_Attack && NumeroDeAtaque == 1 && efectosAnimaciones.EstadoDelCombo() && DetectaSuelo())
+        {
+            NumeroDeAtaque++;
+            EnviaDanio();
+            efectosAnimaciones.ComboOff();
+            GolpeAnim(anim, NumeroDeAtaque, true);
+        }
+        else if (raunerInputs.BD_Attack && NumeroDeAtaque == 2 && efectosAnimaciones.EstadoDelCombo() && DetectaSuelo())
+        {
+            NumeroDeAtaque++;
+            EnviaDanio();
+            efectosAnimaciones.ComboOff();
+            GolpeAnim(anim, NumeroDeAtaque, true);
+        }
     }
 
     public Transform LugarDeAtaque;

@@ -28,39 +28,34 @@ public class EfectosAnimaciones : MonoBehaviour
 
     public void EndCombo()
     {
-
         PosibleGolpe = false;
         raunerCombate.NumeroDeAtaque = 0;
 
         anim.SetBool("Ataque", false);
         anim.SetInteger("QueAtaque", raunerCombate.NumeroDeAtaque);
 
-        raunerInputs.BlockAttack = true;
-        raunerCombate.BloqueoPorAnimacion = true;
-
+        raunerInputs.BlockWalk = false;
         raunerInputs.BlockJump = false;
-        raunerInputs.BlockWalk = false;
         raunerInputs.BlockShield = false;
-        raunerInputs.BlockWalk = false;
+        raunerInputs.BlockDash = false;
 
-        raunerInputs.QuitForces = false;
+        raunerInputs.BlockAttack = true;
 
         Invoke("In_DesbloqueaAtaque", raunerCombate.CadenciaCombo);
     }
     public void In_DesbloqueaAtaque()
     {
-        raunerCombate.BloqueoPorAnimacion = false;
         raunerInputs.BlockAttack = false;
     }
 
 
     public void BlockMovements() 
     {
-        Debug.Log("CACACA");
+        raunerInputs.BlockWalk = true;
         raunerInputs.BlockJump = true;
-        raunerInputs.BlockWalk = true;
         raunerInputs.BlockShield = true;
-        raunerInputs.BlockWalk = true;
-        raunerInputs.QuitForces = true;
+        raunerInputs.BlockDash = true;
+
+        raunerInputs.QuitForces();
     }
 }

@@ -55,22 +55,11 @@ public class RaunerMovimiento : GeneralPlayer
         }
         if (DetectaSuelo())
         {
-            raunerInputs.BlockShield = false;
-
-            if (!GetComponent<RaunerCombate>().BloqueoPorAnimacion) raunerInputs.BlockAttack = false; 
-            else raunerInputs.BlockAttack = true;
-
             Caida_Salto_Off(anim);
         }
         else
         {
-            raunerInputs.BlockShield = true;
-
-            raunerInputs.BlockAttack = true;
-
-
             SaltoAnim(anim, rb);
-
         }
     }
 
@@ -122,7 +111,6 @@ public class RaunerMovimiento : GeneralPlayer
             derecha = false;
 
             raunerInputs.BlockButtons = false;
-            raunerInputs.QuitForces = false;
 
             contadorDesplazamiento = ContadorDesplazamientoDefault;
             Invoke("In_CadenciaDash", CadenciaDash);
@@ -134,7 +122,7 @@ public class RaunerMovimiento : GeneralPlayer
         else
         {
             raunerInputs.BlockButtons = true;
-            raunerInputs.QuitForces = true;
+            raunerInputs.QuitForces();
 
             puedeDesplazarse = false;
 

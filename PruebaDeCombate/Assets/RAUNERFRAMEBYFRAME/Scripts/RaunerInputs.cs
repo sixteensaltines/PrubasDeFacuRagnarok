@@ -25,8 +25,8 @@ public class RaunerInputs : MonoBehaviour
     public bool BlockButtons;
     public bool BlockJump;
     public bool BlockShield;
-    public bool QuitForces;
     public bool BlockWalk;
+    public bool BlockDash;
 
     //Determino que botones puedo utilizar en cada momento
     void Update()
@@ -35,18 +35,19 @@ public class RaunerInputs : MonoBehaviour
         {
             if (!BlockWalk) Axis();
 
-            Dash();
+            if(!BlockDash)Dash();
 
             if (!BlockJump) Jump();
 
             if (!BlockAttack) Attack();
             if(!BlockShield) Block();
         }
-        if (QuitForces)
-        {
-            BH_Left = false;
-            BH_Right = false;
-        }
+    }
+
+    public void QuitForces()
+    {
+        BH_Left = false;
+        BH_Right = false;
     }
     void Axis()
     {
@@ -68,4 +69,6 @@ public class RaunerInputs : MonoBehaviour
         BD_Block = Input.GetButtonDown("Block");
         BU_Block = Input.GetButtonUp("Block");
     }
+
+
 }

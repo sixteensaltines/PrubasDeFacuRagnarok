@@ -2246,7 +2246,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NumeroDeAtaque: 0
   CadenciaCombo: 1.5
-  BloqueoPorAnimacion: 0
   LugarDeAtaque: {fileID: 779953367}
   LayerDelEnemigo:
     serializedVersion: 2
@@ -2266,7 +2265,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   VelocidadCaminata: 4.5
   FuerzaSalto: 15
-  FuerzaDesplazamiento: 300
+  FuerzaDesplazamiento: 600
   ContadorDesplazamientoDefault: 0.2
   CadenciaDash: 2
 --- !u!114 &506637760
@@ -2294,8 +2293,8 @@ MonoBehaviour:
   BlockButtons: 0
   BlockJump: 0
   BlockShield: 0
-  QuitForces: 0
   BlockWalk: 0
+  BlockDash: 0
 --- !u!4 &506637761
 Transform:
   m_ObjectHideFlags: 0
