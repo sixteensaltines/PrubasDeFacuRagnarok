@@ -34,6 +34,8 @@ public class RaunerCombate : GeneralPlayer
 
             raunerInputs.BlockJump = true;
             raunerInputs.BlockWalk = true;
+
+            gameObject.layer = 14;
         }
         if(raunerInputs.BU_Block)
         {
@@ -41,6 +43,8 @@ public class RaunerCombate : GeneralPlayer
 
             raunerInputs.BlockJump = false;
             raunerInputs.BlockWalk = false;
+
+            gameObject.layer = 12;
         }
     }
 

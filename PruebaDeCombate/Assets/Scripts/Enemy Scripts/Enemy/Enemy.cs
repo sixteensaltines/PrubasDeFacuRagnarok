@@ -8,7 +8,7 @@ public class Enemy : EnemyAnims
 
     #region Constantes del enemigo
     [HideInInspector]
-    public const float RANGOATAQUE = 2f;
+    public const float RANGOATAQUE = 2.3f;
     [HideInInspector]
     public const float RANGOSTUN = 1.2f;
     [HideInInspector]
@@ -16,8 +16,6 @@ public class Enemy : EnemyAnims
     [HideInInspector]
     public const float DISTANCIA_ENTRADA_MODOGUARDIA = 5f;
     #endregion
-
-    private bool esquiveActivado = false;
 
     public float MedidorDistancia(Vector3 ObjetoA, Vector3 ObjetoB)
     {
@@ -30,13 +28,13 @@ public class Enemy : EnemyAnims
         else transform.eulerAngles = new Vector3(0, 180, 0);   
     }
 
-
     #region ToolTip
     [Tooltip("Hasta donde camina cuando vaya hacia atras, para esquivar ataques del player")]
     #endregion
     public Transform HastaDondeCamina;//Hacia atras
+    private bool esquiveActivado = false;
 
-    public void Caminata(Vector3 PlayerPosition, float MultiplicadorDeVelocidad, Animator anim)
+    public void Caminata(Vector3 PlayerPosition, float MultiplicadorDeVelocidad, Animator anim, float MultiplicadorParaEsquive)
     {
         //Control del mutiplicador, busca que sea 1 o mayor que 1
         if (MultiplicadorDeVelocidad < 0) MultiplicadorDeVelocidad = 1f;
@@ -46,7 +44,7 @@ public class Enemy : EnemyAnims
             ControlDeVelocidades(MultiplicadorDeVelocidad, MedidorDistancia(PlayerPosition, transform.position));
             EjecutaMovimiento(PlayerPosition, MedidorDistancia(PlayerPosition, transform.position), anim);
         }
-        else transform.position = Vector3.MoveTowards(transform.position, HastaDondeCamina.position, velocidadMovimiento * Time.deltaTime); //Esquiva
+        else transform.position = Vector3.MoveTowards(transform.position, HastaDondeCamina.position, velocidadMovimiento * MultiplicadorParaEsquive * Time.deltaTime); //Esquiva
     }
 
     #region Variables de Movimiento hacia player
@@ -74,14 +72,31 @@ public class Enemy : EnemyAnims
 
     public void EjecutaMovimiento(Vector3 PlayerPosition, float distTotalAPlayer, Animator anim)
     {
-        if (distTotalAPlayer <= RangoVision && distTotalAPlayer > RANGOATAQUE && DetectorSuelo_ConPlayer())
+        if (distTotalAPlayer <= RangoVision && distTotalAPlayer > RANGOATAQUE && !DetectorSuelo())
+        //!DetectorSuelo() xQ si fuera detPlayer en el borde deja de caminar, ya que el rayo no toca el piso. Ahora si el player no toca mas este suelo y toca otro, deja de caminar! 
         {
             RangoVision = 50f;
             AnimCaminata(true); //Se cancela desde AnimEstatico()
             transform.position = Vector3.MoveTowards(transform.position, PlayerPosition, velocidadMovimiento * Time.deltaTime);
         }
-        if (distTotalAPlayer < RANGOATAQUE) AnimCaminata(false);
+        if (distTotalAPlayer < RANGOATAQUE || !DetectorSuelo_ConPlayer()) AnimCaminata(false);
     }
+
+    #region Variables DetectorSuelo
+    private float largoDelRayo = 0.9f;
+    #endregion
+    public bool DetectorSuelo()
+    {
+        RaycastHit2D ray;
+        return ray = Physics2D.Raycast(transform.position, Vector2.down, largoDelRayo, LayerMask.GetMask("Piso"));
+    }
+    public bool DetectorSuelo_ConPlayer()
+    {
+        Debug.DrawRay(transform.position, Vector2.down * largoDelRayo, Color.blue);
+        RaycastHit2D ray;
+        return ray = Physics2D.Raycast(transform.position, Vector2.down * largoDelRayo, largoDelRayo, LayerMask.GetMask("PisoConPlayer"));
+    }
+
 
     public void SaltoDePlataformas(Vector3 PlayerPosition, Rigidbody2D rbEnemigo, Animator anim)
     {
@@ -96,6 +111,7 @@ public class Enemy : EnemyAnims
     public Transform T_RayoFrontal;
     private float DistanciaRayo;
     #endregion
+
     public bool DeteccionPared_Frente(Vector3 PlayerPosition)
     {
         if (transform.position.x < PlayerPosition.x) DistanciaRayo = -2.3f;
@@ -105,8 +121,7 @@ public class Enemy : EnemyAnims
 
         Debug.DrawLine(transform.position, FinalRayo, Color.green);
 
-        return Physics2D.Linecast(transform.position, FinalRayo, 1 << LayerMask.NameToLayer("Piso"));
-
+        return Physics2D.Linecast(transform.position, FinalRayo, 1 << LayerMask.NameToLayer("PisoConPlayer"));
     }
 
     public bool DeteccionPlayer_Frente()
@@ -118,38 +133,31 @@ public class Enemy : EnemyAnims
          T_RayoFrontal.position, 1 << LayerMask.NameToLayer("Player"));
     }
 
+    public bool DeteccionPlayerBlock_Frente()
+    {
+        Debug.DrawLine(new Vector3(transform.position.x, transform.position.y + 1f, transform.position.z),
+         T_RayoFrontal.position, Color.blue);
+
+        return Physics2D.Linecast(new Vector3(transform.position.x, transform.position.y + 1f, transform.position.z),
+         T_RayoFrontal.position, 1 << LayerMask.NameToLayer("PlayerBloqueando"));
+    }
+
     #region Variables EjecutaSalto
     private float fuerzaSalto = 5f;
     #endregion
     public void EjecutaSalto(Vector3 PlayerPosition, Rigidbody2D rbEnemigo,float distTotalAPlayer)
     {   //Salto hacia adelante
-        if (DeteccionPared_Frente(PlayerPosition) && !DeteccionPlayer_Frente() && (DetectorSuelo() || DetectorSuelo_ConPlayer()))
+        if (DeteccionPared_Frente(PlayerPosition) && (!DeteccionPlayer_Frente() && !DeteccionPlayerBlock_Frente()) && (DetectorSuelo() || DetectorSuelo_ConPlayer()))
         {
             transform.position = Vector3.MoveTowards(transform.position, PlayerPosition, 7f * Time.deltaTime);
             rbEnemigo.velocity = Vector3.up * fuerzaSalto;   
         }
 
         //SaltoAlVacio
-        if (!DeteccionPared_Frente(PlayerPosition) && !DeteccionPlayer_Frente() && distTotalAPlayer <= RANGOATAQUE)
+        if (!DeteccionPared_Frente(PlayerPosition) && (!DeteccionPlayer_Frente() || !DeteccionPlayerBlock_Frente()) && distTotalAPlayer <= RANGOATAQUE)
         {
             transform.position = Vector3.MoveTowards(transform.position, PlayerPosition, velocidadMovimiento*2f * Time.deltaTime);
         }
-    }
-
-    #region Variables DetectorSuelo
-    private float largoDelRayo = 0.9f;
-    #endregion
-    public bool DetectorSuelo()
-    {
-        Debug.DrawRay(transform.position, Vector2.down * largoDelRayo, Color.blue);
-        RaycastHit2D ray;
-        return ray = Physics2D.Raycast(transform.position, Vector2.down, largoDelRayo, LayerMask.GetMask("Piso"));
-    }
-
-    public bool DetectorSuelo_ConPlayer()
-    {
-        RaycastHit2D ray;
-        return ray = Physics2D.Raycast(transform.position, Vector2.down, largoDelRayo, LayerMask.GetMask("PisoConPlayer"));
     }
 
     private float PosicionAnteriorY;
@@ -174,16 +182,16 @@ public class Enemy : EnemyAnims
         }
     }
 
-    public void Stun()
-    {
+    
 
-    }
 
-    #region Tooltip
+
+
+    /*#region Tooltip
     [Tooltip("La probabilidad de bloqueo medira cuando el player ataque, dependiendo del % insertado, el enemigo tomara medidas o no, el % no debe superar el 100 %")]
     #endregion
     public int ProbabilidadBloqueoOcasional;
-    private bool esPosibleBloquear= true;
+    private bool esPosibleBloquear= true; 
     public void BloqueoOcasional(bool PlayerAtaca, Animator anim, Vector3 playerDistancia)
     {
         if (PlayerAtaca && esPosibleBloquear && MedidorDistancia(playerDistancia, transform.position) < RANGOATAQUE)
@@ -426,7 +434,6 @@ public class Enemy : EnemyAnims
         T_Rayo_Espalda.position, 1 << LayerMask.NameToLayer("Piso"));
     }
 
-
     public void CancelarCaminata_Atras()
     {
         animacionEstatica = true;
@@ -435,5 +442,5 @@ public class Enemy : EnemyAnims
 
     public void MantieneBloqueo() => Invoke("ActivarAnimacionEstatico", Random.Range(1f, 2f));   //Se activa desde las animaciones 
 
-    void ActivarAnimacionEstatico() => animacionEstatica = true; //Se activa desde animaciones 
+    void ActivarAnimacionEstatico() => animacionEstatica = true; //Se activa desde animaciones */
 }

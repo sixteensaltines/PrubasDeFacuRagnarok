@@ -16,6 +16,11 @@ public class SimpleEnemy : Enemy
     #endregion
     public float MultiplicadorDeVelocidadDefault;
     #region Tooltip
+    [Tooltip("El esquive puede ser reazalido con distintas velocidades, en caso de que esta fuera regular utilizar un 1")]
+    #endregion
+    public float MultiplicadorParaEsquive;
+
+    #region Tooltip
     [Tooltip("Define cuanto tiempo se espera para realizar una u otra accion, como esquivar, bloquear o golpear")]
     #endregion
     public float MinTiempoEntreAcciones;
@@ -28,16 +33,16 @@ public class SimpleEnemy : Enemy
         circleCollider = GetComponent<CircleCollider2D>();
     }
 
-    public float DistanciaAPlayer;
+    public bool A;
     void Update()
     {
-        DistanciaAPlayer = MedidorDistancia(transform.position, player.transform.position);
 
         RotacionSkinEnemigo(player.transform.position);
-        Caminata(player.transform.position, MultiplicadorDeVelocidadDefault, anim);
+        Caminata(player.transform.position, MultiplicadorDeVelocidadDefault, anim, MultiplicadorParaEsquive);
+
+
         //BloqueoOcasional(player.GetComponent<AtaqueV2>().ActiveCombo, anim, player.transform.position);
-        Stun();
-        ModoCombate(anim, MinTiempoEntreAcciones, MedidorDistancia(player.transform.position, transform.position));
+        //ModoCombate(anim, MinTiempoEntreAcciones, MedidorDistancia(player.transform.position, transform.position));
     }
     private void FixedUpdate()
     {
