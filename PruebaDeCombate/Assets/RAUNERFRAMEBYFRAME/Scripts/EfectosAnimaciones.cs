@@ -26,6 +26,8 @@ public class EfectosAnimaciones : MonoBehaviour
         return PosibleGolpe;
     }
 
+    public void PuedeEnviarDanio() => raunerCombate.EnviaDanio();
+
     public void EndCombo()
     {
         PosibleGolpe = false;
@@ -58,4 +60,10 @@ public class EfectosAnimaciones : MonoBehaviour
 
         raunerInputs.QuitForces();
     }
+
+    public void BloqueoSupremoDeAcciones() => raunerInputs.ControlSupremoInputs(true);
+    public void DesbloqueoSupremoDeAcciones() => raunerInputs.ControlSupremoInputs(false);
+
+    public void DestruirObjeto() => Destroy(gameObject);  
+
 }

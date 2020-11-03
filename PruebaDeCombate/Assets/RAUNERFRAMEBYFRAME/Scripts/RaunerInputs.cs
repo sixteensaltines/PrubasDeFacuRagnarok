@@ -28,19 +28,24 @@ public class RaunerInputs : MonoBehaviour
     public bool BlockWalk;
     public bool BlockDash;
 
+    public bool SupremeBlockInputs;
+
     //Determino que botones puedo utilizar en cada momento
     void Update()
     {
-        if (!BlockButtons)
+        if (!SupremeBlockInputs)
         {
-            if (!BlockWalk) Axis();
+            if (!BlockButtons)
+            {
+                if (!BlockWalk) Axis();
 
-            if(!BlockDash)Dash();
+                if (!BlockDash) Dash();
 
-            if (!BlockJump) Jump();
+                if (!BlockJump) Jump();
 
-            if (!BlockAttack) Attack();
-            if(!BlockShield) Block();
+                if (!BlockAttack) Attack();
+                if (!BlockShield) Block();
+            }
         }
     }
 
@@ -69,6 +74,8 @@ public class RaunerInputs : MonoBehaviour
         BD_Block = Input.GetButtonDown("Block");
         BU_Block = Input.GetButtonUp("Block");
     }
+
+    public void ControlSupremoInputs(bool ActivarDesactivar) => SupremeBlockInputs = ActivarDesactivar;
 
 
 }

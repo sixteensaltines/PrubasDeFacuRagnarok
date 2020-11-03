@@ -35,7 +35,7 @@ public class RaunerCombate : GeneralPlayer
             raunerInputs.BlockJump = true;
             raunerInputs.BlockWalk = true;
 
-            gameObject.layer = 14;
+            gameObject.layer = 14; //PlayerBloqueando
         }
         if(raunerInputs.BU_Block)
         {
@@ -44,7 +44,7 @@ public class RaunerCombate : GeneralPlayer
             raunerInputs.BlockJump = false;
             raunerInputs.BlockWalk = false;
 
-            gameObject.layer = 12;
+            gameObject.layer = 12; //Player
         }
     }
 
@@ -63,22 +63,18 @@ public class RaunerCombate : GeneralPlayer
     {
         if (raunerInputs.BD_Attack && NumeroDeAtaque == 0 && DetectaSuelo())
         {
-
             NumeroDeAtaque++;
-            EnviaDanio();
             GolpeAnim(anim, NumeroDeAtaque, true);
         }
         else if (raunerInputs.BD_Attack && NumeroDeAtaque == 1 && efectosAnimaciones.EstadoDelCombo() && DetectaSuelo())
         {
             NumeroDeAtaque++;
-            EnviaDanio();
             efectosAnimaciones.ComboOff();
             GolpeAnim(anim, NumeroDeAtaque, true);
         }
         else if (raunerInputs.BD_Attack && NumeroDeAtaque == 2 && efectosAnimaciones.EstadoDelCombo() && DetectaSuelo())
         {
             NumeroDeAtaque++;
-            EnviaDanio();
             efectosAnimaciones.ComboOff();
             GolpeAnim(anim, NumeroDeAtaque, true);
         }
@@ -86,15 +82,14 @@ public class RaunerCombate : GeneralPlayer
 
     public Transform LugarDeAtaque;
     public LayerMask LayerDelEnemigo;
-    private int DanioPorAtaque = 1; //Por defecto "1" 
     public float RangoDeAtaque;
-    void EnviaDanio()
+    public void EnviaDanio()
     {
         Collider2D[] DanioAEnemigo = Physics2D.OverlapCircleAll(LugarDeAtaque.position, RangoDeAtaque, LayerDelEnemigo);
 
         foreach (Collider2D collider in DanioAEnemigo)
         {
-            collider.GetComponent<EnemigoProvisional>().LlegaDanio(DanioPorAtaque);
+            collider.GetComponent<ContadorDeVida>().LlegaDanio();
         }
     }
 

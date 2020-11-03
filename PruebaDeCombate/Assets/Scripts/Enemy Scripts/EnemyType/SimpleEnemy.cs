@@ -29,14 +29,13 @@ public class SimpleEnemy : Enemy
     {
         player = GameObject.FindWithTag("Player");
         rbEnemigo = GetComponent<Rigidbody2D>();
-        anim = GetComponent<Animator>();
+        anim = GetComponent<Animator>(); //Puesto entre las animaciones! //Es obligatorio tenerlo! 
         circleCollider = GetComponent<CircleCollider2D>();
     }
 
     public bool A;
     void Update()
     {
-
         RotacionSkinEnemigo(player.transform.position);
         Caminata(player.transform.position, MultiplicadorDeVelocidadDefault, anim, MultiplicadorParaEsquive);
 
@@ -58,9 +57,8 @@ public class SimpleEnemy : Enemy
         //Seguimiento a player//Guard
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, DISTANCIA_ENTRADA_MODOGUARDIA);
-        //MAX Empuje-Ataque
+        //Ataque//Acciones
         Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.position, RANGOATAQUE);
-        //MIN Empuje-Ataque
+
     }
 }

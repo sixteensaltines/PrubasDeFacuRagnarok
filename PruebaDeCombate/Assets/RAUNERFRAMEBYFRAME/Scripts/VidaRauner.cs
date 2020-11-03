@@ -2,8 +2,38 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class VidaRauner : MonoBehaviour
+public class VidaRauner : RaunerAnims
 {
+    public int Vida;
+    public Animator anim;
+
+    void Start()
+    {
+        anim = GetComponentInChildren<Animator>();
+    }
+
+    public void LlegaDanio()
+    {
+        if (gameObject.layer == 12) //Player
+        {
+            DescuentaVida();
+        }
+    }
+
+    public void DescuentaVida()
+    {
+        Vida--;
+        if (Vida <= 0)
+        {
+            //Muerte
+            anim.SetBool("RaunerMuerte", true);
+        }
+        else { }//Danio
+    }
+
+
+
+
     /*
     public Transform PosicionDisparaFlecha; 
     public GameObject FlechaPrefab;

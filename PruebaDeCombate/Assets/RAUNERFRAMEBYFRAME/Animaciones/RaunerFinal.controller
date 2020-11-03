@@ -101,6 +101,32 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
+--- !u!1102 &-7928401203499751156
+AnimatorState:
+  serializedVersion: 5
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: RaunerDeath
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Transitions: []
+  m_StateMachineBehaviours: []
+  m_Position: {x: 50, y: 50, z: 0}
+  m_IKOnFeet: 0
+  m_WriteDefaultValues: 1
+  m_Mirror: 0
+  m_SpeedParameterActive: 0
+  m_MirrorParameterActive: 0
+  m_CycleOffsetParameterActive: 0
+  m_TimeParameterActive: 0
+  m_Motion: {fileID: 7400000, guid: 09b9a8e43c4bcb4448bff5816274effd, type: 2}
+  m_Tag: 
+  m_SpeedParameter: 
+  m_MirrorParameter: 
+  m_CycleOffsetParameter: 
+  m_TimeParameter: 
 --- !u!1102 &-7644412536045389228
 AnimatorState:
   serializedVersion: 5
@@ -315,32 +341,6 @@ AnimatorState:
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
---- !u!1102 &-4630757725684492668
-AnimatorState:
-  serializedVersion: 5
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: NewAttack3
-  m_Speed: 1
-  m_CycleOffset: 0
-  m_Transitions: []
-  m_StateMachineBehaviours: []
-  m_Position: {x: 50, y: 50, z: 0}
-  m_IKOnFeet: 0
-  m_WriteDefaultValues: 1
-  m_Mirror: 0
-  m_SpeedParameterActive: 0
-  m_MirrorParameterActive: 0
-  m_CycleOffsetParameterActive: 0
-  m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: d755c4f450fcf164f9139f0087032306, type: 2}
-  m_Tag: 
-  m_SpeedParameter: 
-  m_MirrorParameter: 
-  m_CycleOffsetParameter: 
-  m_TimeParameter: 
 --- !u!1102 &-4366644421852786674
 AnimatorState:
   serializedVersion: 5
@@ -532,7 +532,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: RAUNERSMOOTH4
+  m_Name: RaunerFinal
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: Caminata
@@ -1027,60 +1027,60 @@ AnimatorStateMachine:
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: 5559175986651331821}
-    m_Position: {x: 80, y: 70, z: 0}
+    m_Position: {x: 90, y: 70, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 6281956492936453117}
-    m_Position: {x: -90, y: 270, z: 0}
+    m_Position: {x: -140, y: 280, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -4843649232019712722}
     m_Position: {x: 365, y: 55, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -3500056997190469192}
-    m_Position: {x: 640, y: -40, z: 0}
+    m_Position: {x: 620, y: 90, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 597176706169278083}
-    m_Position: {x: 0, y: -150, z: 0}
+    m_Position: {x: -140, y: -30, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 7919116387775654670}
-    m_Position: {x: 30, y: -360, z: 0}
+    m_Position: {x: -120, y: -290, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 312046827925028139}
-    m_Position: {x: 520, y: -360, z: 0}
+    m_Position: {x: 370, y: -300, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -5588181077157595496}
-    m_Position: {x: 30, y: -260, z: 0}
+    m_Position: {x: -130, y: -170, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -584136625089185623}
-    m_Position: {x: 270, y: -360, z: 0}
+    m_Position: {x: 130, y: -290, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -4366644421852786674}
-    m_Position: {x: 640, y: 50, z: 0}
+    m_Position: {x: 620, y: 180, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 3668261445590178158}
-    m_Position: {x: 640, y: 150, z: 0}
+    m_Position: {x: 360, y: 280, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -4984024497379019592}
-    m_Position: {x: 360, y: 270, z: 0}
+    m_Position: {x: 90, y: 280, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -8149797266078560182}
-    m_Position: {x: 910, y: -260, z: 0}
+    m_Position: {x: 650, y: -300, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -7644412536045389228}
-    m_Position: {x: 640, y: -160, z: 0}
-  - serializedVersion: 1
-    m_State: {fileID: -4630757725684492668}
-    m_Position: {x: 910, y: -180, z: 0}
+    m_Position: {x: 620, y: 0, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 763969518315445320}
-    m_Position: {x: 910, y: -220, z: 0}
+    m_Position: {x: 800, y: -100, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: -7928401203499751156}
+    m_Position: {x: 800, y: -200, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
   m_StateMachineTransitions: {}
   m_StateMachineBehaviours: []
-  m_AnyStatePosition: {x: -160, y: -200, z: 0}
-  m_EntryPosition: {x: 640, y: -270, z: 0}
-  m_ExitPosition: {x: -160, y: -170, z: 0}
+  m_AnyStatePosition: {x: -360, y: -150, z: 0}
+  m_EntryPosition: {x: 300, y: -220, z: 0}
+  m_ExitPosition: {x: -360, y: -110, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
   m_DefaultState: {fileID: -4843649232019712722}
 --- !u!1101 &6193891710991432561
