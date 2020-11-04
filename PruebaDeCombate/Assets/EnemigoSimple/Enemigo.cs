@@ -4,6 +4,16 @@ using UnityEngine;
 
 public class Enemigo : AnimacionesEnemigos
 {
+    //Layers
+    [HideInInspector]
+    public LayerMask LayerPlayer = 12;
+    [HideInInspector]
+    public LayerMask LayerPlayerBloqueando = 14;
+    [HideInInspector]
+    public LayerMask LayerEnemigo = 13;
+    [HideInInspector]
+    public LayerMask LayerEnemigoBloqueando = 15;
+
     private float rangoVision = 11.5f;
     private const float RANGOATAQUE = 2.3f;
 
@@ -175,7 +185,7 @@ public class Enemigo : AnimacionesEnemigos
     }
     void BloqueaAtaque()
     {
-        gameObject.layer = 15; //EnemigoBloqueando
+        gameObject.layer = LayerEnemigoBloqueando; //EnemigoBloqueando
         esPosibleBloquear = false;
         AnimBloqueo_Ocasional(true);
         Invoke("In_CancelarBloqueoOcasional", Random.Range(0.9f, 2f));
@@ -183,7 +193,7 @@ public class Enemigo : AnimacionesEnemigos
 
     void In_CancelarBloqueoOcasional()
     {
-        gameObject.layer = 13; //Enemigo
+        gameObject.layer = LayerEnemigo; //Enemigo
         esPosibleBloquear = true;
         AnimBloqueo_Ocasional(false);
     }

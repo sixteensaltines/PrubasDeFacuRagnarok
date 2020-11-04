@@ -13,7 +13,6 @@ public class RaunerCombate : GeneralPlayer
         anim = GetComponentInChildren<Animator>();
         raunerInputs = GetComponent<RaunerInputs>();
         efectosAnimaciones = GetComponentInChildren<EfectosAnimaciones>();
-
     }
 
     void Update()
@@ -35,7 +34,7 @@ public class RaunerCombate : GeneralPlayer
             raunerInputs.BlockJump = true;
             raunerInputs.BlockWalk = true;
 
-            gameObject.layer = 14; //PlayerBloqueando
+            gameObject.layer = LayerPlayerBloqueando; //PlayerBloqueando
         }
         if(raunerInputs.BU_Block)
         {
@@ -44,7 +43,7 @@ public class RaunerCombate : GeneralPlayer
             raunerInputs.BlockJump = false;
             raunerInputs.BlockWalk = false;
 
-            gameObject.layer = 12; //Player
+            gameObject.layer = LayerPlayer; //Player
         }
     }
 

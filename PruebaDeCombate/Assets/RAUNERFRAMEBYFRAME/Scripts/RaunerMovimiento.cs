@@ -103,6 +103,8 @@ public class RaunerMovimiento : GeneralPlayer
             EjecutoDesplazamiento();
         }
     }
+
+
     void EjecutoDesplazamiento()
     {
         if (contadorDesplazamiento <= 0)
@@ -111,6 +113,8 @@ public class RaunerMovimiento : GeneralPlayer
             derecha = false;
 
             raunerInputs.BlockButtons = false;
+
+            Physics2D.IgnoreLayerCollision(LayerEnemigo, LayerPlayer, false);
 
             contadorDesplazamiento = ContadorDesplazamientoDefault;
             Invoke("In_CadenciaDash", CadenciaDash);
@@ -123,6 +127,9 @@ public class RaunerMovimiento : GeneralPlayer
         {
             raunerInputs.BlockButtons = true;
             raunerInputs.QuitForces();
+
+            Physics2D.IgnoreLayerCollision(LayerEnemigo, LayerPlayer, true);
+
 
             puedeDesplazarse = false;
 

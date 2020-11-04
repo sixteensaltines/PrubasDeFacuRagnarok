@@ -15,13 +15,19 @@ public class EnemigoSimple : Enemigo
     }
     void Update()
     {
-        CaminataAPlayer(player.transform.position);
-        DibujaRayos();
-        BloqueoOcasional(player.GetComponent<RaunerCombate>().NumeroDeAtaque, player.transform.position);
+        if (player != null)
+        {
+            CaminataAPlayer(player.transform.position);
+            DibujaRayos();
+            BloqueoOcasional(player.GetComponent<RaunerCombate>().NumeroDeAtaque, player.transform.position);
+        }
     }
 
     private void FixedUpdate()
     {
-        SaltoDePlataformas(player.transform.position, rbEnemigo);
+        if (player != null)
+        {
+            SaltoDePlataformas(player.transform.position, rbEnemigo);
+        }
     }
 }

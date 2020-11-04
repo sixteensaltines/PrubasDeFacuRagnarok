@@ -4,6 +4,17 @@ using UnityEngine;
 
 public class GeneralPlayer : PlayerEffects
 {
+    //Layers
+    [HideInInspector]
+    public LayerMask LayerPlayer = 12;
+    [HideInInspector]
+    public LayerMask LayerPlayerBloqueando = 14;
+    [HideInInspector]
+    public LayerMask LayerEnemigo = 13;
+    [HideInInspector]
+    public LayerMask LayerEnemigoBloqueando = 15;
+
+
     public void CambiaLadoSkin(bool BHRight, bool BHLeft)
     {
         if (BHRight && !BHLeft) transform.eulerAngles = new Vector3(0, 0, 0);
@@ -86,4 +97,5 @@ public class GeneralPlayer : PlayerEffects
         if (rb.velocity.y <= -0.1f) rb.gravityScale = 5f;
         else rb.gravityScale = 3f;
     }
+
 }

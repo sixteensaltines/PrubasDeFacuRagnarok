@@ -45,11 +45,7 @@ public class EfectosAnimaciones : MonoBehaviour
 
         Invoke("In_DesbloqueaAtaque", raunerCombate.CadenciaCombo);
     }
-    public void In_DesbloqueaAtaque()
-    {
-        raunerInputs.BlockAttack = false;
-    }
-
+    public void In_DesbloqueaAtaque() => raunerInputs.BlockAttack = false;
 
     public void BlockMovements() 
     {
@@ -61,9 +57,10 @@ public class EfectosAnimaciones : MonoBehaviour
         raunerInputs.QuitForces();
     }
 
+    public void AnimacionEmpujeOff() => anim.SetBool("Empuje", false);
+
     public void BloqueoSupremoDeAcciones() => raunerInputs.ControlSupremoInputs(true);
     public void DesbloqueoSupremoDeAcciones() => raunerInputs.ControlSupremoInputs(false);
-
     public void DestruirObjeto() => Destroy(gameObject);  
 
 }
