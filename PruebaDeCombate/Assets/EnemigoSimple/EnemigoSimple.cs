@@ -4,12 +4,11 @@ using UnityEngine;
 
 public class EnemigoSimple : Enemigo
 {
-    private GameObject player;
+    public GameObject player;
     private Rigidbody2D rbEnemigo;
 
     void Start()
     {
-        player = GameObject.FindWithTag("Player");
         rbEnemigo = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
     }
@@ -17,9 +16,13 @@ public class EnemigoSimple : Enemigo
     {
         if (player != null)
         {
-            CaminataAPlayer(player.transform.position);
-            DibujaRayos();
-            BloqueoOcasional(player.GetComponent<RaunerCombate>().NumeroDeAtaque, player.transform.position);
+            if (!AccionEncontrada) //CUANDO UNA ACCION DEL MODO COMBATE ES ENCONTRADA, SE CANCELAN TODAS LAS ACCIONES! 
+            {
+                CaminataAPlayer(player.transform.position);
+                DibujaRayos();
+                BloqueoOcasional(player.GetComponent<RaunerCombate>().NumeroDeAtaque, player.transform.position);
+            }
+            ModoCombate(player.transform.position);
         }
     }
 
@@ -27,7 +30,10 @@ public class EnemigoSimple : Enemigo
     {
         if (player != null)
         {
-            SaltoDePlataformas(player.transform.position, rbEnemigo);
+            if (!AccionEncontrada)//CUANDO UNA ACCION DEL MODO COMBATE ES ENCONTRADA, SE CANCELAN TODAS LAS ACCIONES! 
+            {
+                SaltoDePlataformas(player.transform.position, rbEnemigo);
+            }
         }
     }
 }

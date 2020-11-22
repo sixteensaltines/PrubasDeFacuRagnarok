@@ -1,0 +1,886 @@
+fileFormatVersion: 2
+guid: b563a271c56753842bc85712c315b3b7
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 6604376222698162647
+    second: RaunerDeath_0
+  - first:
+      213: -8119353854397174272
+    second: RaunerDeath_1
+  - first:
+      213: -758808819559258574
+    second: RaunerDeath_2
+  - first:
+      213: -2445389511180394271
+    second: RaunerDeath_3
+  - first:
+      213: 6697103343826521324
+    second: RaunerDeath_4
+  - first:
+      213: -8077255494414789652
+    second: RaunerDeath_5
+  - first:
+      213: -3422276316804743629
+    second: RaunerDeath_6
+  - first:
+      213: -484744098992756624
+    second: RaunerDeath_7
+  - first:
+      213: 5706321516197913314
+    second: RaunerDeath_8
+  - first:
+      213: 7533664813079660384
+    second: RaunerDeath_9
+  - first:
+      213: -2998383489338061097
+    second: RaunerDeath_10
+  - first:
+      213: 8893273865247385093
+    second: RaunerDeath_11
+  - first:
+      213: 8456253628519457441
+    second: RaunerDeath_12
+  - first:
+      213: 8888496632547353839
+    second: RaunerDeath_13
+  - first:
+      213: -3388078505403393854
+    second: RaunerDeath_14
+  - first:
+      213: -3037717723652056971
+    second: RaunerDeath_15
+  - first:
+      213: 2191108977577603657
+    second: RaunerDeath_16
+  - first:
+      213: 8303961415749187873
+    second: RaunerDeath_17
+  - first:
+      213: -5458776758721219835
+    second: RaunerDeath_18
+  - first:
+      213: -1123409974657359349
+    second: RaunerDeath_19
+  - first:
+      213: 6402773839009134632
+    second: RaunerDeath_20
+  - first:
+      213: -2167864288730486943
+    second: RaunerDeath_21
+  - first:
+      213: -4514161276158836687
+    second: RaunerDeath_22
+  - first:
+      213: 1577964630139112925
+    second: RaunerDeath_23
+  - first:
+      213: 7832105707104485531
+    second: RaunerDeath_24
+  - first:
+      213: 1672501336518518588
+    second: RaunerDeath_25
+  - first:
+      213: -7383500543451850236
+    second: RaunerDeath_26
+  - first:
+      213: -6986193521913123934
+    second: RaunerDeath_27
+  - first:
+      213: -928011350808748860
+    second: RaunerDeath_28
+  - first:
+      213: 6720758871003438719
+    second: RaunerDeath_29
+  - first:
+      213: 8890299344134073682
+    second: RaunerDeath_30
+  - first:
+      213: 2997557456646286468
+    second: RaunerDeath_31
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: -1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Windows Store Apps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: RaunerDeath_0
+      rect:
+        serializedVersion: 2
+        x: 1630
+        y: 500
+        width: 118
+        height: 500
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7d9c5fcde2577ab50800000000000000
+      internalID: 6604376222698162647
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RaunerDeath_1
+      rect:
+        serializedVersion: 2
+        x: 95
+        y: 500
+        width: 118
+        height: 500
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 00e25f600b2425f80800000000000000
+      internalID: -8119353854397174272
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RaunerDeath_2
+      rect:
+        serializedVersion: 2
+        x: 420
+        y: 500
+        width: 118
+        height: 500
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 236acb1266b2875f0800000000000000
+      internalID: -758808819559258574
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RaunerDeath_3
+      rect:
+        serializedVersion: 2
+        x: 720
+        y: 500
+        width: 118
+        height: 500
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1e060a0223b301ed0800000000000000
+      internalID: -2445389511180394271
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RaunerDeath_4
+      rect:
+        serializedVersion: 2
+        x: 1028
+        y: 500
+        width: 118
+        height: 500
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cec4cd82204e0fc50800000000000000
+      internalID: 6697103343826521324
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RaunerDeath_5
+      rect:
+        serializedVersion: 2
+        x: 1329
+        y: 500
+        width: 118
+        height: 500
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ce395574ce2d7ef80800000000000000
+      internalID: -8077255494414789652
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RaunerDeath_6
+      rect:
+        serializedVersion: 2
+        x: 1920
+        y: 500
+        width: 118
+        height: 500
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 33efe9562d1a180d0800000000000000
+      internalID: -3422276316804743629
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RaunerDeath_7
+      rect:
+        serializedVersion: 2
+        x: 2221
+        y: 500
+        width: 118
+        height: 500
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 078e19c6fc7d549f0800000000000000
+      internalID: -484744098992756624
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RaunerDeath_8
+      rect:
+        serializedVersion: 2
+        x: 2523
+        y: 500
+        width: 118
+        height: 500
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2e225238f2de03f40800000000000000
+      internalID: 5706321516197913314
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RaunerDeath_9
+      rect:
+        serializedVersion: 2
+        x: 2808
+        y: 500
+        width: 118
+        height: 500
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 06709708b34fc8860800000000000000
+      internalID: 7533664813079660384
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RaunerDeath_10
+      rect:
+        serializedVersion: 2
+        x: 3128
+        y: 500
+        width: 118
+        height: 500
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7decb914a1a9366d0800000000000000
+      internalID: -2998383489338061097
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RaunerDeath_11
+      rect:
+        serializedVersion: 2
+        x: 3427
+        y: 500
+        width: 118
+        height: 500
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 506e55c36714b6b70800000000000000
+      internalID: 8893273865247385093
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RaunerDeath_12
+      rect:
+        serializedVersion: 2
+        x: 3735
+        y: 500
+        width: 118
+        height: 500
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1a2a28a3fd5aa5570800000000000000
+      internalID: 8456253628519457441
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RaunerDeath_13
+      rect:
+        serializedVersion: 2
+        x: 4014
+        y: 500
+        width: 118
+        height: 500
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fe4ad3218984a5b70800000000000000
+      internalID: 8888496632547353839
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RaunerDeath_14
+      rect:
+        serializedVersion: 2
+        x: 4314
+        y: 500
+        width: 118
+        height: 500
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2c85b46dc802bf0d0800000000000000
+      internalID: -3388078505403393854
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RaunerDeath_15
+      rect:
+        serializedVersion: 2
+        x: 4604
+        y: 500
+        width: 118
+        height: 500
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5789fc923dbd7d5d0800000000000000
+      internalID: -3037717723652056971
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RaunerDeath_16
+      rect:
+        serializedVersion: 2
+        x: 114
+        y: 0
+        width: 118
+        height: 500
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 942bea09102686e10800000000000000
+      internalID: 2191108977577603657
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RaunerDeath_17
+      rect:
+        serializedVersion: 2
+        x: 403
+        y: 0
+        width: 118
+        height: 500
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 129b74e49e89d3370800000000000000
+      internalID: 8303961415749187873
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RaunerDeath_18
+      rect:
+        serializedVersion: 2
+        x: 720
+        y: 0
+        width: 118
+        height: 500
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5037344b5778e34b0800000000000000
+      internalID: -5458776758721219835
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RaunerDeath_19
+      rect:
+        serializedVersion: 2
+        x: 1020
+        y: 0
+        width: 118
+        height: 500
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b02ea638498d860f0800000000000000
+      internalID: -1123409974657359349
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RaunerDeath_20
+      rect:
+        serializedVersion: 2
+        x: 1318
+        y: 0
+        width: 118
+        height: 500
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 828bd4b12e83bd850800000000000000
+      internalID: 6402773839009134632
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RaunerDeath_21
+      rect:
+        serializedVersion: 2
+        x: 1617
+        y: 0
+        width: 118
+        height: 500
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 167e6fc4ae23ae1e0800000000000000
+      internalID: -2167864288730486943
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RaunerDeath_22
+      rect:
+        serializedVersion: 2
+        x: 1920
+        y: 0
+        width: 110
+        height: 500
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1308ab38c3a7a51c0800000000000000
+      internalID: -4514161276158836687
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RaunerDeath_23
+      rect:
+        serializedVersion: 2
+        x: 2219
+        y: 0
+        width: 118
+        height: 500
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ddd829f787e06e510800000000000000
+      internalID: 1577964630139112925
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RaunerDeath_24
+      rect:
+        serializedVersion: 2
+        x: 2505
+        y: 0
+        width: 118
+        height: 500
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b90c543f4aa31bc60800000000000000
+      internalID: 7832105707104485531
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RaunerDeath_25
+      rect:
+        serializedVersion: 2
+        x: 2807
+        y: 0
+        width: 118
+        height: 500
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c376d81ba1be53710800000000000000
+      internalID: 1672501336518518588
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RaunerDeath_26
+      rect:
+        serializedVersion: 2
+        x: 3122
+        y: 0
+        width: 118
+        height: 500
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 40a16ac0069888990800000000000000
+      internalID: -7383500543451850236
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RaunerDeath_27
+      rect:
+        serializedVersion: 2
+        x: 3406
+        y: 0
+        width: 118
+        height: 500
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2abab3a910e0c0f90800000000000000
+      internalID: -6986193521913123934
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RaunerDeath_28
+      rect:
+        serializedVersion: 2
+        x: 3717
+        y: 0
+        width: 118
+        height: 500
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4cc938fd79a0f13f0800000000000000
+      internalID: -928011350808748860
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RaunerDeath_29
+      rect:
+        serializedVersion: 2
+        x: 4013
+        y: 0
+        width: 118
+        height: 500
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f7e1737c59ee44d50800000000000000
+      internalID: 6720758871003438719
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RaunerDeath_30
+      rect:
+        serializedVersion: 2
+        x: 4307
+        y: 0
+        width: 110
+        height: 500
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 25deff19620b06b70800000000000000
+      internalID: 8890299344134073682
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RaunerDeath_31
+      rect:
+        serializedVersion: 2
+        x: 4603
+        y: 0
+        width: 110
+        height: 500
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 48ca93500a6799920800000000000000
+      internalID: 2997557456646286468
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: db7eb7f2f93d92447a0039ca4be2ae76
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

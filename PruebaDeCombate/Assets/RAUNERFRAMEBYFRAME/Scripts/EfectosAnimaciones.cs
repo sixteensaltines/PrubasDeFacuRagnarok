@@ -61,6 +61,6 @@ public class EfectosAnimaciones : MonoBehaviour
 
     public void BloqueoSupremoDeAcciones() => raunerInputs.ControlSupremoInputs(true);
     public void DesbloqueoSupremoDeAcciones() => raunerInputs.ControlSupremoInputs(false);
-    public void DestruirObjeto() => Destroy(gameObject);  
+    public void DestruirObjeto() => Debug.Log("RaunerMuerto"); 
 
 }

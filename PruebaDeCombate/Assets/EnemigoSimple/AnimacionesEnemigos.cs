@@ -20,6 +20,8 @@ public class AnimacionesEnemigos : MonoBehaviour
         }
     }
 
+    public void OffAtaque() => anim.SetBool("Ataque", false);
+
     public void AnimBloqueo_Ocasional(bool ActivarODesactivar) => anim.SetBool("BloqueoOcasional", ActivarODesactivar);
 
     public void AnimBloqueo_Random(bool ActivarODesactivar) => anim.SetBool("BloqueoRandom", ActivarODesactivar);

@@ -32,7 +32,8 @@ public class DanioYVidaRauner : GeneralPlayer
         }
     }
 
-    private bool EmpujeOn;
+    [HideInInspector]
+    public bool EmpujeOn;
 
     public float FuerzaEmpuje;
     public float ContadorEmpujeDefault;
@@ -49,32 +50,40 @@ public class DanioYVidaRauner : GeneralPlayer
 
     void Empuje()
     {
-        //Dash
-        if (!flag1)
+        if (!GetMuere()) //Se muere con el proximo ataque?
         {
-            contadorEmpuje = ContadorEmpujeDefault; //Variable de dash en deulfat
-            flag1 = true;
-        }
+            //Dash
+            if (!flag1)
+            {
+                contadorEmpuje = ContadorEmpujeDefault; //Variable de dash en deulfat
+                flag1 = true;
+            }
 
-        if (puedenEmpujarlo)
+            if (puedenEmpujarlo)
+            {
+                LlegaDanio();
+
+                if (transform.eulerAngles.y == 0) //Mira a la derecha
+                {
+                    derecha = false;
+                    izquierda = true;
+                }
+                if (transform.eulerAngles.y == 180) //Mira a la izquierda
+                {
+                    izquierda = false;
+                    derecha = true;
+                }
+            }
+
+            if (derecha || izquierda)
+            {
+                EjecutoDesplazamiento();
+            }
+        }
+        else
         {
             LlegaDanio();
-
-            if (transform.eulerAngles.y == 0) //Mira a la derecha
-            {
-                derecha = false;
-                izquierda = true;
-            }
-            if (transform.eulerAngles.y == 180) //Mira a la izquierda
-            {
-                izquierda = false;
-                derecha = true;
-            }
-        }
-
-        if (derecha || izquierda)
-        {
-            EjecutoDesplazamiento();
+           
         }
     }
     void EjecutoDesplazamiento()
@@ -138,6 +147,12 @@ public class DanioYVidaRauner : GeneralPlayer
             anim.SetBool("RaunerMuerte", true);
         }
         else { }//Danio
+    }
+
+    private bool GetMuere() //Con el proximo danio muere! 
+    {
+        if (Vida == 1) return true;
+        else return false;
     }
 }
 

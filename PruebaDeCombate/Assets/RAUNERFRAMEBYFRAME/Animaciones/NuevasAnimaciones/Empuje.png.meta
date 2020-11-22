@@ -1,0 +1,550 @@
+fileFormatVersion: 2
+guid: a01e0c99e8e7731498440cce616c4ccb
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -7672215606503377761
+    second: Empuje_0
+  - first:
+      213: 1696478953809908600
+    second: Empuje_1
+  - first:
+      213: -7242023904724497105
+    second: Empuje_2
+  - first:
+      213: 8854845139443265851
+    second: Empuje_3
+  - first:
+      213: 5024540838010616188
+    second: Empuje_4
+  - first:
+      213: -5209814218728900725
+    second: Empuje_5
+  - first:
+      213: -6864098838264661055
+    second: Empuje_6
+  - first:
+      213: -3203846399791070695
+    second: Empuje_7
+  - first:
+      213: -4772657840267616382
+    second: Empuje_8
+  - first:
+      213: -8012178304350154412
+    second: Empuje_9
+  - first:
+      213: 3852904510482212550
+    second: Empuje_10
+  - first:
+      213: 9010058262973998029
+    second: Empuje_11
+  - first:
+      213: 2876414441093015558
+    second: Empuje_12
+  - first:
+      213: -7367156911151462135
+    second: Empuje_13
+  - first:
+      213: 2323939139875713979
+    second: Empuje_14
+  - first:
+      213: -5779286768551624171
+    second: Empuje_15
+  - first:
+      213: 7368067219047441188
+    second: Empuje_16
+  - first:
+      213: 3765256755449881750
+    second: Empuje_17
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: -1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Windows Store Apps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Empuje_0
+      rect:
+        serializedVersion: 2
+        x: 119
+        y: 0
+        width: 151
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f9478261e80d68590800000000000000
+      internalID: -7672215606503377761
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Empuje_1
+      rect:
+        serializedVersion: 2
+        x: 374
+        y: 0
+        width: 151
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 87314c2ce9a1b8710800000000000000
+      internalID: 1696478953809908600
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Empuje_2
+      rect:
+        serializedVersion: 2
+        x: 674
+        y: 0
+        width: 151
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f2d4208e0a92f7b90800000000000000
+      internalID: -7242023904724497105
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Empuje_3
+      rect:
+        serializedVersion: 2
+        x: 991
+        y: 0
+        width: 151
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b313c954dbab2ea70800000000000000
+      internalID: 8854845139443265851
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Empuje_4
+      rect:
+        serializedVersion: 2
+        x: 1277
+        y: 0
+        width: 151
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c79f0116541cab540800000000000000
+      internalID: 5024540838010616188
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Empuje_5
+      rect:
+        serializedVersion: 2
+        x: 1585
+        y: 0
+        width: 151
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b8772e2229503b7b0800000000000000
+      internalID: -5209814218728900725
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Empuje_6
+      rect:
+        serializedVersion: 2
+        x: 1888
+        y: 0
+        width: 151
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1cb30126972ddb0a0800000000000000
+      internalID: -6864098838264661055
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Empuje_7
+      rect:
+        serializedVersion: 2
+        x: 2189
+        y: 0
+        width: 151
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9120a819ca6a983d0800000000000000
+      internalID: -3203846399791070695
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Empuje_8
+      rect:
+        serializedVersion: 2
+        x: 2491
+        y: 0
+        width: 151
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 28f9d5c1bfc14cdb0800000000000000
+      internalID: -4772657840267616382
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Empuje_9
+      rect:
+        serializedVersion: 2
+        x: 2793
+        y: 0
+        width: 157
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4511e1458460fc090800000000000000
+      internalID: -8012178304350154412
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Empuje_10
+      rect:
+        serializedVersion: 2
+        x: 3083
+        y: 0
+        width: 157
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6c6eacc1d34487530800000000000000
+      internalID: 3852904510482212550
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Empuje_11
+      rect:
+        serializedVersion: 2
+        x: 3403
+        y: 0
+        width: 157
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dc3632ab0482a0d70800000000000000
+      internalID: 9010058262973998029
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Empuje_12
+      rect:
+        serializedVersion: 2
+        x: 3703
+        y: 0
+        width: 157
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 608272cb1b31be720800000000000000
+      internalID: 2876414441093015558
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Empuje_13
+      rect:
+        serializedVersion: 2
+        x: 3992
+        y: 0
+        width: 157
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 909c04a72d992c990800000000000000
+      internalID: -7367156911151462135
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Empuje_14
+      rect:
+        serializedVersion: 2
+        x: 4301
+        y: 0
+        width: 157
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bb33befb55a404020800000000000000
+      internalID: 2323939139875713979
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Empuje_15
+      rect:
+        serializedVersion: 2
+        x: 4585
+        y: 0
+        width: 157
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5128d51dd49dbcfa0800000000000000
+      internalID: -5779286768551624171
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Empuje_16
+      rect:
+        serializedVersion: 2
+        x: 4917
+        y: 0
+        width: 157
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 423e5881912a04660800000000000000
+      internalID: 7368067219047441188
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Empuje_17
+      rect:
+        serializedVersion: 2
+        x: 5195
+        y: 0
+        width: 157
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 694eab4e111e04430800000000000000
+      internalID: 3765256755449881750
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: d7f9ef3791ef0d9499ef8ca5715c69c4
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

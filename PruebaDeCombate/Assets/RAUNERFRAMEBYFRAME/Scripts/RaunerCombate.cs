@@ -18,10 +18,9 @@ public class RaunerCombate : GeneralPlayer
     void Update()
     {
         Block();
+        Combo();
         //if(efectosAnimaciones.EsPosibleParry)Parry(); //ActivadoDesdeAnimaciones
     }
-
-    void FixedUpdate() => Combo();
 
     void Block()
     {
@@ -34,7 +33,7 @@ public class RaunerCombate : GeneralPlayer
             raunerInputs.BlockJump = true;
             raunerInputs.BlockWalk = true;
 
-            gameObject.layer = LayerPlayerBloqueando; //PlayerBloqueando
+            gameObject.layer = 14; //PlayerBloqueando
         }
         if(raunerInputs.BU_Block)
         {
@@ -43,7 +42,7 @@ public class RaunerCombate : GeneralPlayer
             raunerInputs.BlockJump = false;
             raunerInputs.BlockWalk = false;
 
-            gameObject.layer = LayerPlayer; //Player
+            gameObject.layer = 12; //Player
         }
     }
 
