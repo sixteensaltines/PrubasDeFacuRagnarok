@@ -107,9 +107,9 @@ TextureImporter:
       name: Transicion1_0
       rect:
         serializedVersion: 2
-        x: 80
+        x: 101
         y: 0
-        width: 215
+        width: 138
         height: 500
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -127,7 +127,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 46ec0b5ca323e16419ce346278169b20
     internalID: 0
     vertices: []
     indices: 

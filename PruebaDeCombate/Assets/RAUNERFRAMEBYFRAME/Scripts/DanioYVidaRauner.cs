@@ -16,66 +16,87 @@ public class DanioYVidaRauner : GeneralPlayer
         anim = GetComponentInChildren<Animator>();
     }
 
-    private void Update()
+    void Update()
     {
-        if (EmpujeOn) Empuje();
+        if (EmpujeOn) EjecutoDesplazamiento();
     }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Enemigo") && DetectaSuelo() && !EmpujeOn)
+        if (collision.CompareTag("Enemigo") && DetectaSuelo() && !EmpujeActivado_derecha && !EmpujeActivado_izquierda)
         {
-            EmpujeOn = true;
+            Empuje(false);
         }
-        if (collision.CompareTag("Enemigo") && !DetectaSuelo() && !EmpujeOn)
+        if (collision.CompareTag("Enemigo") && !DetectaSuelo() && !EmpujeActivado_izquierda &&!EmpujeActivado_derecha)
         {
             LlegaDanio();
         }
     }
-
-    [HideInInspector]
-    public bool EmpujeOn;
 
     public float FuerzaEmpuje;
     public float ContadorEmpujeDefault;
     public float CadenciaEmpuje;
 
     private float contadorEmpuje;
-
-    private bool izquierda;
-    private bool derecha;
-
+    private bool EmpujeActivado_izquierda;
+    private bool EmpujeActivado_derecha;
     private bool puedenEmpujarlo = true;
 
     private bool flag1;
 
-    void Empuje()
+    [HideInInspector]
+    public bool EmpujeOn;
+
+    /// <summary>
+    /// Empuje por colision o Empuje por danio!, si es por danio, el primer valor debe ser true, si no es false. 
+    /// </summary>
+    /// <param name="AQueLadoMiraElEnemigo"></param>
+    public void Empuje(bool EsPorColisionDanio, string AQueLadoMiraElEnemigo="") //De que lado lo atacan? 
     {
         if (!GetMuere()) //Se muere con el proximo ataque?
         {
-            //Dash
+            EmpujeOn = true;
+
             if (!flag1)
             {
                 contadorEmpuje = ContadorEmpujeDefault; //Variable de dash en deulfat
                 flag1 = true;
             }
 
-            if (puedenEmpujarlo)
+            if (puedenEmpujarlo && !EsPorColisionDanio)
             {
                 LlegaDanio();
 
                 if (transform.eulerAngles.y == 0) //Mira a la derecha
                 {
-                    derecha = false;
-                    izquierda = true;
+                    EmpujeActivado_derecha = false;
+                    EmpujeActivado_izquierda = true;
                 }
                 if (transform.eulerAngles.y == 180) //Mira a la izquierda
                 {
-                    izquierda = false;
-                    derecha = true;
+                    EmpujeActivado_izquierda = false;
+                    EmpujeActivado_derecha = true;
+                }
+            }
+            if (puedenEmpujarlo && EsPorColisionDanio)
+            {
+                if (AQueLadoMiraElEnemigo == "derecha")
+                {
+                    transform.eulerAngles = new Vector3(0, 180, 0);
+
+                    EmpujeActivado_izquierda = false;
+                    EmpujeActivado_derecha = true;
+                }
+                if (AQueLadoMiraElEnemigo == "izquierda")
+                {
+                    transform.eulerAngles = new Vector3(0, 0, 0);
+
+                    EmpujeActivado_derecha = false;
+                    EmpujeActivado_izquierda = true;
                 }
             }
 
-            if (derecha || izquierda)
+            if (EmpujeActivado_derecha || EmpujeActivado_izquierda)
             {
                 EjecutoDesplazamiento();
             }
@@ -90,12 +111,11 @@ public class DanioYVidaRauner : GeneralPlayer
     {
         if (contadorEmpuje <= 0)
         {
+            EmpujeOn = false; //Apago el empuje para el Update
 
-            izquierda = false;
-            derecha = false;
+            EmpujeActivado_izquierda = false;
+            EmpujeActivado_derecha = false;
             rb.velocity = Vector2.zero;
-
-            EmpujeOn = false; //Asi cancela el empuje! 
 
             Invoke("In_SaleDelStun", CadenciaEmpuje);
         }
@@ -113,13 +133,13 @@ public class DanioYVidaRauner : GeneralPlayer
             contadorEmpuje -= Time.deltaTime;
 
 
-            if (izquierda)
+            if (EmpujeActivado_izquierda)
             {
-                rb.velocity = Vector2.left * FuerzaEmpuje * Time.deltaTime;
+                rb.velocity = Vector2.left * FuerzaEmpuje;
             }
-            if (derecha)
+            if (EmpujeActivado_derecha)
             {
-                rb.velocity = Vector2.right * FuerzaEmpuje * Time.deltaTime;
+                rb.velocity = Vector2.right * FuerzaEmpuje;
             }
         }
     }

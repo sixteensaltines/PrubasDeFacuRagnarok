@@ -22,9 +22,13 @@ public class RaunerMovimiento : GeneralPlayer
         CambiaLadoSkin(raunerInputs.BH_Right, raunerInputs.BH_Left);
         Salto(); //Con sus animaciones respectivas
         CambioDeGravedad(rb);
-        Dash(); //Con sus animaciones respectivas
+        Dash();
     }
 
+    void FixedUpdate()
+    {
+ //Con sus animaciones respectivas
+    }
 
     //Caminata
     public float VelocidadCaminata;
@@ -76,6 +80,8 @@ public class RaunerMovimiento : GeneralPlayer
     private bool puedeDesplazarse = true;
 
     private bool flag1;
+
+
     void Dash()
     {
         if (!flag1)
@@ -138,11 +144,11 @@ public class RaunerMovimiento : GeneralPlayer
             contadorDesplazamiento -= Time.deltaTime;
             if (izquierda)
             {
-                rb.velocity = Vector2.left * FuerzaDesplazamiento * Time.deltaTime;
+                rb.velocity = Vector2.left * FuerzaDesplazamiento;
             }
             if (derecha)
             {
-                rb.velocity = Vector2.right * FuerzaDesplazamiento * Time.deltaTime;
+                rb.velocity = Vector2.right * FuerzaDesplazamiento;
             }
         }
     }

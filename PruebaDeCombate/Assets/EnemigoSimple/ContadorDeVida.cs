@@ -8,7 +8,7 @@ public class ContadorDeVida : AnimacionesEnemigos
     
     void Start()
     {
-        anim = GetComponent<Animator>();
+        anim = GetComponentInChildren<Animator>();
     }
 
     public void LlegaDanio()

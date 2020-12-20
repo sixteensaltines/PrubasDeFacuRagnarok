@@ -1,0 +1,766 @@
+fileFormatVersion: 2
+guid: 51caaee93ae2e3c4198ef3cfe0dba122
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 1333222073027898734
+    second: ComiezaACaminar_0
+  - first:
+      213: 5201839307727415549
+    second: ComiezaACaminar_1
+  - first:
+      213: -152329576738705946
+    second: ComiezaACaminar_2
+  - first:
+      213: -3208081922714076398
+    second: ComiezaACaminar_3
+  - first:
+      213: -2797823549260817718
+    second: ComiezaACaminar_4
+  - first:
+      213: 7063223660359348468
+    second: ComiezaACaminar_5
+  - first:
+      213: 2820138541470173399
+    second: ComiezaACaminar_6
+  - first:
+      213: -1310636245673206042
+    second: ComiezaACaminar_7
+  - first:
+      213: 2043761730362896443
+    second: ComiezaACaminar_8
+  - first:
+      213: -5431568675181885564
+    second: ComiezaACaminar_9
+  - first:
+      213: -6919649331246358843
+    second: ComiezaACaminar_10
+  - first:
+      213: 6259107644894928012
+    second: ComiezaACaminar_11
+  - first:
+      213: 1065057214182428506
+    second: ComiezaACaminar_12
+  - first:
+      213: -4369814720741509189
+    second: ComiezaACaminar_13
+  - first:
+      213: 7344330620729380713
+    second: ComiezaACaminar_14
+  - first:
+      213: 1060334650404014171
+    second: ComiezaACaminar_15
+  - first:
+      213: -8949476765954796813
+    second: ComiezaACaminar_16
+  - first:
+      213: -101778064596604426
+    second: ComiezaACaminar_17
+  - first:
+      213: 5911222761193494678
+    second: ComiezaACaminar_18
+  - first:
+      213: -8846071764469853784
+    second: ComiezaACaminar_19
+  - first:
+      213: 5374589415662061188
+    second: ComiezaACaminar_20
+  - first:
+      213: -186078182679244520
+    second: ComiezaACaminar_21
+  - first:
+      213: -1510564804078025426
+    second: ComiezaACaminar_22
+  - first:
+      213: -8518119399256986606
+    second: ComiezaACaminar_23
+  - first:
+      213: -2707296042349408491
+    second: ComiezaACaminar_24
+  - first:
+      213: 3490960214028240278
+    second: ComiezaACaminar_25
+  - first:
+      213: 4431510322395428119
+    second: ComiezaACaminar_26
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: -1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Windows Store Apps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: ComiezaACaminar_0
+      rect:
+        serializedVersion: 2
+        x: 62
+        y: 500
+        width: 207
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e6da985696e808210800000000000000
+      internalID: 1333222073027898734
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ComiezaACaminar_1
+      rect:
+        serializedVersion: 2
+        x: 362
+        y: 500
+        width: 207
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: df8a1c33a45a03840800000000000000
+      internalID: 5201839307727415549
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ComiezaACaminar_2
+      rect:
+        serializedVersion: 2
+        x: 662
+        y: 500
+        width: 207
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6ed24b99e01d2edf0800000000000000
+      internalID: -152329576738705946
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ComiezaACaminar_3
+      rect:
+        serializedVersion: 2
+        x: 965
+        y: 500
+        width: 207
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 21b764a0d7a9a73d0800000000000000
+      internalID: -3208081922714076398
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ComiezaACaminar_4
+      rect:
+        serializedVersion: 2
+        x: 1292
+        y: 500
+        width: 207
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aca16123e422c29d0800000000000000
+      internalID: -2797823549260817718
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ComiezaACaminar_5
+      rect:
+        serializedVersion: 2
+        x: 1580
+        y: 500
+        width: 207
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4f07adc1f7c950260800000000000000
+      internalID: 7063223660359348468
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ComiezaACaminar_6
+      rect:
+        serializedVersion: 2
+        x: 1880
+        y: 500
+        width: 207
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7d8c7bdcf05232720800000000000000
+      internalID: 2820138541470173399
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ComiezaACaminar_7
+      rect:
+        serializedVersion: 2
+        x: 2166
+        y: 500
+        width: 207
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6ee95e2574fafcde0800000000000000
+      internalID: -1310636245673206042
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ComiezaACaminar_8
+      rect:
+        serializedVersion: 2
+        x: 2467
+        y: 500
+        width: 207
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b3071d72776ec5c10800000000000000
+      internalID: 2043761730362896443
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ComiezaACaminar_9
+      rect:
+        serializedVersion: 2
+        x: 2761
+        y: 500
+        width: 207
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 48705ae41113f94b0800000000000000
+      internalID: -5431568675181885564
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ComiezaACaminar_10
+      rect:
+        serializedVersion: 2
+        x: 3066
+        y: 500
+        width: 207
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5ce9ac8589778ff90800000000000000
+      internalID: -6919649331246358843
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ComiezaACaminar_11
+      rect:
+        serializedVersion: 2
+        x: 3369
+        y: 500
+        width: 207
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c8cd4e8ad31dcd650800000000000000
+      internalID: 6259107644894928012
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ComiezaACaminar_12
+      rect:
+        serializedVersion: 2
+        x: 3663
+        y: 500
+        width: 207
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a5f8fc4b4e7d7ce00800000000000000
+      internalID: 1065057214182428506
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ComiezaACaminar_13
+      rect:
+        serializedVersion: 2
+        x: 3965
+        y: 500
+        width: 207
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bb7fdebe9ac4b53c0800000000000000
+      internalID: -4369814720741509189
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ComiezaACaminar_14
+      rect:
+        serializedVersion: 2
+        x: 4294
+        y: 500
+        width: 207
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 96f4991a9cd4ce560800000000000000
+      internalID: 7344330620729380713
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ComiezaACaminar_15
+      rect:
+        serializedVersion: 2
+        x: 4549
+        y: 500
+        width: 207
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b588e542fb017be00800000000000000
+      internalID: 1060334650404014171
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ComiezaACaminar_16
+      rect:
+        serializedVersion: 2
+        x: 3073
+        y: 0
+        width: 207
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3f217a73c421dc380800000000000000
+      internalID: -8949476765954796813
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ComiezaACaminar_17
+      rect:
+        serializedVersion: 2
+        x: 2761
+        y: 0
+        width: 207
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6f9eac5b369669ef0800000000000000
+      internalID: -101778064596604426
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ComiezaACaminar_18
+      rect:
+        serializedVersion: 2
+        x: 2465
+        y: 0
+        width: 207
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 698542548c1e80250800000000000000
+      internalID: 5911222761193494678
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ComiezaACaminar_19
+      rect:
+        serializedVersion: 2
+        x: 2164
+        y: 0
+        width: 207
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8a1592549907c3580800000000000000
+      internalID: -8846071764469853784
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ComiezaACaminar_20
+      rect:
+        serializedVersion: 2
+        x: 1892
+        y: 0
+        width: 207
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4868c160990669a40800000000000000
+      internalID: 5374589415662061188
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ComiezaACaminar_21
+      rect:
+        serializedVersion: 2
+        x: 1548
+        y: 0
+        width: 207
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 81114f4f0eaea6df0800000000000000
+      internalID: -186078182679244520
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ComiezaACaminar_22
+      rect:
+        serializedVersion: 2
+        x: 1277
+        y: 0
+        width: 207
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e25c8b26055690be0800000000000000
+      internalID: -1510564804078025426
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ComiezaACaminar_23
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 0
+        width: 207
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 21c6cec898f89c980800000000000000
+      internalID: -8518119399256986606
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ComiezaACaminar_24
+      rect:
+        serializedVersion: 2
+        x: 693
+        y: 0
+        width: 207
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 51f41f5e790cd6ad0800000000000000
+      internalID: -2707296042349408491
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ComiezaACaminar_25
+      rect:
+        serializedVersion: 2
+        x: 377
+        y: 0
+        width: 207
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 695cc2a91d1627030800000000000000
+      internalID: 3490960214028240278
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ComiezaACaminar_26
+      rect:
+        serializedVersion: 2
+        x: 59
+        y: 0
+        width: 207
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7153bd8b823ef7d30800000000000000
+      internalID: 4431510322395428119
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: f07decefbbe20884097ee501be40849b
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

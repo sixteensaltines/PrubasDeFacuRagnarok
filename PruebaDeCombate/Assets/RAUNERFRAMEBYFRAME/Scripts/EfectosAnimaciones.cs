@@ -7,11 +7,14 @@ public class EfectosAnimaciones : MonoBehaviour
     private RaunerInputs raunerInputs;
     private RaunerCombate raunerCombate;
     private Animator anim;
+    public GameObject SkinFalso; //Skin que nos muestra donde esta el personaje!
 
     public bool PosibleGolpe;
 
     void Start()
     {
+        SkinFalso.GetComponent<SpriteRenderer>().enabled = false;
+
         raunerInputs = GetComponentInParent<RaunerInputs>();
         raunerCombate = GetComponentInParent<RaunerCombate>();
         anim = GetComponent<Animator>();

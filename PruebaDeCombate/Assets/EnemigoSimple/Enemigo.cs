@@ -29,6 +29,12 @@ public class Enemigo : AnimacionesEnemigos
         else transform.eulerAngles = new Vector3(0, 180, 0);
     }
 
+    private string AQueLadoMira()
+    {
+        if (transform.eulerAngles.y == 180) return "izquierda";
+        else return "derecha";
+    }
+
     public float VelocidadMovimiento;
     void EjecutaMovimiento(Vector3 PlayerPosition)
     {
@@ -178,9 +184,15 @@ public class Enemigo : AnimacionesEnemigos
     private bool esPosibleBloquear = true;
     public void BloqueoOcasional(float PlayerAtaque, Vector3 PlayerPosition)
     {
+
         if (PlayerAtaque > 0 && esPosibleBloquear && Vector3.Distance(transform.position, PlayerPosition) < RANGOATAQUE)
         {
             if (ProbabilidadBloqueoOcasional >= Random.Range(1, 100)) BloqueaAtaque();
+            else
+            {//En caso de que no haya caido en el random, bloqueo la posibilidad de buscar hasta que pase un tiempo
+                esPosibleBloquear = false;
+                Invoke("In_CancelarBloqueoOcasional", Random.Range(0.9f, 2f));
+            }
         }
     }
     void BloqueaAtaque()
@@ -398,7 +410,7 @@ public class Enemigo : AnimacionesEnemigos
 
     #region VARIABLES DE ACCION "Ataque"
     private bool Flag2;
-    #endregion
+    #endregion 
     void AccionAtaque()
     {
         if (!Flag2)
@@ -411,13 +423,14 @@ public class Enemigo : AnimacionesEnemigos
     public Transform LugarDeAtaque;
     public LayerMask LayerDelPlayer;
     public float RangoDeAtaque;
+
     public void EnviaDanio()
     {
         Collider2D[] DanioAPlayer = Physics2D.OverlapCircleAll(LugarDeAtaque.position, RangoDeAtaque, LayerDelPlayer);
 
         foreach (Collider2D collider in DanioAPlayer)
         {
-            collider.GetComponent<DanioYVidaRauner>().EmpujeOn = true; //Empuja y saca vida! 
+            collider.GetComponent<DanioYVidaRauner>().Empuje(true,AQueLadoMira()); //Empuja y saca vida, o mata!
         }
     }
 
@@ -428,10 +441,14 @@ public class Enemigo : AnimacionesEnemigos
 
         OffAtaque();
 
-        anim.SetBool("Caminata", false);
+        AnimCaminata(false);
+        AnimBloqueo_Random(false);
+        AnimEsquive(false);
+
+        /*anim.SetBool("Caminata", false);
         anim.SetBool("Ataque", false);
         anim.SetBool("BloqueoRandom", false);
-        anim.SetBool("Esquive", false);
+        anim.SetBool("Esquive", false);*/
     }
 
 

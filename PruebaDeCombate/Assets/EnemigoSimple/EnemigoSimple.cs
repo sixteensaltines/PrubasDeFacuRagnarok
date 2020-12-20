@@ -9,8 +9,9 @@ public class EnemigoSimple : Enemigo
 
     void Start()
     {
+
         rbEnemigo = GetComponent<Rigidbody2D>();
-        anim = GetComponent<Animator>();
+        anim = GetComponentInChildren<Animator>();
     }
     void Update()
     {
