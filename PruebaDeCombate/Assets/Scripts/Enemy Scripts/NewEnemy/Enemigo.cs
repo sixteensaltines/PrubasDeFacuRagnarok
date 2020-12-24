@@ -14,6 +14,8 @@ public class Enemigo : AnimacionesEnemigos
     [HideInInspector]
     public LayerMask LayerEnemigoBloqueando = 15;
 
+    public GameObject CollidersEnemigo;
+
     private float rangoVision = 11.5f;
     private const float RANGOATAQUE = 2.3f;
 
@@ -23,10 +25,14 @@ public class Enemigo : AnimacionesEnemigos
         EjecutaMovimiento(PlayerPosition);
     }
 
+    private bool bloqueaRotacion;
     public void RotacionSkinEnemigo(Vector3 PlayerPosition)
     {
-        if (transform.position.x < PlayerPosition.x) transform.eulerAngles = new Vector3(0, 0, 0);
-        else transform.eulerAngles = new Vector3(0, 180, 0);
+        if (!bloqueaRotacion)
+        {
+            if (transform.position.x < PlayerPosition.x) transform.eulerAngles = new Vector3(0, 0, 0);
+            else transform.eulerAngles = new Vector3(0, 180, 0);
+        }
     }
 
     private string AQueLadoMira()
@@ -197,7 +203,7 @@ public class Enemigo : AnimacionesEnemigos
     }
     void BloqueaAtaque()
     {
-        gameObject.layer = LayerEnemigoBloqueando; //EnemigoBloqueando
+        CollidersEnemigo.layer = LayerEnemigoBloqueando; //EnemigoBloqueando
         esPosibleBloquear = false;
         AnimBloqueo_Ocasional(true);
         Invoke("In_CancelarBloqueoOcasional", Random.Range(0.9f, 2f));
@@ -205,7 +211,7 @@ public class Enemigo : AnimacionesEnemigos
 
     void In_CancelarBloqueoOcasional()
     {
-        gameObject.layer = LayerEnemigo; //Enemigo
+        CollidersEnemigo.layer = LayerEnemigo; //Enemigo
         esPosibleBloquear = true;
         AnimBloqueo_Ocasional(false);
     }
@@ -451,9 +457,6 @@ public class Enemigo : AnimacionesEnemigos
         anim.SetBool("Esquive", false);*/
     }
 
-
-
-
     #region VARIABLES DE ACCION "Bloqueo"
     private bool flag3;
     private float cuantoTiempoBloqueando;
@@ -468,19 +471,25 @@ public class Enemigo : AnimacionesEnemigos
         if (cuantoTiempoBloqueando >= 0)
         {
             cuantoTiempoBloqueando -= Time.deltaTime;
-            gameObject.layer = LayerEnemigoBloqueando;
+            CollidersEnemigo.layer = LayerEnemigoBloqueando;
             AnimBloqueo_Random(true);
         }
         else
         {
-            gameObject.layer = LayerEnemigo;
+            CollidersEnemigo.layer = LayerEnemigo;
             flag3 = false;
             AccionEncontrada = false;
             AnimBloqueo_Random(false);
         }
     }
 
+    public void AccionesDeMuerte()
+    {
+        CollidersEnemigo.SetActive(false);
+        bloqueaRotacion = true;
+        GetComponent<Rigidbody2D>().gravityScale = 0;
 
+    }
 
     void OnDrawGizmosSelected()
     {

@@ -24,6 +24,7 @@ public class ContadorDeVida : AnimacionesEnemigos
         Vida--;
         if (Vida <= 0)
         {
+            GetComponent<Enemigo>().AccionesDeMuerte();
             AnimMuerte();
         }
     }

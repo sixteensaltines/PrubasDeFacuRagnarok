@@ -86,8 +86,7 @@ public class RaunerCombate : GeneralPlayer
 
         foreach (Collider2D collider in DanioAEnemigo)
         {
-            collider.GetComponent<ContadorDeVida>().LlegaDanio();
-
+            collider.GetComponentInParent<ContadorDeVida>().LlegaDanio();
         }
     }
 
