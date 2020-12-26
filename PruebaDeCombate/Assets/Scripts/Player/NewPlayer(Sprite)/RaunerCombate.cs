@@ -78,27 +78,34 @@ public class RaunerCombate : GeneralPlayer
     }
 
     public Transform LugarDeAtaque;
-    public LayerMask EnemigoSinBloquear;
+    public LayerMask Layer_EnemigoSinBloquear;
+    public LayerMask Layer_EnemigoBloqueando;
     public float RangoDeAtaque;
     public void EnviaDanio()
     {
-        Collider2D[] DanioAEnemigo = Physics2D.OverlapCircleAll(LugarDeAtaque.position, RangoDeAtaque, EnemigoSinBloquear);
+        DetectaEnemigo();
+        DetectaEnemigoBloqueando();
+    }
+
+    private void DetectaEnemigo()
+    {
+        Collider2D[] DanioAEnemigo = Physics2D.OverlapCircleAll(LugarDeAtaque.position, RangoDeAtaque, Layer_EnemigoSinBloquear);
 
         foreach (Collider2D collider in DanioAEnemigo)
         {
+            EfectosDelCombo(NumeroDeAtaque, false);
             collider.GetComponentInParent<ContadorDeVida>().LlegaDanio();
         }
     }
 
-
-    private void EnemigoBloqueando()
+    private void DetectaEnemigoBloqueando()
     {
-        Collider2D[] DanioAEnemigo = Physics2D.OverlapCircleAll(LugarDeAtaque.position, RangoDeAtaque, LayerEnemigoBloqueando);
+        Collider2D[] DanioAEnemigo = Physics2D.OverlapCircleAll(LugarDeAtaque.position, RangoDeAtaque, Layer_EnemigoBloqueando);
 
         foreach (Collider2D collider in DanioAEnemigo)
         {
-            
-        }
+            EfectosDelCombo(NumeroDeAtaque, true);
+        }       
     }
   
 
