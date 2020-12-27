@@ -25,7 +25,7 @@ public class DanioYVidaRauner : GeneralPlayer
     {
         if (collision.CompareTag("Enemigo") && DetectaSuelo() && !EmpujeActivado_derecha && !EmpujeActivado_izquierda)
         {
-            Empuje(false);
+            if (gameObject.layer == LayerPlayer) Empuje(true);
         }
         if (collision.CompareTag("Enemigo") && !DetectaSuelo() && !EmpujeActivado_izquierda &&!EmpujeActivado_derecha)
         {
@@ -67,19 +67,6 @@ public class DanioYVidaRauner : GeneralPlayer
             {
                 LlegaDanio();
 
-                if (transform.eulerAngles.y == 0) //Mira a la derecha
-                {
-                    EmpujeActivado_derecha = false;
-                    EmpujeActivado_izquierda = true;
-                }
-                if (transform.eulerAngles.y == 180) //Mira a la izquierda
-                {
-                    EmpujeActivado_izquierda = false;
-                    EmpujeActivado_derecha = true;
-                }
-            }
-            if (puedenEmpujarlo && EsPorColisionDanio)
-            {
                 if (AQueLadoMiraElEnemigo == "derecha")
                 {
                     transform.eulerAngles = new Vector3(0, 180, 0);
@@ -93,6 +80,22 @@ public class DanioYVidaRauner : GeneralPlayer
 
                     EmpujeActivado_derecha = false;
                     EmpujeActivado_izquierda = true;
+                }
+
+            }
+            if (puedenEmpujarlo && EsPorColisionDanio)
+            {
+                LlegaDanio();
+
+                if (transform.eulerAngles.y == 0) //Mira a la derecha
+                {
+                    EmpujeActivado_derecha = false;
+                    EmpujeActivado_izquierda = true;
+                }
+                if (transform.eulerAngles.y == 180) //Mira a la izquierda
+                {
+                    EmpujeActivado_izquierda = false;
+                    EmpujeActivado_derecha = true;
                 }
             }
 

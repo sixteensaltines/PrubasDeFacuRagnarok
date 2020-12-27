@@ -436,7 +436,7 @@ public class Enemigo : AnimacionesEnemigos
 
         foreach (Collider2D collider in DanioAPlayer)
         {
-            collider.GetComponent<DanioYVidaRauner>().Empuje(true,AQueLadoMira()); //Empuja y saca vida, o mata!
+            collider.GetComponent<DanioYVidaRauner>().Empuje(false,AQueLadoMira()); //Empuja y saca vida, o mata!
         }
     }
 
