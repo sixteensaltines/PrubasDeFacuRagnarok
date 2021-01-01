@@ -7,12 +7,15 @@ public class RaunerCombate : GeneralPlayer
     private Animator anim;
     private RaunerInputs raunerInputs;
 
-    private EfectosAnimaciones efectosAnimaciones;
+    private EfectosScripteadosAnimaciones efectosAnimaciones;
+
+    public GameObject CollidersObject;
+
     void Start()
     {
         anim = GetComponentInChildren<Animator>();
         raunerInputs = GetComponent<RaunerInputs>();
-        efectosAnimaciones = GetComponentInChildren<EfectosAnimaciones>();
+        efectosAnimaciones = GetComponentInChildren<EfectosScripteadosAnimaciones>();
     }
 
     void Update()
@@ -33,7 +36,7 @@ public class RaunerCombate : GeneralPlayer
             raunerInputs.BlockJump = true;
             raunerInputs.BlockWalk = true;
 
-            gameObject.layer = 14; //PlayerBloqueando
+            CollidersObject.layer = 14; //PlayerBloqueando
         }
         if(raunerInputs.BU_Block)
         {
@@ -42,7 +45,7 @@ public class RaunerCombate : GeneralPlayer
             raunerInputs.BlockJump = false;
             raunerInputs.BlockWalk = false;
 
-            gameObject.layer = 12; //Player
+            CollidersObject.layer = 12; //Player
         }
     }
 
@@ -100,9 +103,9 @@ public class RaunerCombate : GeneralPlayer
 
     private void DetectaEnemigoBloqueando()
     {
-        Collider2D[] DanioAEnemigo = Physics2D.OverlapCircleAll(LugarDeAtaque.position, RangoDeAtaque, Layer_EnemigoBloqueando);
+        Collider2D[] EscudoEnemigo = Physics2D.OverlapCircleAll(LugarDeAtaque.position, RangoDeAtaque, Layer_EnemigoBloqueando);
 
-        foreach (Collider2D collider in DanioAEnemigo)
+        foreach (Collider2D collider in EscudoEnemigo)
         {
             EfectosDelCombo(NumeroDeAtaque, true);
         }       

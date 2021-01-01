@@ -8,6 +8,8 @@ public class RaunerMovimiento : GeneralPlayer
     private Rigidbody2D rb;
     private Animator anim;
 
+    public GameObject CollidersObject;
+
     void Start()
     {
         anim = GetComponentInChildren<Animator>();
@@ -122,7 +124,7 @@ public class RaunerMovimiento : GeneralPlayer
 
             Physics2D.IgnoreLayerCollision(LayerEnemigo, LayerEsquive, false);
 
-            gameObject.layer = 12;
+            CollidersObject.layer = 12;
 
             contadorDesplazamiento = ContadorDesplazamientoDefault;
             Invoke("In_CadenciaDash", CadenciaDash);
@@ -139,7 +141,7 @@ public class RaunerMovimiento : GeneralPlayer
             Physics2D.IgnoreLayerCollision(LayerEnemigo, LayerEsquive, true);
 
 
-            gameObject.layer = 16; //PlayerBloqueando
+            CollidersObject.layer = 16; //PlayerBloqueando
 
             puedeDesplazarse = false;
 

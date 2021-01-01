@@ -25,7 +25,8 @@ public class GeneralPlayer : PlayerEffects
     }
 
     #region Detectores de suelo
-    //El layer donde pisa el player cambia a un "Layer donde esta el player", de esta manera los enemigos no intentan seguirlo cuando este se encuentra en otras plataformas! 
+    //El layer donde pisa el player cambia a un "Layer donde esta el player"
+    //de esta manera los enemigos no intentan seguirlo cuando este se encuentra en otras plataformas! 
 
     private string NombreDelPisoAnterior;
     private string NombreDelPisoNuevo;
@@ -38,7 +39,7 @@ public class GeneralPlayer : PlayerEffects
         {
             NombreDelPisoNuevo = ray.collider.gameObject.name;
 
-            if (NombreDelPisoAnterior != NombreDelPisoNuevo && SegundaPasada)
+            if (NombreDelPisoAnterior != NombreDelPisoNuevo && SegundaPasada) //Segunda pasada es false por defecto!
             {
                 GameObject PisoViejo = GameObject.FindGameObjectWithTag("PisoConPlayer_Nuevo");
                 PisoViejo.gameObject.tag = "Untagged";

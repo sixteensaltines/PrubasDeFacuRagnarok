@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemigo : AnimacionesEnemigos
+public class Enemigo : EfectosEnemigoSimple
 {
     //Layers
     [HideInInspector]
@@ -416,27 +416,51 @@ public class Enemigo : AnimacionesEnemigos
 
     #region VARIABLES DE ACCION "Ataque"
     private bool Flag2;
+    private int cuantosAtaques;
     #endregion 
     void AccionAtaque()
     {
         if (!Flag2)
         {
-            AnimAtaque(1, Random.Range(1, 3));
+            cuantosAtaques = Random.Range(1, 3);
+            AnimAtaque(1, cuantosAtaques);
             Flag2 = true;
         }
     }
 
     public Transform LugarDeAtaque;
     public LayerMask LayerDelPlayer;
+    public LayerMask LayerDelPlayer_Bloqueando;
     public float RangoDeAtaque;
 
     public void EnviaDanio()
+    {
+        DetectaPlayer_EnviaDanio();
+        DetectaEscudo_EnviaEfecto();
+    }
+
+
+    private void DetectaPlayer_EnviaDanio()
     {
         Collider2D[] DanioAPlayer = Physics2D.OverlapCircleAll(LugarDeAtaque.position, RangoDeAtaque, LayerDelPlayer);
 
         foreach (Collider2D collider in DanioAPlayer)
         {
-            collider.GetComponent<DanioYVidaRauner>().Empuje(false,AQueLadoMira()); //Empuja y saca vida, o mata!
+            collider.GetComponentInParent<DanioYVidaRauner>().Empuje(false, AQueLadoMira()); //Empuja y saca vida, o mata!
+
+            EfectosDelCombo(cuantosAtaques, false);
+        }
+    }
+
+    private void DetectaEscudo_EnviaEfecto()
+    {
+        Collider2D[] EscudoPlayer = Physics2D.OverlapCircleAll(LugarDeAtaque.position, RangoDeAtaque, LayerDelPlayer_Bloqueando);
+
+        foreach (Collider2D collider in EscudoPlayer)
+        {
+
+            EfectosDelCombo(0, true); //0, da igual que numero mientras que sea true! 
+
         }
     }
 

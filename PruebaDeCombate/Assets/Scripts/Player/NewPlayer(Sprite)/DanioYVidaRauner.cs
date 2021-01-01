@@ -9,6 +9,8 @@ public class DanioYVidaRauner : GeneralPlayer
     private RaunerInputs raunerInputs;
     private Rigidbody2D rb;
 
+    public GameObject CollidersObject; 
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -25,7 +27,7 @@ public class DanioYVidaRauner : GeneralPlayer
     {
         if (collision.CompareTag("Enemigo") && DetectaSuelo() && !EmpujeActivado_derecha && !EmpujeActivado_izquierda)
         {
-            if (gameObject.layer == LayerPlayer) Empuje(true);
+            if (CollidersObject.layer == LayerPlayer) Empuje(true);
         }
         if (collision.CompareTag("Enemigo") && !DetectaSuelo() && !EmpujeActivado_izquierda &&!EmpujeActivado_derecha)
         {
@@ -159,12 +161,16 @@ public class DanioYVidaRauner : GeneralPlayer
 
     public void LlegaDanio()
     {
-        if (gameObject.layer == LayerPlayer) DescuentaVida();
+        if (CollidersObject.layer == LayerPlayer) DescuentaVida();
     }
 
+
+    public ParticleSystem Sangre;
     public void DescuentaVida()
     {
         Vida--;
+        Sangre.Play(true);
+
         if (Vida <= 0)
         {
             anim.SetBool("RaunerMuerte", true);

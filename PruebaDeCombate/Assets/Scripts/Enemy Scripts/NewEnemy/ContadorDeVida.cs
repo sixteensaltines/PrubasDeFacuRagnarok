@@ -19,9 +19,11 @@ public class ContadorDeVida : AnimacionesEnemigos
         }
     }
 
+    public ParticleSystem Sangre;
     void ContadorVida()
     {
         Vida--;
+        Sangre.Play(true);
         if (Vida <= 0)
         {
             GetComponent<Enemigo>().AccionesDeMuerte();

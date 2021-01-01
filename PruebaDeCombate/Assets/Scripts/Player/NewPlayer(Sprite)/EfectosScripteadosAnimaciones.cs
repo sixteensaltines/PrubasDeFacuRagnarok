@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EfectosAnimaciones : MonoBehaviour
+public class EfectosScripteadosAnimaciones : MonoBehaviour
 {
     private RaunerInputs raunerInputs;
     private RaunerCombate raunerCombate;

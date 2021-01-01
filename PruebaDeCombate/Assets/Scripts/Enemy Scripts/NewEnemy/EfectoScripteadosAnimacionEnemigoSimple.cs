@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EfectoAnimacionEnemigoSimple : MonoBehaviour
+public class EfectoScripteadosAnimacionEnemigoSimple : MonoBehaviour
 {
-    //README.: Enlase directo con EnemigoSimple
+    //README.: Enlase directo con EnemigoSimple/ Son acciones que se ejecutan atraves de las animaciones con simples llamad
 
     private EnemigoSimple en_EnemigoSimple;
     public GameObject SkinFalso;
