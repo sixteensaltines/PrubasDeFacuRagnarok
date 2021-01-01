@@ -31,11 +31,15 @@ public class GeneralPlayer : PlayerEffects
     private string NombreDelPisoAnterior;
     private string NombreDelPisoNuevo;
     private bool SegundaPasada = false;//Flag
+
+
+    private int tipoDeSueloNuevo;
+    private int tipoDeSueloViejo;
     public void CambioLayerDelSuelo()
     {
-        RaycastHit2D ray;
-        ray = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y + 3f), Vector2.down, largoDelRayo, LayerMask.GetMask("Piso"));
-        if (ray)
+        tipoDeSueloNuevo = DetectaTipoDeSuelo();
+
+        if (tipoDeSueloNuevo != 0) //0 => En El aire
         {
             NombreDelPisoNuevo = ray.collider.gameObject.name;
 
@@ -43,9 +47,10 @@ public class GeneralPlayer : PlayerEffects
             {
                 GameObject PisoViejo = GameObject.FindGameObjectWithTag("PisoConPlayer_Nuevo");
                 PisoViejo.gameObject.tag = "Untagged";
-                PisoViejo.gameObject.layer = 8;
+                PisoViejo.gameObject.layer = tipoDeSueloViejo;
 
                 NombreDelPisoAnterior = NombreDelPisoNuevo;
+                tipoDeSueloViejo = tipoDeSueloNuevo;
 
                 ray.collider.gameObject.layer = 9; //Cambio el layer que toco y lo transformo en PisoConPlayer
                 ray.collider.gameObject.tag = "PisoConPlayer_Nuevo";
@@ -56,10 +61,25 @@ public class GeneralPlayer : PlayerEffects
                 ray.collider.gameObject.tag = "PisoConPlayer_Nuevo";
 
                 NombreDelPisoAnterior = NombreDelPisoNuevo;
+                tipoDeSueloViejo = tipoDeSueloNuevo;
 
                 SegundaPasada = true;//Saco el flag!
             }
         }
+    }
+
+    private RaycastHit2D ray;
+    public int DetectaTipoDeSuelo()
+    {
+        ray = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y + 3f), Vector2.down, largoDelRayo, LayerMask.GetMask("Pasto"));
+        if (ray) return 19;  //Pasto // 19
+        else ray = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y + 3f), Vector2.down, largoDelRayo, LayerMask.GetMask("Agua"));
+        if(ray) return 18; //Agua // 18
+        else ray = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y + 3f), Vector2.down, largoDelRayo, LayerMask.GetMask("Tierra"));
+        if (ray) return 17; //Tierra // 17
+        else ray = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y + 3f), Vector2.down, largoDelRayo, LayerMask.GetMask("Plataforma"));
+        if (ray) return 17; //Tierra // 17
+        else return 0; //EnElAire
     }
 
     private float largoDelRayo = 2.2f;
@@ -68,31 +88,8 @@ public class GeneralPlayer : PlayerEffects
         Debug.DrawRay(new Vector2(transform.position.x, transform.position.y + 3f), Vector2.down * largoDelRayo, Color.blue);
         RaycastHit2D ray;
         return ray = Physics2D.Raycast(new Vector2(transform.position.x,transform.position.y+3f), Vector2.down, largoDelRayo, LayerMask.GetMask("PisoConPlayer"));
-       
-        /*if (!ray) 
-        {
-            if (SaltoCoyote()) return true;
-            else return false;
-        }
-        else
-        {
-            Tiempo_SaltoCoyote = Tiempo_SaltoCoyoteDefault;
-            return true;
-        }*/
     }
 
-    /*private float Tiempo_SaltoCoyote = 0.3f;
-    private float Tiempo_SaltoCoyoteDefault = 0.3f;
-    bool SaltoCoyote() //Puede saltar un tiempo despues de no tocar el suelo. 
-    {
-        if (Tiempo_SaltoCoyote > 0)
-        {
-            Tiempo_SaltoCoyote -= Time.deltaTime;
-            return true;
-        }
-        else return false;
-        
-    }*/
     #endregion
 
     public void CambioDeGravedad(Rigidbody2D rb)

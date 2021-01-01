@@ -18,16 +18,16 @@ TagManager:
   - Piso
   - PisoConPlayer
   - 
-  - Accion
+  - 
   - Player
   - Enemigo
   - PlayerBloqueando
   - EnemigoBloqueando
   - PlayerEsquiva
-  - 
-  - 
-  - 
-  - 
+  - Tierra
+  - Agua
+  - Pasto
+  - Plataforma
   - 
   - 
   - 
