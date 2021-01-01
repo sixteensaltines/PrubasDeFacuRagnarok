@@ -71,23 +71,23 @@ public class GeneralPlayer : PlayerEffects
     private RaycastHit2D ray;
     public int DetectaTipoDeSuelo()
     {
-        ray = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y + 3f), Vector2.down, largoDelRayo, LayerMask.GetMask("Pasto"));
+        ray = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y + 0.8f), Vector2.down, largoDelRayo, LayerMask.GetMask("Pasto"));
         if (ray) return 19;  //Pasto // 19
-        else ray = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y + 3f), Vector2.down, largoDelRayo, LayerMask.GetMask("Agua"));
+        else ray = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y + 0.8f), Vector2.down, largoDelRayo, LayerMask.GetMask("Agua"));
         if(ray) return 18; //Agua // 18
-        else ray = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y + 3f), Vector2.down, largoDelRayo, LayerMask.GetMask("Tierra"));
+        else ray = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y + 0.8f), Vector2.down, largoDelRayo, LayerMask.GetMask("Tierra"));
         if (ray) return 17; //Tierra // 17
-        else ray = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y + 3f), Vector2.down, largoDelRayo, LayerMask.GetMask("Plataforma"));
+        else ray = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y + 0.8f), Vector2.down, largoDelRayo, LayerMask.GetMask("Plataforma"));
         if (ray) return 17; //Tierra // 17
         else return 0; //EnElAire
     }
 
-    private float largoDelRayo = 2.2f;
+    private float largoDelRayo = 0.5f;//2.2
     public bool DetectaSuelo()
     {
-        Debug.DrawRay(new Vector2(transform.position.x, transform.position.y + 3f), Vector2.down * largoDelRayo, Color.blue);
+        Debug.DrawRay(new Vector2(transform.position.x, transform.position.y + 0.8f), Vector2.down * largoDelRayo, Color.blue); //3
         RaycastHit2D ray;
-        return ray = Physics2D.Raycast(new Vector2(transform.position.x,transform.position.y+3f), Vector2.down, largoDelRayo, LayerMask.GetMask("PisoConPlayer"));
+        return ray = Physics2D.Raycast(new Vector2(transform.position.x,transform.position.y+0.8f), Vector2.down, largoDelRayo, LayerMask.GetMask("PisoConPlayer"));
     }
 
     #endregion

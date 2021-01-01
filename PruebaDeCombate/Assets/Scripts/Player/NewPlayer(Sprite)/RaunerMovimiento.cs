@@ -112,7 +112,6 @@ public class RaunerMovimiento : GeneralPlayer
         }
     }
 
-
     void EjecutoDesplazamiento()
     {
         if (contadorDesplazamiento <= 0)
