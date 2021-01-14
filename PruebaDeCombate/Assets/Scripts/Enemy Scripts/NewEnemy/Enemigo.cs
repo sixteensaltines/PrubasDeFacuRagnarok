@@ -46,7 +46,8 @@ public class Enemigo : EfectosEnemigoSimple
     {
         if (Vector3.Distance(transform.position, PlayerPosition) < rangoVision &&
             Vector3.Distance(transform.position, PlayerPosition) > RANGOATAQUE &&
-            !DetectaSuelo("Agua") && !DetectaSuelo("Pasto") && !DetectaSuelo("Plataforma") && !DetectaSuelo("Tierra")) //Si el layer es piso, deja de caminar!
+            !DetectaSuelo("Agua") && !DetectaSuelo("Pasto") && !DetectaSuelo("Plataforma") && !DetectaSuelo("Tierra")
+            && DetectaSuelo_Secundario()) //Si el layer es piso, deja de caminar!
         {
             AnimCaminata(true);
             rangoVision = 50f;
@@ -79,7 +80,7 @@ public class Enemigo : EfectosEnemigoSimple
             transform.position = Vector3.MoveTowards(transform.position, PlayerPosition, 7f * Time.deltaTime); //Salto a plataforma superior
             rbEnemigo.velocity = Vector3.up * fuerzaSalto;
         }
-        if (!DetectaPared_Delante() && !DetectaPlayer_Delante() && Vector3.Distance(transform.position, PlayerPosition) < RANGOATAQUE) //Salto Al vacio
+        if (!DetectaPared_Delante() && !DetectaPlayer_Delante() && Vector3.Distance(transform.position, PlayerPosition) < RANGOATAQUE && DetectaSuelo_Secundario()) //Salto Al vacio
         {
             transform.position = Vector3.MoveTowards(transform.position, PlayerPosition, VelocidadMovimiento * 2f * Time.deltaTime);
         }
@@ -118,7 +119,7 @@ public class Enemigo : EfectosEnemigoSimple
         RaycastHit2D ray;
 
         if (QueSuelo == "Null") //Por defecto busca los dos
-        {
+        { //TODO : ARREGLAR ESTA BASURA! 
             ray = Physics2D.Raycast(transform.position, Vector2.down, LARGORAYO_ALSUELO, 1 << LayerMask.NameToLayer("Tierra"));
             if (ray == true) return true;
             else ray = Physics2D.Raycast(transform.position, Vector2.down, LARGORAYO_ALSUELO, 1 << LayerMask.NameToLayer("Agua"));
@@ -135,6 +136,18 @@ public class Enemigo : EfectosEnemigoSimple
         {
             return ray = Physics2D.Raycast(transform.position, Vector2.down, LARGORAYO_ALSUELO, 1 << LayerMask.NameToLayer(QueSuelo));
         }
+    }
+
+    /// <summary>
+    /// Detecta el suelo un poco mas abajo del detector primario de suelo, de esta manera se asegura si va a saltar al vacio o hacia un lugar con suelo
+    /// </summary>
+    /// <returns></returns>
+    private bool DetectaSuelo_Secundario()
+    {
+        RaycastHit2D ray;
+        ray = Physics2D.Raycast(transform.position, Vector2.down, LARGORAYO_ALSUELO+2f, 1 << LayerMask.NameToLayer("PisoConPlayer"));
+        if (ray == true) return true;
+        else return false;
     }
 
     /// <summary>
