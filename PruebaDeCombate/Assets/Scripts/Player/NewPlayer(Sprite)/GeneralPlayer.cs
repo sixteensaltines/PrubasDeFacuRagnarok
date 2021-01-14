@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GeneralPlayer : PlayerEffects
+public class GeneralPlayer : MonoBehaviour
 {
     //Layers
     [HideInInspector]

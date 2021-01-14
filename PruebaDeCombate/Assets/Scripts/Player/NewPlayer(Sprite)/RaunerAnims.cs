@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RaunerAnims : MonoBehaviour
+public class RaunerAnims : GeneralPlayer
 {
     public void CaminataAnim(Animator anim, bool CaminataActiva)
     {

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerEffects : RaunerAnims
+public class PlayerEffects : MonoBehaviour
 {
     public Animator EfectosDelPlayer;
 

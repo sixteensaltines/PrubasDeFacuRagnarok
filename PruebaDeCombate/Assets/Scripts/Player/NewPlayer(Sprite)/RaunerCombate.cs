@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RaunerCombate : GeneralPlayer
+public class RaunerCombate : RaunerAnims
 {
     private Animator anim;
     private RaunerInputs raunerInputs;
@@ -96,7 +96,7 @@ public class RaunerCombate : GeneralPlayer
 
         foreach (Collider2D collider in DanioAEnemigo)
         {
-            EfectosDelCombo(NumeroDeAtaque, false);
+            //EfectosDelCombo(NumeroDeAtaque, false);
             collider.GetComponentInParent<ContadorDeVida>().LlegaDanio();
         }
     }
@@ -107,7 +107,7 @@ public class RaunerCombate : GeneralPlayer
 
         foreach (Collider2D collider in EscudoEnemigo)
         {
-            EfectosDelCombo(NumeroDeAtaque, true);
+            //EfectosDelCombo(NumeroDeAtaque, true);
         }       
     }
   

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RaunerMovimiento : GeneralPlayer
+public class RaunerMovimiento : RaunerAnims
 {
     private RaunerInputs raunerInputs;
     private Rigidbody2D rb;

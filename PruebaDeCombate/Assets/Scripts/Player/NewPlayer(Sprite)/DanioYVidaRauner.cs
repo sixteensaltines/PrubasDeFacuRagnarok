@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DanioYVidaRauner : GeneralPlayer
+public class DanioYVidaRauner : RaunerAnims
 {
     public int Vida;
     public Animator anim;
