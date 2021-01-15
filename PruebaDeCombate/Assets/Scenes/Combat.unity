@@ -53380,7 +53380,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d54f147dd0a6adb42a28d7be3d5fb0f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EfectosDelPlayer: {fileID: 0}
+  EfectosDelPlayer: {fileID: 1319322489}
   SkinFalso: {fileID: 508158704}
   PosibleGolpe: 0
 --- !u!212 &1327870355

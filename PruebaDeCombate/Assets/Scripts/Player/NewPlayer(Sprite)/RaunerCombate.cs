@@ -96,7 +96,7 @@ public class RaunerCombate : RaunerAnims
 
         foreach (Collider2D collider in DanioAEnemigo)
         {
-            //EfectosDelCombo(NumeroDeAtaque, false);
+            GetComponentInChildren<PlayerEffects>().EfectosDelCombo(NumeroDeAtaque, false);
             collider.GetComponentInParent<ContadorDeVida>().LlegaDanio();
         }
     }
@@ -107,38 +107,12 @@ public class RaunerCombate : RaunerAnims
 
         foreach (Collider2D collider in EscudoEnemigo)
         {
-            //EfectosDelCombo(NumeroDeAtaque, true);
-        }       
+            GetComponentInChildren<PlayerEffects>().EfectosDelCombo(NumeroDeAtaque, true);
+        }
     }
   
-
     void OnDrawGizmosSelected()
     {
         Gizmos.DrawWireSphere(LugarDeAtaque.position, RangoDeAtaque);
     }
-    /*[HideInInspector]
-    public CircleCollider2D colliderEffector;
-    [HideInInspector]
-    public bool ActiveParry; //Devuelve proyectiles
-    void Parry()
-    {
-        if (medidorVida.LlegaDanio)
-        {
-            anim.SetBool("Parry", true);
-
-            ActiveParry = true; //Se apaga desde los efectos de animaciones
-
-            colliderEffector = GetComponent<CircleCollider2D>();
-            colliderEffector.radius = 3f; //ActivoEmpuje
-            Invoke("In_RadioOriginal", 0.1f);
-            
-            //TODO: POSIBLE EFECTO 
-        }
-    }
-    void In_RadioOriginal()
-    {
-        colliderEffector.radius = 0.1f; //DesactivoEmpuje;
-    }*/
-
-
 }

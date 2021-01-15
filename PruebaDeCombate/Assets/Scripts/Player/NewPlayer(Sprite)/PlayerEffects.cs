@@ -6,11 +6,11 @@ public class PlayerEffects : MonoBehaviour
 {
     public Animator EfectosDelPlayer;
 
-    public void EfectosDelCombo(int QueGolpe, bool GolpeoAlEscudo)
+    public void EfectosDelCombo(int NumeroDeAtaque, bool AtacoAlEscudo)
     {
-        if (!GolpeoAlEscudo)
+        if (!AtacoAlEscudo)
         {
-            switch (QueGolpe)
+            switch (NumeroDeAtaque)
             {
                 case 1:
                     EfectosDelPlayer.SetBool("Golpe1", true);
@@ -26,7 +26,7 @@ public class PlayerEffects : MonoBehaviour
                     break;
             }
         }
-        else EfectosDelPlayer.SetBool("GolpeAEscudo", true);
+        EfectosDelPlayer.SetBool("GolpeAEscudo", true);
     }
 
     public void CancelarEfectosDelCombo()
