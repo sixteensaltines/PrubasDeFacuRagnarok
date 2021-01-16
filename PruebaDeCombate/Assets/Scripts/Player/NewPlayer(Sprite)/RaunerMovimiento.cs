@@ -20,7 +20,7 @@ public class RaunerMovimiento : RaunerAnims
     void Update()
     {
         CambioLayerDelSuelo(); //En general player
-         Caminata(); //Con sus animaciones respectivas
+        Caminata(); //Con sus animaciones respectivas
         CambiaLadoSkin(raunerInputs.BH_Right, raunerInputs.BH_Left);
         Salto(); //Con sus animaciones respectivas
         CambioDeGravedad(rb);

@@ -32,14 +32,17 @@ public class GeneralPlayer : MonoBehaviour
     private string NombreDelPisoNuevo;
     private bool SegundaPasada = false;//Flag
 
-
-    private int tipoDeSueloNuevo;
-    private int tipoDeSueloViejo;
+    [HideInInspector]
+    public int TipoDeSueloNuevo;
+    [HideInInspector]
+    public int tipoDeSueloViejo;
+    [HideInInspector]
+    public int A;
     public void CambioLayerDelSuelo()
     {
-        tipoDeSueloNuevo = DetectaTipoDeSuelo();
+        TipoDeSueloNuevo = DetectaTipoDeSuelo();
 
-        if (tipoDeSueloNuevo != 0) //0 => En El aire
+        if (TipoDeSueloNuevo != 0) //0 => En El aire
         {
             NombreDelPisoNuevo = ray.collider.gameObject.name;
 
@@ -50,10 +53,11 @@ public class GeneralPlayer : MonoBehaviour
                 PisoViejo.gameObject.layer = tipoDeSueloViejo;
 
                 NombreDelPisoAnterior = NombreDelPisoNuevo;
-                tipoDeSueloViejo = tipoDeSueloNuevo;
+                tipoDeSueloViejo = TipoDeSueloNuevo;
 
                 ray.collider.gameObject.layer = 9; //Cambio el layer que toco y lo transformo en PisoConPlayer
                 ray.collider.gameObject.tag = "PisoConPlayer_Nuevo";
+
             }
             if (!SegundaPasada)
             {
@@ -61,7 +65,9 @@ public class GeneralPlayer : MonoBehaviour
                 ray.collider.gameObject.tag = "PisoConPlayer_Nuevo";
 
                 NombreDelPisoAnterior = NombreDelPisoNuevo;
-                tipoDeSueloViejo = tipoDeSueloNuevo;
+                tipoDeSueloViejo = TipoDeSueloNuevo;
+
+
 
                 SegundaPasada = true;//Saco el flag!
             }
@@ -78,7 +84,9 @@ public class GeneralPlayer : MonoBehaviour
         else ray = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y + 0.8f), Vector2.down, largoDelRayo, LayerMask.GetMask("Tierra"));
         if (ray) return 17; //Tierra // 17
         else ray = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y + 0.8f), Vector2.down, largoDelRayo, LayerMask.GetMask("Plataforma"));
-        if (ray) return 17; //Tierra // 17
+        if (ray) return 20; //Plataforma // 20
+        else ray = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y + 0.8f), Vector2.down, largoDelRayo, LayerMask.GetMask("PisoConPlayer"));
+        if (ray) return tipoDeSueloViejo; // PisoConPlayer
         else return 0; //EnElAire
     }
 

@@ -2,11 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EfectosScripteadosAnimaciones : PlayerEffects
+public class EfectosScripteadosAnimaciones : MonoBehaviour
 {
     private RaunerInputs raunerInputs;
-    private RaunerCombate raunerCombate;
-    private Animator anim;
+    private  RaunerCombate raunerCombate;
+    private  PlayerEffects playerEffects;
+
+    private Animator animRauner;
+
     public GameObject SkinFalso; //Skin que nos muestra donde esta el personaje!
 
     public bool PosibleGolpe;
@@ -15,9 +18,11 @@ public class EfectosScripteadosAnimaciones : PlayerEffects
     {
         SkinFalso.GetComponent<SpriteRenderer>().enabled = false;
 
+        playerEffects = GetComponentInChildren<PlayerEffects>();
+
         raunerInputs = GetComponentInParent<RaunerInputs>();
         raunerCombate = GetComponentInParent<RaunerCombate>();
-        anim = GetComponent<Animator>();
+        animRauner = GetComponent<Animator>();
     }
 
     public void ComboOn() => PosibleGolpe = true;
@@ -36,8 +41,8 @@ public class EfectosScripteadosAnimaciones : PlayerEffects
         PosibleGolpe = false;
         raunerCombate.NumeroDeAtaque = 0;
 
-        anim.SetBool("Ataque", false);
-        anim.SetInteger("QueAtaque", raunerCombate.NumeroDeAtaque);
+        animRauner.SetBool("Ataque", false);
+        animRauner.SetInteger("QueAtaque", raunerCombate.NumeroDeAtaque);
 
         raunerInputs.BlockWalk = false;
         raunerInputs.BlockJump = false;
@@ -60,10 +65,13 @@ public class EfectosScripteadosAnimaciones : PlayerEffects
         raunerInputs.QuitForces();
     }
 
-    public void AnimacionEmpujeOff() => anim.SetBool("Empuje", false);
+    public void AnimacionEmpujeOff() => animRauner.SetBool("Empuje", false);
 
     public void BloqueoSupremoDeAcciones() => raunerInputs.ControlSupremoInputs(true);
     public void DesbloqueoSupremoDeAcciones() => raunerInputs.ControlSupremoInputs(false);
-    public void DestruirObjeto() => Debug.Log("RaunerMuerto"); 
+    public void DestruirObjeto() => Debug.Log("RaunerMuerto");
 
+    public void SpawnParticula_Caminata() => playerEffects.ParticulasCaminata();
+
+    public void SpawnParticula_Salto() => playerEffects.ParticulaSalto();
 }

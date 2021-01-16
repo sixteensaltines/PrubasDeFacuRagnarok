@@ -22,6 +22,7 @@ public class RaunerCombate : RaunerAnims
     {
         Block();
         Combo();
+
         //if(efectosAnimaciones.EsPosibleParry)Parry(); //ActivadoDesdeAnimaciones
     }
 

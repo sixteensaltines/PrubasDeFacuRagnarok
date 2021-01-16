@@ -6,6 +6,12 @@ public class PlayerEffects : MonoBehaviour
 {
     public Animator EfectosDelPlayer;
 
+    public RaunerMovimiento generalPlayer_RaunerMov;
+    void Start()
+    {
+        generalPlayer_RaunerMov = GetComponentInParent<RaunerMovimiento>();
+    }
+
     public void EfectosDelCombo(int NumeroDeAtaque, bool AtacoAlEscudo)
     {
         if (!AtacoAlEscudo)
@@ -35,5 +41,52 @@ public class PlayerEffects : MonoBehaviour
         EfectosDelPlayer.SetBool("Golpe2", false);
         EfectosDelPlayer.SetBool("Golpe3", false);
         EfectosDelPlayer.SetBool("GolpeAEscudo", false);
+    }
+
+    public ParticleSystem Caminata_Tierra;
+    public ParticleSystem Caminata_Agua;
+    public ParticleSystem Caminata_Pasto;
+    public Transform PieCaminata;
+
+    public void ParticulasCaminata() //PROVISIONAL
+    {
+       if (generalPlayer_RaunerMov.DetectaSuelo() && generalPlayer_RaunerMov.tipoDeSueloViejo == 17) //Tierra
+       {
+            var Tierra_Particle = Instantiate(Caminata_Tierra, PieCaminata.position, Quaternion.identity,transform.parent);
+            Tierra_Particle.transform.rotation = transform.rotation;
+            Tierra_Particle.transform.parent = null;
+        }
+       else if (generalPlayer_RaunerMov.DetectaSuelo() && generalPlayer_RaunerMov.tipoDeSueloViejo == 18) //Agua
+       {
+            var Agua_Particle = Instantiate(Caminata_Agua, PieCaminata.position, Quaternion.identity);
+            Agua_Particle.transform.rotation = transform.rotation;
+            Agua_Particle.transform.parent = null;
+        }
+       else if (generalPlayer_RaunerMov.DetectaSuelo() && generalPlayer_RaunerMov.tipoDeSueloViejo == 19) //Pasto
+       {
+            var Pasto_Particle = Instantiate(Caminata_Pasto, PieCaminata.position, Quaternion.identity);
+            Pasto_Particle.transform.rotation = transform.rotation;
+            Pasto_Particle.transform.parent = null;
+        }
+    }
+
+    public ParticleSystem Salto_Agua_Particula;
+    public ParticleSystem Salto_Tierra_Particula;
+    public ParticleSystem Salto_Pasto_Particula;
+
+    public void ParticulaSalto()
+    {
+        if (generalPlayer_RaunerMov.tipoDeSueloViejo == 17) //Tierra
+        {
+            Instantiate(Salto_Tierra_Particula, PieCaminata.position, Quaternion.identity);
+        }
+        else if (generalPlayer_RaunerMov.tipoDeSueloViejo == 18) //Agua
+        {
+            Instantiate(Salto_Agua_Particula, PieCaminata.position, Quaternion.identity);
+        }
+        else if (generalPlayer_RaunerMov.tipoDeSueloViejo == 19) //Pasto
+        {
+            Instantiate(Salto_Pasto_Particula, PieCaminata.position, Quaternion.identity);
+        }
     }
 }
