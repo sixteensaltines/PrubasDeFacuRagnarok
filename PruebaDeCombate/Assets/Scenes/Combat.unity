@@ -1882,7 +1882,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 239267013}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5.27, y: -13.83, z: 10}
+  m_LocalPosition: {x: -4.33, y: -16.45, z: 10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1895287182}
@@ -3650,13 +3650,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 506637756}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -7.83, y: 16.03, z: 10}
+  m_LocalPosition: {x: -3.5, y: 29.890003, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 779953367}
   - {fileID: 1674712558}
-  m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_Father: {fileID: 513607879}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &506637762
 MonoBehaviour:
@@ -3947,6 +3947,7 @@ Transform:
   m_Children:
   - {fileID: 1800081714}
   - {fileID: 938228496}
+  - {fileID: 506637761}
   m_Father: {fileID: 239267014}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6761,6 +6762,7 @@ Transform:
   m_Children:
   - {fileID: 517013940}
   - {fileID: 244275365}
+  - {fileID: 1152135309}
   m_Father: {fileID: 513607879}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -8745,6 +8747,36 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1152135308
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1152135309}
+  m_Layer: 0
+  m_Name: Centro
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1152135309
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1152135308}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.03, y: -1.67, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 938228496}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1180738825
 GameObject:
   m_ObjectHideFlags: 0
@@ -9609,6 +9641,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EfectosDelPlayer: {fileID: 1319322489}
+  PieCaminata: {fileID: 244275365}
+  CentroDePies: {fileID: 1152135309}
   generalPlayer_RaunerMov: {fileID: 0}
   Caminata_Tierra: {fileID: 7827344807750691219, guid: 7d53337a1ef57054ba7e243f0a2d6c3b,
     type: 3}
@@ -9616,12 +9650,17 @@ MonoBehaviour:
     type: 3}
   Caminata_Pasto: {fileID: 9091502599167315319, guid: 3c0b27cae394a3a42a8777f376059009,
     type: 3}
-  PieCaminata: {fileID: 244275365}
   Salto_Agua_Particula: {fileID: 1177256805618280167, guid: 67ff08f7186347e488b19db3d0012480,
     type: 3}
   Salto_Tierra_Particula: {fileID: 1293257570681912983, guid: d3cb3bc512ace1d419f1b66a77e6edda,
     type: 3}
   Salto_Pasto_Particula: {fileID: 3074901645543635310, guid: 36e85488083b8414f83dadc279388270,
+    type: 3}
+  Caida_Agua_Particula: {fileID: 8633373562154461074, guid: 950e560eeabefad4398def8c4f144eae,
+    type: 3}
+  Caida_Tierra_Particula: {fileID: 1800045799848306543, guid: 1acc30c977608b94ebf086f54eb1fa5a,
+    type: 3}
+  Caida_Pasto_Particula: {fileID: 4823344418025859672, guid: 67a03d3aaaa86794dbe356b8d147e786,
     type: 3}
 --- !u!1 &1327870351
 GameObject:
@@ -9735,7 +9774,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1.7299999, y: 5.0039062}
+  m_Size: {x: 1.171831, y: 4.9999995}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 0

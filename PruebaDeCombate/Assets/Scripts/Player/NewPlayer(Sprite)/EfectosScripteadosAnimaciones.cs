@@ -71,7 +71,12 @@ public class EfectosScripteadosAnimaciones : MonoBehaviour
     public void DesbloqueoSupremoDeAcciones() => raunerInputs.ControlSupremoInputs(false);
     public void DestruirObjeto() => Debug.Log("RaunerMuerto");
 
+
+    //PARTICULAS////////////////////
+
     public void SpawnParticula_Caminata() => playerEffects.ParticulasCaminata();
 
     public void SpawnParticula_Salto() => playerEffects.ParticulaSalto();
+
+    public void SpawnParticula_Caida() => playerEffects.Particula_Caida();
 }

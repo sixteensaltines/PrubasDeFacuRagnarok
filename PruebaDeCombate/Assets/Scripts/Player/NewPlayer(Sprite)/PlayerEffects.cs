@@ -6,6 +6,10 @@ public class PlayerEffects : MonoBehaviour
 {
     public Animator EfectosDelPlayer;
 
+
+    public Transform PieCaminata;
+    public Transform CentroDePies;
+
     public RaunerMovimiento generalPlayer_RaunerMov;
     void Start()
     {
@@ -46,7 +50,6 @@ public class PlayerEffects : MonoBehaviour
     public ParticleSystem Caminata_Tierra;
     public ParticleSystem Caminata_Agua;
     public ParticleSystem Caminata_Pasto;
-    public Transform PieCaminata;
 
     public void ParticulasCaminata() //PROVISIONAL
     {
@@ -78,15 +81,41 @@ public class PlayerEffects : MonoBehaviour
     {
         if (generalPlayer_RaunerMov.tipoDeSueloViejo == 17) //Tierra
         {
-            Instantiate(Salto_Tierra_Particula, PieCaminata.position, Quaternion.identity);
+            Instantiate(Salto_Tierra_Particula, CentroDePies.position, Quaternion.identity);
         }
         else if (generalPlayer_RaunerMov.tipoDeSueloViejo == 18) //Agua
         {
-            Instantiate(Salto_Agua_Particula, PieCaminata.position, Quaternion.identity);
+            Instantiate(Salto_Agua_Particula, CentroDePies.position, Quaternion.identity);
         }
         else if (generalPlayer_RaunerMov.tipoDeSueloViejo == 19) //Pasto
         {
-            Instantiate(Salto_Pasto_Particula, PieCaminata.position, Quaternion.identity);
+            Instantiate(Salto_Pasto_Particula, CentroDePies.position, Quaternion.identity);
+        }
+    }
+
+    public ParticleSystem Caida_Agua_Particula;
+    public ParticleSystem Caida_Tierra_Particula;
+    public ParticleSystem Caida_Pasto_Particula;
+
+    public void Particula_Caida()
+    {
+        if (generalPlayer_RaunerMov.tipoDeSueloViejo == 17) //Tierra
+        {
+            Instantiate(Caida_Tierra_Particula, CentroDePies.position, Quaternion.identity);
+            var ParticulaAlReves = Instantiate(Caida_Tierra_Particula, CentroDePies.position, Quaternion.identity);
+            ParticulaAlReves.transform.eulerAngles = new Vector3(0, 180, 0);
+        }
+        else if (generalPlayer_RaunerMov.tipoDeSueloViejo == 18) //Agua
+        {
+            Instantiate(Caida_Agua_Particula, CentroDePies.position, Quaternion.identity);
+            var ParticulaAlReves = Instantiate(Caida_Agua_Particula, CentroDePies.position, Quaternion.identity);
+            ParticulaAlReves.transform.eulerAngles = new Vector3(0, 180, 0);
+        }
+        else if (generalPlayer_RaunerMov.tipoDeSueloViejo == 19) //Pasto
+        {
+            Instantiate(Caida_Pasto_Particula, CentroDePies.position, Quaternion.identity);
+            var ParticulaAlReves = Instantiate(Caida_Pasto_Particula, CentroDePies.position, Quaternion.identity);
+            ParticulaAlReves.transform.eulerAngles = new Vector3(0, 180, 0);
         }
     }
 }
