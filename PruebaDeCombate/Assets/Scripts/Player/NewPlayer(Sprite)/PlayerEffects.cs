@@ -16,6 +16,15 @@ public class PlayerEffects : MonoBehaviour
         generalPlayer_RaunerMov = GetComponentInParent<RaunerMovimiento>();
     }
 
+    void Update()
+    {
+        if (generalPlayer_RaunerMov.GetInfoActivaSalto)
+        {
+            ParticulaSalto();
+            generalPlayer_RaunerMov.GetInfoActivaSalto = false;
+        }
+    }
+
     public void EfectosDelCombo(int NumeroDeAtaque, bool AtacoAlEscudo)
     {
         if (!AtacoAlEscudo)
@@ -81,15 +90,18 @@ public class PlayerEffects : MonoBehaviour
     {
         if (generalPlayer_RaunerMov.tipoDeSueloViejo == 17) //Tierra
         {
-            Instantiate(Salto_Tierra_Particula, CentroDePies.position, Quaternion.identity);
+            var Particulas_SaltoTierra = Instantiate(Salto_Tierra_Particula, CentroDePies.position, Quaternion.identity);
+            Particulas_SaltoTierra.transform.parent = null;
         }
         else if (generalPlayer_RaunerMov.tipoDeSueloViejo == 18) //Agua
         {
-            Instantiate(Salto_Agua_Particula, CentroDePies.position, Quaternion.identity);
+            var Particulas_SaltoAgua = Instantiate(Salto_Agua_Particula, CentroDePies.position, Quaternion.identity);
+            Particulas_SaltoAgua.transform.parent = null;
         }
         else if (generalPlayer_RaunerMov.tipoDeSueloViejo == 19) //Pasto
         {
-            Instantiate(Salto_Pasto_Particula, CentroDePies.position, Quaternion.identity);
+            var Particulas_SaltoPasto = Instantiate(Salto_Pasto_Particula, CentroDePies.position, Quaternion.identity);
+            Particulas_SaltoPasto.transform.parent = null;
         }
     }
 

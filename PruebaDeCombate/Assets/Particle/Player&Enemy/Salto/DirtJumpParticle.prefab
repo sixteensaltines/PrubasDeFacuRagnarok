@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1293257570681912982}
   - component: {fileID: 6219385112028467175}
   m_Layer: 0
-  m_Name: 'DirtJumpParticle '
+  m_Name: DirtJumpParticle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -41,7 +41,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1293257570681912977}
   serializedVersion: 6
-  lengthInSec: 0.2
+  lengthInSec: 0.1
   simulationSpeed: 0.3
   stopAction: 0
   cullingMode: 0
@@ -116,7 +116,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.2
+      scalar: 0.15
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -285,8 +285,8 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 0.03
-      minScalar: 0.01
+      scalar: 0.04
+      minScalar: 0.03
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -607,7 +607,7 @@ ParticleSystem:
     gravityModifier:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0
+      scalar: 2
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -667,8 +667,8 @@ ParticleSystem:
     radiusThickness: 1
     donutRadius: 0.2
     m_Position: {x: 0, y: 0, z: 0}
-    m_Rotation: {x: 90.8, y: -90, z: 0}
-    m_Scale: {x: 0.07, y: 0.1, z: 0.1}
+    m_Rotation: {x: -90, y: -90, z: 0}
+    m_Scale: {x: 0.07, y: 0.24, z: 0.07}
     placementMode: 0
     m_MeshMaterialIndex: 0
     m_MeshNormalOffset: 0
@@ -866,7 +866,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 150
+      scalar: 80
       minScalar: 10
       maxCurve:
         serializedVersion: 2

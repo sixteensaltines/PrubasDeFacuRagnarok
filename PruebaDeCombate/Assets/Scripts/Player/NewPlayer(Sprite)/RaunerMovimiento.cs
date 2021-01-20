@@ -51,12 +51,20 @@ public class RaunerMovimiento : RaunerAnims
         else CaminataAnim(anim, false);
     }
 
+    private bool activaSalto;
+    public bool GetInfoActivaSalto
+    {
+        get { return activaSalto; }
+        set { activaSalto = value; }
+    }
+
     //Salto
     public float FuerzaSalto;
     void Salto()
     {
         if (DetectaSuelo() && raunerInputs.BD_Jump)
         {
+            activaSalto = true;
             rb.AddForce(new Vector2(0f, FuerzaSalto), ForceMode2D.Impulse);
         }
         if (DetectaSuelo())
