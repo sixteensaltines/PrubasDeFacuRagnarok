@@ -130,4 +130,11 @@ public class PlayerEffects : MonoBehaviour
             ParticulaAlReves.transform.eulerAngles = new Vector3(0, 180, 0);
         }
     }
+
+    public ParticleSystem Danio_Sangre;
+
+    public void ActivarSangre()
+    {
+        
+    }
 }

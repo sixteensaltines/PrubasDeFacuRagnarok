@@ -1882,7 +1882,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 239267013}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 9.19, y: -17.21, z: 10}
+  m_LocalPosition: {x: 17.89, y: -11.18, z: 10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1895287182}
@@ -9265,7 +9265,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1319322486}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.5020001, y: 0.08000016, z: 0}
+  m_LocalPosition: {x: -0.43, y: -0.13, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1327870352}
@@ -9316,7 +9316,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 2.6666665, y: 5.0039062}
+  m_Size: {x: 3, y: 5.0039062}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 0
@@ -9375,6 +9375,7 @@ MonoBehaviour:
     type: 3}
   Caida_Pasto_Particula: {fileID: 4823344418025859672, guid: 67a03d3aaaa86794dbe356b8d147e786,
     type: 3}
+  Danio_Sangre: {fileID: 0}
 --- !u!1 &1327870351
 GameObject:
   m_ObjectHideFlags: 0
@@ -9487,7 +9488,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1.7299999, y: 5.0039062}
+  m_Size: {x: 2.1000001, y: 5.0097656}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 0
@@ -13543,7 +13544,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1955510453}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 27.23, y: -10.86, z: 0.9247991}
+  m_LocalPosition: {x: 24.82, y: -10.05, z: 0.9247991}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1520594315}

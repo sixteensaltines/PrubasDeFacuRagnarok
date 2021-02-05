@@ -27,11 +27,6 @@ public class RaunerMovimiento : RaunerAnims
         Dash();
     }
 
-    void FixedUpdate()
-    {
- //Con sus animaciones respectivas
-    }
-
     //Caminata
     public float VelocidadCaminata;
     void Caminata()
@@ -67,14 +62,9 @@ public class RaunerMovimiento : RaunerAnims
             activaSalto = true;
             rb.AddForce(new Vector2(0f, FuerzaSalto), ForceMode2D.Impulse);
         }
-        if (DetectaSuelo())
-        {
-            Caida_Salto_Off(anim);
-        }
-        else
-        {
-            SaltoAnim(anim, rb);
-        }
+
+        if (DetectaSuelo()) Caida_Salto_Off(anim);
+        else SaltoAnim(anim, rb);
     }
 
     //Dash
@@ -90,7 +80,6 @@ public class RaunerMovimiento : RaunerAnims
     private bool puedeDesplazarse = true;
 
     private bool flag1;
-
 
     void Dash()
     {
@@ -114,10 +103,7 @@ public class RaunerMovimiento : RaunerAnims
             }
         }
 
-        if (derecha || izquierda)
-        {
-            EjecutoDesplazamiento();
-        }
+        if (derecha || izquierda) EjecutoDesplazamiento(); 
     }
 
     void EjecutoDesplazamiento()
@@ -165,8 +151,5 @@ public class RaunerMovimiento : RaunerAnims
             }
         }
     }
-    private void In_CadenciaDash()
-    {
-        puedeDesplazarse = true;
-    }
-}
+    private void In_CadenciaDash() => puedeDesplazarse = true;
+}    
