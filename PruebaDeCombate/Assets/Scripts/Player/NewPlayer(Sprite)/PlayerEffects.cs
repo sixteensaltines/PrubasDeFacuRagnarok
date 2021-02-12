@@ -11,9 +11,21 @@ public class PlayerEffects : MonoBehaviour
     public Transform CentroDePies;
 
     public RaunerMovimiento generalPlayer_RaunerMov;
+
+    public GameObject _AudioSource1;
+    public GameObject _AudioSource2;
+    public GameObject _AudioSource3;
+
+    public AudioSource _AudioSource1_A;
+    public AudioSource _AudioSource2_A;
+    public AudioSource _AudioSource3_A;
+
     void Start()
     {
         generalPlayer_RaunerMov = GetComponentInParent<RaunerMovimiento>();
+        _AudioSource1_A = _AudioSource1.GetComponent<AudioSource>();
+        _AudioSource2_A = _AudioSource2.GetComponent<AudioSource>();
+        _AudioSource3_A = _AudioSource3.GetComponent<AudioSource>();
     }
 
     void Update()
@@ -131,10 +143,72 @@ public class PlayerEffects : MonoBehaviour
         }
     }
 
-    public ParticleSystem Danio_Sangre;
 
-    public void ActivarSangre()
+
+
+    [SerializeField]
+    private AudioClip[] clipsCaminata;
+    private AudioClip AudioClipAnterior;
+    private AudioClip NuevoClip;
+
+    public void SonidosAlCaminar()
     {
+        if (!_AudioSource1_A.isPlaying)
+        {
+            NuevoClip = GetRandomClip();
+
+            while (NuevoClip == AudioClipAnterior)
+            {
+                NuevoClip = GetRandomClip();
+            }
+            AudioClipAnterior = NuevoClip;
+
+            _AudioSource1_A.clip = NuevoClip;
+
+            _AudioSource1_A.volume = Random.Range(0.8f, 1);
+            _AudioSource1_A.pitch = Random.Range(0.90f, 1.10f);
+
+            _AudioSource1_A.PlayOneShot(_AudioSource1_A.clip);
+        }
+        else if(!_AudioSource2_A.isPlaying)
+        {
+            NuevoClip = GetRandomClip();
+
+            while (NuevoClip == AudioClipAnterior)
+            {
+                NuevoClip = GetRandomClip();
+            }
+            AudioClipAnterior = NuevoClip;
+
+            _AudioSource2_A.clip = NuevoClip;
+
+            _AudioSource2_A.volume = Random.Range(0.8f, 1);
+            _AudioSource2_A.pitch = Random.Range(0.90f, 1.10f);
+
+            _AudioSource2_A.PlayOneShot(_AudioSource2_A.clip);
+        }
+        else
+        {
+            NuevoClip = GetRandomClip();
+
+            while (NuevoClip == AudioClipAnterior)
+            {
+                NuevoClip = GetRandomClip();
+            }
+            AudioClipAnterior = NuevoClip;
+
+            _AudioSource3_A.clip = NuevoClip;
+
+            _AudioSource3_A.volume = Random.Range(0.8f, 1);
+            _AudioSource3_A.pitch = Random.Range(0.90f, 1.10f);
+
+            _AudioSource3_A.PlayOneShot(_AudioSource3_A.clip);
+        }
+    }
+
+    private AudioClip GetRandomClip()
+    {
+        return clipsCaminata[UnityEngine.Random.Range(0, clipsCaminata.Length)];
         
     }
 }

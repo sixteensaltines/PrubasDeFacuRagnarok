@@ -67,8 +67,6 @@ public class GeneralPlayer : MonoBehaviour
                 NombreDelPisoAnterior = NombreDelPisoNuevo;
                 tipoDeSueloViejo = TipoDeSueloNuevo;
 
-
-
                 SegundaPasada = true;//Saco el flag!
             }
         }

@@ -79,4 +79,7 @@ public class EfectosScripteadosAnimaciones : MonoBehaviour
     public void SpawnParticula_Salto() => playerEffects.ParticulaSalto();
 
     public void SpawnParticula_Caida() => playerEffects.Particula_Caida();
+
+    public void SonidoCaminata() => playerEffects.SonidosAlCaminar();
+
 }
